@@ -10,7 +10,7 @@
     </div>
 
     <div class="right-half">
-<p> zeyneb fjadsfhjdsafhadgsfhjadsfghdjsfghjdsfdsfghjdsfghjdesfghjkdghjksfhjkdsfhjkdsfhjksdfjkghdsfhjkdsehjkfdhjksfghjk </p>
+
       <img :src="img" class="logo" />
       
       <h1>Acil Sağlık Yardımı ve Acil İhbarlarınız için<br> Lütfen 112'yi arayınız.</h1>
