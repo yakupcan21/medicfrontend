@@ -1,18 +1,19 @@
 <template>
+
+  
  <router-view>
-  <SignUp />
+ 
  </router-view>
   
 </template>
 
 <script>
-import SignUp from './views/HomeView.vue'
 
 
 export default {
   name: 'App',
   components: {
-    SignUp
+    
   }
 }
 </script>

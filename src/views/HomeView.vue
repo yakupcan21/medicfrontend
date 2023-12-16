@@ -1,12 +1,20 @@
 <template>
-
   <div class="split-container">
 
     <div class="left-half">
-    <video class="video-bg" autoplay muted loop>
+
+      
+      <router-link :to="{ path: '/doktor' }">
+      <button class="doktorbutton" style="vertical-align:middle" > <span>Doktor Girişi</span> </button>
+      </router-link>
+     
+      <video class="video-bg" autoplay muted loop>
       <source :src="videoSource" type="video/mp4">
       
     </video>
+       
+    
+
     </div>
 
     <div class="right-half">
@@ -37,7 +45,14 @@
       <button>Giriş Yap</button>
     </div>
         </div>
-    </div>
+    
+    
+    
+    
+    
+    
+      </div>
+
   </div>
 
 </template>
@@ -56,10 +71,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 body {
   margin: 0;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition:0.5s;
 }
 .split-container {
   display: flex;
@@ -70,6 +89,8 @@ body {
   flex: 1.5; /* Take up all available space */
   border-bottom-right-radius: 150px;
   overflow: hidden;
+  
+ 
 }
 
 .video-bg {
@@ -83,6 +104,7 @@ body {
   padding: 20px; /* Add padding as needed */
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  
 }
 
 .logo {
@@ -123,10 +145,7 @@ body {
 .register button {
   width: 150px;
   height: 40px;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 10px;
+  border-radius: 20px;
   border: 2px solid #e54848;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
@@ -135,14 +154,18 @@ body {
   color: white;
   cursor: pointer;
   margin-top: 20px;
-}
+  letter-spacing: 1px;
+  transition: transform .1s ease-in;
 
+}
+.register button:active {
+  transform: scale(0.9);}
 .register button:hover {
   
   color: #fefbfb;
   transition: 0.5s;
-  border: 2px solid #812828;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  border: 1px solid #812828;
+  box-shadow: 0 12px 16px 0 rgba(199, 85, 85, 0.677),0 17px 50px 0 rgba(0,0,0,0.19);
   
 }
 h1{
@@ -214,4 +237,60 @@ h2{
   margin-right: 10px;
   
 }
+
+.doktorbutton {
+  width: 150px;
+  height: 50px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 10px;
+  border: 2px solid #e54848;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  background-color: #ed423f;
+  color: white;
+  cursor: pointer;
+  position: fixed;
+  bottom: 65px; /* adjust the bottom position as needed */
+  left: 10%;
+  transform: translateX(-50%);
+  z-index: 1;
+  
+
+}
+
+.doktorbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+ 
+}
+
+.doktorbutton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.doktorbutton:hover span {
+  padding-right: 25px;
+  
+}
+
+.doktorbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.doktorbutton:hover {
+  box-shadow: 1px 5px 6px 1px rgb(233, 223, 223),1px 1px 2px 1px rgba(236, 223, 223, 0.984); 
+}
+
+
+
 </style>

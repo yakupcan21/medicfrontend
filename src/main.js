@@ -6,3 +6,4 @@ import { VueResponsiveness } from 'vue-responsiveness'
 
 
 createApp(App).use(router).mount('#app').use(VueResponsiveness)
+
