@@ -191,6 +191,7 @@ h2{
   width: 430px;
   margin-right: auto;
   margin-left: auto;
+
 }
 
 .name-container input:first-child {
