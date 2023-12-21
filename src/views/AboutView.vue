@@ -1,35 +1,35 @@
 <template>
   <article>
     <div class="navbar">
-      <div class="menu-icon" @click="toggleMenu">☰</div>
-      <div class="bold-font" @click="navigate('Home')">anasayfa</div>
-      <div class="right-align">
+      <div class="navbar-menu-icon" @click="toggleMenu">☰</div>
+      <div class="navbar-bold-font" @click="navigate('Home')">anasayfa</div>
+      <div id="navbar-right-align">
         <div @click="navigate('about')">hakkında</div>
-        <img @click="navigate('question')" :src="questionImg" class="icon" />
-        <img @click="toggleAvatar" :src="peopleFill" class="avatar-icon" />
+        <img @click="navigate('question')" :src="questionImg" class="navbar-question-icon" />
+        <img @click="toggleAvatar" :src="peopleFill" class="navbar-avatar-icon" />
       </div>
     </div>
-    <div v-if="isMenuOpen" class="menu open">
-      <div id="white-bar">
+    <div v-if="isMenuOpen">
+      <div id="navbar-white-bar" >
         <div @click="navigate('menuItem1')">Doktorlar</div>
         <div @click="navigate('menuItem2')">Birimler</div>
         <div @click="navigate('menuItem3')">Hastalıklardan Nasıl Korunulur?</div>
         <div @click="navigate('menuItem4')">Yapay Zeka ve Akciğer Hastalıkları</div>
-        <div class="button" id="return" @click="toggleMenu">Geri Dön</div>
+        <div class="navbar-button" id="navbar-return" @click="toggleMenu">Geri Dön</div>
       </div>
-      <div id="black-background"></div>
+      <div id="navbar-black-background"></div>
     </div>
-    <div v-if="isAvatar" class="menu open">
-      <div id="white-bar-avatar">
-        <img :src="peopleFill" class="avatar-icon" id="big-avatar"/>
+    <div v-if="isAvatar">
+      <div id="navbar-white-bar-avatar">
+        <img :src="peopleFill" class="navbar-avatar-icon" id="navbar-big-avatar"/>
         <div>Buğra Burak Başer</div>
-        <div id="link" @click="navigate('profile')">Profili Düzenle</div>
-        <div id="avatar-buttons">
-          <div class="button" id="logout" @click="navigate('logout')">Çıkış Yap</div>
-          <div class="button" id="return" @click="toggleAvatar">Geri Dön</div>
+        <div id="navbar-link" @click="navigate('profile')">Profili Düzenle</div>
+        <div id="navbar-avatar-buttons">
+          <div class="navbar-button" id="navbar-logout" @click="navigate('logout')">Çıkış Yap</div>
+          <div class="navbar-button" id="navbar-return" @click="toggleAvatar">Geri Dön</div>
         </div>
       </div>
-      <div id="black-background"></div>
+      <div id="navbar-black-background"></div>
     </div>
     <div class ="article-content">
       <div v-show="shouldShowArticle">
@@ -159,24 +159,8 @@ body {
   margin-top: 2000px;
   width: 100%;
 }
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: transform 1s ease;
-  transition: transform 1s ease-out;
-  transform: translateX(-100%);
-}
 
-.menu.open {
-  transform: translateX(0); /* Menüyü ekrana getir */
-}
-
-#white-bar{
+#navbar-white-bar{
   position: fixed;
   top: 0;
   left: 0;
@@ -194,7 +178,7 @@ body {
   flex-direction: column;
 }
 
-#white-bar div {
+#navbar-white-bar div {
   width: fixed;
   height: fixed; 
   margin-top: 15px;
@@ -203,7 +187,7 @@ body {
 }
 
 
-#white-bar-avatar {
+#navbar-white-bar-avatar {
   position: fixed;
   top: 0;
   right: 0 !important;
@@ -221,14 +205,13 @@ body {
   flex-direction: column;
 }
 
-#white-bar-avatar div {
+#navbar-white-bar-avatar div {
   width: fixed;
   height: fixed; 
   margin-top: 10px;
-  cursor: pointer;
 }
 
-#avatar-buttons {
+#navbar-avatar-buttons {
   width: 100%;
   align-items: center;
   text-align: center;
@@ -240,14 +223,14 @@ body {
 }
 
 
-#avatar-buttons div{
+#navbar-avatar-buttons div{
   width: fixed;
   height: fixed; 
   margin-top: 10px;
   cursor: pointer;
 }
 
-.button {
+.navbar-button {
   width: 40%;
   background: #aec2ff; /* Arkaplan rengi */
   box-shadow: 0px 3px 6px #00000029;  /* Gölge efekti */
@@ -255,8 +238,11 @@ body {
   opacity: 1; /* Opaklık */
   cursor: pointer; /* Fare imleci */
 }
+.navbar-button:hover {
+  box-shadow: inset 0px 3px 6px #00000029; /* :hover durumunda outer (dış) gölge efekti */
+}
 
-#logout {
+#navbar-logout {
   margin-top: auto !important; /* Üst boşluk */
   margin-bottom: 20px !important; /* Alt boşluk */
   margin-left: 20px;
@@ -265,16 +251,13 @@ body {
 
 }
 
-#return {
+#navbar-return {
   margin-top: auto !important; /* Üst boşluk */
   margin-bottom: 20px !important; /* Alt boşluk */
 }
 
-.button:hover {
-  box-shadow: inset 0px 3px 6px #00000029; /* :hover durumunda outer (dış) gölge efekti */
-}
 
-#black-background {
+#navbar-black-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -284,10 +267,10 @@ body {
   z-index: 0 !important; /* Arkada olmalı, menüden sonra gelecek */
 }
 
-.bold-font {
+.navbar-bold-font {
   font: normal normal bold 20px/28px 'Segoe UI';
 }
-.right-align {
+#navbar-right-align {
   display: flex;
   margin-left: auto !important;
   margin-right: 20px !important;
@@ -298,7 +281,7 @@ body {
   letter-spacing: 0px;
 }
 
-.icon {
+.navbar-question-icon {
   width: 20px;
   height: 20px;
   background-size: cover;
@@ -307,16 +290,10 @@ body {
   cursor: pointer;
 }
 
-.menu-icon {
+.navbar-menu-icon {
   margin-left: 20px !important;
 }
-
-.navbar div {
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-.avatar-icon {
+.navbar-avatar-icon {
   width: 30px;
   height: 30px; 
   border-radius: 50%; 
@@ -329,15 +306,23 @@ body {
   cursor: pointer;
 }
 
-#big-avatar{
+.navbar div {
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#navbar-big-avatar{
   margin-top: 4%;
   width: 50%;
   height: auto; 
+  cursor: default;
 }
 
 
-#link{
+#navbar-link{
   text-decoration: underline; /* Altı çizili stil */
+  cursor: pointer;
 }
 
 </style>
