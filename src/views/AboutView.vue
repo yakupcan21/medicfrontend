@@ -1,6 +1,8 @@
 <template>
   <article>
     <Navbar></Navbar>
+    <SidebarMenu></SidebarMenu>
+    <SidebarProfile></SidebarProfile>
     <div class ="article-content">
       <div v-show="shouldShowArticle">
         <h1>Akciğer Sağlığı ve Bakımı</h1>
@@ -35,11 +37,15 @@
 
 <script>
 import Navbar from '../components/menu/NavbarComponent.vue';
+import SidebarMenu from '../components/menu/SidebarMenuComponent.vue';
+import SidebarProfile from '../components/menu/SidebarProfileComponent.vue';
 
 export default {
   components: {
-    Navbar
- },
+    Navbar,
+    SidebarMenu,
+    SidebarProfile
+},
   data: () => {
     return {
       signUp: true,

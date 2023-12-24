@@ -1,56 +1,42 @@
 <template>
     <article>
       <div class="navbar">
-        <div class="navbar-menu-icon" @click="toggleMenu">☰</div>
+        <div class="navbar-menu-icon" @click.prevent="toggleMenu">☰</div>
         <div class="navbar-bold-font" @click="navigate('Home')">anasayfa</div>
         <div id="navbar-right-align">
           <div @click="navigate('about')">hakkında</div>
           <img @click="navigate('question')" :src="questionImg" class="navbar-question-icon" />
-          <img @click="toggleAvatar" :src="peopleFill" class="navbar-avatar-icon" />
+          <img @click.prevent="toggleProfile" :src="peopleFill" class="navbar-avatar-icon" />
         </div>
-      </div>
-      <div v-if="isMenuOpen">
-        <div id="navbar-white-bar" >
-          <div @click="navigate('menuItem1')">Doktorlar</div>
-          <div @click="navigate('menuItem2')">Birimler</div>
-          <div @click="navigate('menuItem3')">Hastalıklardan Nasıl Korunulur?</div>
-          <div @click="navigate('menuItem4')">Yapay Zeka ve Akciğer Hastalıkları</div>
-          <div class="navbar-button" id="navbar-return" @click="toggleMenu">Geri Dön</div>
-        </div>
-        <div id="navbar-black-background"></div>
-      </div>
-      <div v-if="isAvatar">
-        <div id="navbar-white-bar-avatar">
-          <img :src="peopleFill" class="navbar-avatar-icon" id="navbar-big-avatar"/>
-          <div>Buğra Burak Başer</div>
-          <div id="navbar-link" @click="navigate('profile')">Profili Düzenle</div>
-          <div id="navbar-avatar-buttons">
-            <div class="navbar-button" id="navbar-logout" @click="navigate('logout')">Çıkış Yap</div>
-            <div class="navbar-button" id="navbar-return" @click="toggleAvatar">Geri Dön</div>
-          </div>
-        </div>
-        <div id="navbar-black-background"></div>
       </div>
     </article>
   </template>
   
   <script>
+  import { store, mutations } from '@/store.js'
+
   export default {
     data: () => {
       return {
-        isMenuOpen: false,
-        isAvatar: false,
         questionImg: require('@/assets/questionImg.png'),
         peopleFill: require('@/assets/peopleFill.png'),
 
       };
     },
+    computed: {
+      isMenuActive() {
+        return store.isNavOpen
+      },
+      isProfileActive(){
+        return store.isProfileOpen
+      }
+    },
     methods: {
       toggleMenu() {
-        this.isMenuOpen = !this.isMenuOpen;
+        mutations.toggleNav()
       },
-      toggleAvatar() {
-        this.isAvatar = !this.isAvatar;
+      toggleProfile() {
+        mutations.toggleProfile()
       },
       navigate(page) {
         console.log("Navigating to " + page);
@@ -78,7 +64,6 @@
     letter-spacing: 0px;
     box-shadow: 0px 3px 6px #00000029; 
     opacity: 1;
-    z-index: 20;
   }
   
   #navbar-white-bar{
@@ -97,7 +82,6 @@
     letter-spacing: 0px;
     display: flex;
     flex-direction: column;
-    z-index: 21;
   }
   
   #navbar-white-bar div {
@@ -125,7 +109,6 @@
     letter-spacing: 0px;
     display: flex;
     flex-direction: column;
-    z-index: 21;
   }
   
   #navbar-white-bar-avatar div {
@@ -187,8 +170,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* Siyah arka plan (0.7 opaklık) */
-    z-index: 0 !important; /* Arkada olmalı, menüden sonra gelecek */
-  }
+    }
   
   .navbar-bold-font {
     font: normal normal bold 20px/28px 'Segoe UI';
