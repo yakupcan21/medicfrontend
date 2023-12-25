@@ -1,7 +1,7 @@
 <template>
   <article>
     <div class="sidebar-menu">
-      <transition name="slide">
+      <transition name="fade">
         <div v-if="isPanelOpen" >
           <div class="navbar-black-background" @click="closeSidebarPanel" v-if="isPanelOpen"></div>
           <div class="navbar-white-bar" >
@@ -37,14 +37,14 @@
   
 <style lang="scss" scoped>
 
-  .slide-enter-active,
-  .slide-leave-active
+  .fade-enter-active,
+  .fade-leave-active
   {
     transition: opacity 0.2s ease;
   }
 
-  .slide-enter-from,
-  .slide-leave-to {
+  .fade-enter-from,
+  .fade-leave-to {
     opacity: 0;
   }
   

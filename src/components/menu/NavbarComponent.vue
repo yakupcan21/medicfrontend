@@ -1,20 +1,28 @@
 <template>
-    <article>
-      <div class="navbar">
-        <div class="navbar-menu-icon" @click.prevent="toggleMenu">☰</div>
-        <div class="navbar-bold-font" @click="navigate('Home')">anasayfa</div>
-        <div id="navbar-right-align">
-          <div @click="navigate('about')">hakkında</div>
-          <img @click="navigate('question')" :src="questionImg" class="navbar-question-icon" />
-          <img @click.prevent="toggleProfile" :src="peopleFill" class="navbar-avatar-icon" />
-        </div>
+  <article>
+    <div class="navbar">
+      <div class="navbar-menu-icon" @click.prevent="toggleMenu">☰</div>
+      <div class="navbar-bold-font" @click="navigate('Home')">anasayfa</div>
+      <div id="navbar-right-align">
+        <div @click="navigate('about')">hakkında</div>
+        <img @click="toggleModal" :src="questionImg" class="navbar-question-icon" />
+        <Teleport to="body">
+          <div v-if="showModal" class="modal">
+            <p>Hello from the modal!</p>
+            <button @click="toggleModal">Close</button>
+          </div>
+        </Teleport>
+        <img @click.prevent="toggleProfile" :src="peopleFill" class="navbar-avatar-icon" />
       </div>
-    </article>
-  </template>
+    </div>
+  </article>
+</template>
   
-  <script>
+<script>
   import { store, mutations } from '@/store.js'
+  import { ref } from 'vue'
 
+  const showModal = ref(false)
   export default {
     data: () => {
       return {
@@ -34,18 +42,23 @@
     methods: {
       toggleMenu() {
         mutations.toggleNav()
+
       },
       toggleProfile() {
         mutations.toggleProfile()
+      },
+      toggleModal(){
+        showModal.value = !showModal.value
       },
       navigate(page) {
         console.log("Navigating to " + page);
       },
     }
   };
-  </script>
+</script>
   
-  <style lang="scss" scoped>
+<style lang="scss" scoped>
+
   .navbar {
     position: fixed;
     margin: 0;
@@ -230,4 +243,4 @@
     cursor: pointer;
   }
   
-  </style>
+</style>
