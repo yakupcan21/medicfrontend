@@ -6,15 +6,16 @@
       <div id="navbar-right-align">
         <div @click="navigate('about')">hakkında</div>
         <img @click="toggleModal" :src="questionImg" class="navbar-question-icon" />
-        <Teleport to="body">
+
+        <img @click.prevent="toggleProfile" :src="peopleFill" class="navbar-avatar-icon" />
+      </div>
+    </div>
+    <Teleport to="body">
           <div v-if="showModal" class="modal">
             <p>Hello from the modal!</p>
             <button @click="toggleModal">Close</button>
           </div>
         </Teleport>
-        <img @click.prevent="toggleProfile" :src="peopleFill" class="navbar-avatar-icon" />
-      </div>
-    </div>
   </article>
 </template>
   
