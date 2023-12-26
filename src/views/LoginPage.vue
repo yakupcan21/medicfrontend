@@ -17,7 +17,7 @@
                 <source :src="videoSource" type="video/mp4">
               </video>
             </div>
-            <button class="invert" id="signUp" @click="signUp = !signUp">Hasta Girişi</button>
+              <button class="invert" id="signUp" @click="signUp = !signUp">Hasta Girişi</button>
           </div>
         </div>
       </div>
@@ -41,7 +41,10 @@
               </div>
           </div>
       </div>
+      <router-link :to="{path:'/profile'} ">
         <button class="giris">Giriş Yap</button>
+            </router-link>
+       
       </form>
       <form class="sign-in" action="#">
         <img :src="img" class="logo" />

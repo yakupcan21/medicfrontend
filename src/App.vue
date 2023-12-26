@@ -11,8 +11,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'App',
   components: {
@@ -20,6 +18,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
