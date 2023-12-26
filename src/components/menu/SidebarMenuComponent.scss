@@ -1,0 +1,73 @@
+.article {
+    .navbar-black-background {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.7); /* Black background with 0.7 opacity */
+    }
+  
+    .navbar-white-bar {
+        overflow-y: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background-color: #ffffff;
+        box-shadow: 0px 3px 6px #00000029;
+        z-index: 1 !important; /* Menu should be on top */
+        align-items: center;
+        text-align: center;
+        font: normal normal normal 20px/28px 'Segoe UI';
+        color: #000000;
+        letter-spacing: 0px;
+        display: flex;
+        flex-direction: column;
+  
+        div {
+            width: fixed;
+            height: fixed;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+  
+        .navbar-button {
+            width: 40%;
+            background: #aec2ff; /* Background color */
+            box-shadow: 0px 3px 6px #00000029; /* Shadow effect */
+            border-radius: 39px; /* Rounded corners */
+            opacity: 1; /* Opacity */
+            cursor: pointer; /* Cursor style */
+        }
+  
+        .navbar-button:hover {
+            box-shadow: inset 0px 3px 6px #00000029; /* Outer shadow effect on hover */
+        }
+  
+        #navbar-return {
+            margin-top: auto !important; /* Top margin */
+            margin-bottom: 20px !important; /* Bottom margin */
+        }
+    }
+  
+    .sidebar-menu {
+        button {
+            cursor: pointer;
+        }
+    }
+  
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.2s ease;
+    }
+  
+    .fade-enter-from,
+    .fade-leave-to {
+        opacity: 0;
+    }
+  }
+  

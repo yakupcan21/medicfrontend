@@ -1,0 +1,84 @@
+body {
+    margin-top: 20px;
+    background-color: lightgray;
+  }
+  
+  
+  .main {
+    display: flex;
+  }
+  
+  .sidebar-container {
+    width: 25%;
+    padding: 15px;
+  }
+  
+  .sidebar {
+    background-color: #333;
+    color: white;
+    height: 100%;
+    border-radius: 10px;
+  }
+  
+  .sidebar a {
+    margin-left: 10px;
+    display: block;
+    color: white;
+    padding-bottom: 30px;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content-container {
+    width: 75%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content-box {
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+  }
+  
+  .profilePic{
+    margin-top: 50px;
+    height: 200px;
+    width: 200px;
+  }
+  
+  h1{
+    text-align: left;
+  }
+  
+  h5{
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .genelBilgilerInfo{
+    font-size: 20px;
+  }
+  
+  .container{
+    background-color: #565656;
+    margin-top: 60px;
+  }
+  
+  .content {
+    background-color: white; /* Set your desired gray background color */
+    margin-bottom: 20px; /* Adjust the margin as needed */
+    padding: 15px; /* Adjust the padding as needed */
+    border-radius: 10px;
+  }
+  
+  #guncelleButtonu{
+    color: red;
+  }
