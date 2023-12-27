@@ -2,12 +2,14 @@ import Navbar from "../../components/menu/NavbarComponent.tsx";
 import "./AboutPage.scss";
 import {Reveal} from "../../components/Reveal";
 import "../../components/BackgroundMotion.scss";
+import Profile from "../../components/ProfileComponent.tsx";
 
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 
 function AboutPage() {
     return (
     <>  
+    <Profile isDoctor={false} isPatient={true}/>
     <BackgroundMotion/>
     <Navbar isDoctor={false} isPatient={true}/>
         <div className="invisible-frame">

@@ -1,0 +1,95 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  td, th {
+    border: none !important;
+  }
+
+#profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#profile-component {
+    padding: 20px;
+    margin-top: 95px;
+    height: auto;
+    cursor: default;
+    width: 400px;
+    height: 630px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 6px #00000029;
+    align-items: center;
+    text-align: center;
+    font: normal normal normal 20px/28px 'Segoe UI';
+    color: #000000;
+    letter-spacing: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-component div{
+}
+
+#department {
+    margin-left: 40px;
+    margin-right: 40px;
+
+}
+
+#hospital {
+    margin-top: 10px;
+    margin-left: 95px;
+    margin-right: 95px;
+    margin-bottom: 15px;
+    
+}
+
+#cardio {
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    
+}
+
+#rows div {
+    margin-left: 50px !important;
+    margin-right: 50px !important;
+}
+
+.header {
+    font: normal normal bold 24px/30px Segoe UI;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.soft {
+    font: normal normal normal 18px/22px Segoe UI;
+    letter-spacing: 0px;
+    color: #474747;
+}
+
+.bold {
+    font: normal normal bold 20px/25px Segoe UI;
+    letter-spacing: 0px;
+    color: #000000;
+}
+
+.update {
+    font: normal normal normal 20px/25px Segoe UI;
+    margin-bottom: 20px;
+    letter-spacing: 0px;
+    color: #DC5353;
+    cursor: pointer;
+
+}
+
+.update:hover{
+    color: #3292ff;
+    transition: color 0.3s ease;
+}

@@ -37,10 +37,11 @@ body {
 }
 
 .invisible-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 80px;
-    height: 1080px;
-    margin-top: 1080px;
-    width: auto;
+    margin-top: 100px;
 }
 
 #madeby {

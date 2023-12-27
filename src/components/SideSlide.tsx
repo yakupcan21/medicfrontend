@@ -32,11 +32,13 @@ export const SideSlide = ({ children, width = "fit-content", isMenu, isAvatar, i
       }, [isMenu, isAvatar, isOpen, mainControls]);
 
     return (
-        <div ref={ref} style={{position: 'relative', width, overflow: "hidden" }}>
+        <div ref={ref} style={{position: 'relative', width, overflow: "hidden", zIndex: '35'}}>
             <motion.div
                 initial= {{ opacity: 0, x: 75 }}
                 animate={mainControls}
                 transition={{ duration: 0.3}}
+                style={{position: 'relative', zIndex: '35'}}
+
             >
                 {children}
             </motion.div>    

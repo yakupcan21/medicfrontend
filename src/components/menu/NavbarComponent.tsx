@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './NavbarComponent.scss';  // Stil dosyasını ekleyin
 import questionImg from '../../assets/questionImg.png';
 import peopleFill from '../../assets/peopleFill.png';
-import { CSSTransition } from 'react-transition-group';
 import { SideSlide } from "../SideSlide";
 
 
@@ -30,6 +29,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
 
     return (
         <article>
+
             <div className="navbar">
                 <div className="navbar-menu-icon" onClick={toggleMenu}>☰</div>
                 <div className="navbar-bold-font" onClick={() => navigate('Home')}>anasayfa</div>
