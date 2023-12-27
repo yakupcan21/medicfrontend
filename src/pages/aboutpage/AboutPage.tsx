@@ -1,10 +1,15 @@
 import Navbar from "../../components/menu/NavbarComponent.tsx";
 import "./AboutPage.scss";
 import {Reveal} from "../../components/Reveal";
+import "../../components/BackgroundMotion.scss";
+
+import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 
 function AboutPage() {
     return (
-    <>  <Navbar />
+    <>  
+    <BackgroundMotion/>
+    <Navbar isDoctor={false} isPatient={true}/>
         <div className="invisible-frame">
             <Reveal>
                 <div className="article-content" v-if="shouldShowArticle">

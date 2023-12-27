@@ -24,7 +24,7 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
             <motion.div
                 initial={{ scale: 0 }}
                 animate= {mainControls}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
             >
                 {children}
             </motion.div>
