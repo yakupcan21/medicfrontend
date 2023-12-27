@@ -3,7 +3,6 @@ body {
     background-color: lightgray;
   }
   
-  
   .main {
     display: flex;
   }
@@ -18,6 +17,7 @@ body {
     color: white;
     height: 100%;
     border-radius: 10px;
+    align-items: center;
   }
   
   .sidebar a {
@@ -55,6 +55,11 @@ body {
   
   h1{
     text-align: left;
+  }
+
+  h3{
+    font-size: 25px;
+    color: white;
   }
   
   h5{
