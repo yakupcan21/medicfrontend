@@ -1,0 +1,290 @@
+
+.navbar {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #FFFFFF;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    font: normal normal normal 20px/28px 'Segoe UI';
+    letter-spacing: 0px;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    z-index: 20;
+  }
+  
+  #navbar-white-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 6px #00000029;
+    z-index: 1;
+    align-items: center;
+    text-align: center;
+    font: normal normal normal 20px/28px 'Segoe UI';
+    color: #000000;
+    letter-spacing: 0px;
+    display: flex;
+    flex-direction: column;
+    z-index: 21;
+  }
+  
+  #navbar-white-bar div {
+    width: fixed;
+    height: fixed;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  #navbar-white-bar-avatar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 350px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 6px #00000029;
+    z-index: 1;
+    align-items: center;
+    text-align: center;
+    font: normal normal normal 20px/28px 'Segoe UI';
+    color: #000000;
+    letter-spacing: 0px;
+    display: flex;
+    flex-direction: column;
+    z-index: 21;
+  }
+  
+  #navbar-white-bar-avatar div {
+    width: fixed;
+    height: fixed;
+    margin-top: 10px;
+  }
+  
+  #navbar-avatar-buttons {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    cursor: default;
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+  
+  #navbar-avatar-buttons div {
+    width: fixed;
+    height: fixed;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .navbar-button {
+    width: 40%;
+    background: #aec2ff;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 39px;
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+  .navbar-button:hover {
+    box-shadow: inset 0px 3px 6px #00000029;
+  }
+  
+  #navbar-logout {
+    margin-top: auto;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+    background: #ffabab !important;
+  }
+  
+  #navbar-return {
+    margin-top: auto;
+    margin-bottom: 20px;
+  }
+  
+  #navbar-black-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+  }
+  
+  .navbar-bold-font {
+    font: normal normal bold 20px/28px 'Segoe UI';
+  }
+  
+  #navbar-right-align {
+    display: flex;
+    margin-left: auto;
+    margin-right: 20px;
+    cursor: default;
+    align-items: center;
+    font: normal normal normal 20px/28px 'Segoe UI';
+    color: #000000;
+    letter-spacing: 0px;
+  }
+  
+  .navbar-question-icon {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .navbar-menu-icon {
+    margin-left: 20px;
+  }
+  
+  .navbar-avatar-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #F8F8F8;
+    background-size: cover;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: inset 0px 3px 6px #00000029;
+    border: 1px solid #e1e1e1;
+    cursor: pointer;
+  }
+  
+  .navbar div {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  #navbar-big-avatar {
+    margin-top: 4%;
+    width: 50%;
+    height: auto;
+    cursor: default;
+  }
+  
+  #navbar-link {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .content {
+    width: 60%;
+    height: 80vh;
+    background: #dce7f1;
+    opacity: 1;
+    z-index: 0;
+    margin: auto;
+    margin-top: 6%;
+    position: relative;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th,
+  td {
+    text-align: center;
+    padding: 8px;
+    height: 40px;
+    border: 1px solid #ddd;
+  }
+  
+  tr:nth-child(2) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(2) td:nth-child(even) {
+    background-color: #f1ecec;
+  }
+  
+  tr:nth-child(2) td:nth-child(odd) {
+    background-color: #e4e0e0;
+  }
+  
+  th {
+    background-color: #4834a0;
+    color: white;
+  }
+  
+  .picture {
+    width: 38%;
+    height: 100%;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 20px;
+  }
+  
+  .picture img {
+    width: 100%;
+  }
+  
+  .pictures {
+    width: 38%;
+    display: flex;
+    position: absolute;
+    bottom: 5px;
+    margin-left: 30px;
+  }
+  
+  .pictures img {
+    width: 100%;
+    height: 100px;
+  }
+  
+  .active {
+    border: 2px solid #4834a0;
+  }
+  
+  .content-right {
+    width: 50%;
+    height: 58vh;
+    background: #f2f5f7;
+    opacity: 1;
+    z-index: 0;
+    margin-left: 46%;
+    position: fixed;
+    top: 100px;
+    position: absolute;
+    overflow-y: auto;
+  }
+  
+  .back-button {
+    width: 15%;
+    height: 5vh;
+    background: #f85050;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 39px;
+    opacity: 1;
+    cursor: pointer;
+    position: absolute;
+    bottom: -10px;
+    left: 80%;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    color: white; 
+  }
+
+  .back-button:hover {
+    box-shadow: inset 0px 3px 6px #00000029; /* :hover durumunda outer (dış) gölge efekti */
+}
+
