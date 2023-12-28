@@ -5,43 +5,37 @@ interface Props {
     children: JSX.Element;
     width?: "fit-content" | "100%";
     isOpen: boolean;
-
 }
 
-export const PopUp = ({ children, width = "fit-content", isMenu, isAvatar, isOpen}: Props) => {
+export const PopUp = ({ children, width = "fit-content", isOpen }: Props) => {
     const ref = useRef(null);
 
     const mainControls = useAnimation();
 
-    const toggleMenu = () => {
-        isOpen = false;
-    };
-
     useEffect(() => {
-        if (isMenu) {
-            if(isOpen){
-                mainControls.start({ x: [0], opacity: [1] });
-            }else {
-                mainControls.start({ x: [75], opacity: [0] });
-            }
-        } else if (isAvatar) {
-            if(isOpen){
-                mainControls.start({ x: [0], opacity: [1] });
-            }else {
-                mainControls.start({ x: [75], opacity: [0] });
-            }
+
+        if (isOpen) {
+            mainControls.start("visible")
+        } else {
+            mainControls.start("hidden");
         }
-      }, [isMenu, isAvatar, isOpen, mainControls]);
+
+    }, [isOpen, mainControls]);
 
     return (
-        <div ref={ref} style={{position: 'relative', width, overflow: "hidden" }}>
+        <div ref={ref} style={{ position: 'absolute', width, zIndex: '20' }}>
             <motion.div
-                initial= {{ opacity: 0, x: 75 }}
+                variants={{
+                    hidden: {opacity: 0, scale: 0},
+                    visible: {opacity: 1, scale: 1},
+                }}
+                initial="hidden"
                 animate={mainControls}
-                transition={{ duration: 0.3}}
+                transition={{ duration: 0.3 }}
+                style={{position: 'absolute', zIndex: '20'}}
             >
                 {children}
-            </motion.div>    
+            </motion.div>
 
         </div >
     );

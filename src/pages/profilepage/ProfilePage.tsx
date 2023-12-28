@@ -13,7 +13,7 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
   const vki = (95 / ((190 / 100) ** 2)).toFixed(3);
 
   return (
-    <><Navbar isDoctor={true} isPatient={false}>
+    <><Navbar isDoctor={false} isPatient={false}>
 
     </Navbar><div>
         <div className="container">
