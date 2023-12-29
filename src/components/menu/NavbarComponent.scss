@@ -18,13 +18,44 @@
     letter-spacing: 0px;
     box-shadow: 0px 3px 6px #00000029;
     opacity: 1;
-    z-index: 2;
+
+    a {
+        margin-left: 0px;
+        padding-bottom: 0px;
+        cursor: default;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+    }
+    
+    div {
+        margin-left: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+        
+    }
+
+    div:hover {
+        color: #ff3333;
+        transition: color 0.3s ease;
+    }
 }
 
-.navbar div:hover {
+.navbar-soft{
+    display: flex !important;
+    color: #000000 !important;
+    align-items: center !important;
+    text-align: center !important;
+    font: normal normal normal 20px/28px 'Segoe UI' !important;
+    letter-spacing: 0px !important;
+}
+
+.navbar-soft:hover{
     color: #ff3333;
     transition: color 0.3s ease;
 }
+
+
 
 #navbar-white-bar {
     position: fixed;
@@ -43,16 +74,16 @@
     letter-spacing: 0px;
     display: flex;
     flex-direction: column;
-}
 
-#navbar-white-bar div {
-    width: fixed;
-    height: fixed;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    cursor: pointer;
+    div {
+        width: fixed;
+        height: fixed;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+    
 }
-
 
 #navbar-white-bar div:hover {
     color: #ff3333;
@@ -77,37 +108,14 @@
     letter-spacing: 0px;
     display: flex;
     flex-direction: column;
+
+    div {
+        width: fixed;
+        height: fixed;
+        margin-top: 10px;
+    }
 }
 
-#navbar-white-bar-avatar div {
-    width: fixed;
-    height: fixed;
-    margin-top: 10px;
-
-
-}
-
-
-
-#navbar-avatar-buttons {
-    width: 100%;
-    align-items: center;
-    text-align: center;
-    display: flex;
-
-    cursor: default !important;
-    margin-top: auto !important;
-    /* Üst boşluk */
-    margin-bottom: 0 !important;
-    /* Alt boşluk */
-}
-
-#navbar-avatar-buttons div {
-    width: fixed;
-    height: fixed;
-    margin-top: 10px;
-    cursor: pointer;
-}
 
 .navbar-button {
     width: 40%;
@@ -121,6 +129,8 @@
     /* Opaklık */
     cursor: pointer;
     transition: color 0.2s ease;
+    text-align: center;
+
 
 }
 
@@ -128,6 +138,26 @@
     box-shadow: inset 0px 3px 6px #00000029;
     color:#000000 !important;
     /* :hover durumunda outer (dış) gölge efekti */
+}
+
+#navbar-avatar-buttons {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+
+    cursor: default !important;
+    margin-top: auto !important;
+    /* Üst boşluk */
+    margin-bottom: 0 !important;
+    /* Alt boşluk */
+
+    div {
+        width: fixed;
+        height: fixed;
+        margin-top: 10px;
+        cursor: pointer;
+    }
 }
 
 #navbar-logout {
@@ -138,6 +168,11 @@
     margin-left: 20px;
     margin-right: 10px;
     background: #fd9898 !important;
+    display: flex;
+    text-align: center;
+    a{
+        margin-left: 11px;
+    }
 }
 
 #navbar-return {
@@ -179,13 +214,13 @@
     font: normal normal normal 20px/28px 'Segoe UI';
     color: #000000;
     letter-spacing: 0px;
+
+    div:hover {
+        color: #ff3333;    
+        transition: color 0.3s ease;
     
-}
-
-#navbar-right-align div:hover {
-    color: #ff3333;    
-    transition: color 0.3s ease;
-
+    }
+    
 }
 
 .navbar-question-icon {
@@ -226,17 +261,8 @@
     transition: box-shadow 0.3s ease;
 }
 
-
 .navbar-avatar-icon:hover {
     box-shadow: 0px 3px 6px #ff3333;
-}
-
-
-.navbar div {
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-    
 }
 
 #navbar-big-avatar {
@@ -259,3 +285,13 @@
     transition: color 0.3s ease;
     color: #ff3333;    
 }
+
+.sidebar a {
+    margin-left: 0px;
+    padding-bottom: 0px;
+    cursor: default;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+}
+

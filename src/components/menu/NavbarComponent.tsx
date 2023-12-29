@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import './NavbarComponent.scss';  // Stil dosyasını ekleyin
 import questionImg from '../../assets/questionImg.png';
 import peopleFill from '../../assets/peopleFill.png';
-import { CSSTransition } from 'react-transition-group';
 import { SideSlide } from "../SideSlide";
-
+import { Link } from 'react-router-dom';
 
 interface NavbarComponentProps {
     isDoctor: boolean;
@@ -25,26 +24,27 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
     };
 
     const navigate = (page: string) => {
-        console.log("Navigating to " + page);
+        return <Link to={page}></Link>
     };
 
     return (
         <article>
+
             <div className="navbar">
                 <div className="navbar-menu-icon" onClick={toggleMenu}>☰</div>
-                <div className="navbar-bold-font" onClick={() => navigate('Home')}>anasayfa</div>
+                <div><Link to="/home" className="navbar-bold-font">Anasayfa</Link></div>
                 {isDoctor && (
                     <>
-                        <div onClick={() => navigate('hastalar')}>hastalar</div>
-                        <div onClick={() => navigate('raporlar')}>raporlar</div>
+                        <Link to="/patients" className="navbar-soft"><div>Hastalar</div></Link>
+                        <Link to="/reports" className="navbar-soft"><div>Raporlar</div></Link>
                     </>
                 )}
                 {isPatient && (
-                    <div onClick={() => navigate('raporlarım')}>raporlarım</div>
+                    <Link to="/reports" className="navbar-soft"><div>Raporlarım</div></Link>
                 )}
                 <div id="navbar-right-align">
-                    <div onClick={() => navigate('about')}>hakkında</div>
-                    <img src={questionImg} alt="Question Icon" className="navbar-question-icon" />
+                    <Link to="/about" className="navbar-soft"><div>Hakkında</div></Link>
+                    <Link to="/about"> <img src={questionImg} alt="Question Icon" className="navbar-question-icon" /></Link>
                     <img onClick={toggleAvatar} src={peopleFill} alt="Avatar Icon" className="navbar-avatar-icon" />
                 </div>
             </div>
@@ -52,10 +52,10 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                 <>
                     <div className='sidebar'>
                         <div id="navbar-white-bar" >
-                            <div onClick={() => navigate('menuItem1')}>Doktorlar</div>
-                            <div onClick={() => navigate('menuItem2')}>Birimler</div>
-                            <div onClick={() => navigate('menuItem3')}>Hastalıklardan Nasıl Korunulur?</div>
-                            <div onClick={() => navigate('menuItem4')}>Yapay Zeka ve Akciğer Hastalıkları</div>
+                            <Link to="/doctors" className="navbar-soft"><div>Doktorlar</div></Link>
+                            <Link to="/depatments" className="navbar-soft"><div>Birimler</div></Link>
+                            <Link to="/diseases" className="navbar-soft"><div>Hastalıklardan Nasıl Korunulur?</div></Link>
+                            <Link to="/artificialIntelligence" className="navbar-soft"><div>Yapay Zeka ve Akciğer Hastalıkları</div></Link>
                             <div className="navbar-button" id="navbar-return" onClick={toggleMenu}>Geri Dön</div>
                         </div>
                     </div>
@@ -68,9 +68,9 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                         <div id="navbar-white-bar-avatar">
                             <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
                             <div>Buğra Burak Başer</div>
-                            <div id="navbar-link" onClick={() => navigate('profile')}>Profili Düzenle</div>
+                            <Link to="/profile" className="navbar-soft"><div id="navbar-link">Profili Düzenle</div></Link>
                             <div id="navbar-avatar-buttons">
-                                <div className="navbar-button" id="navbar-logout" onClick={() => navigate('logout')}>Çıkış Yap</div>
+                                <div className="navbar-button" id="navbar-logout" onClick={() => navigate('logout')}><Link to="/" className="navbar-soft">Çıkış Yap</Link></div>
                                 <div className="navbar-button" id="navbar-return" onClick={toggleAvatar}>Geri Dön</div>
                             </div>
                         </div>
