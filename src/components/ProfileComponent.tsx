@@ -64,7 +64,7 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
     };
 
     const updateBodyMassConsts = () => {
-        if(heightInput != '' && weightInput != '' && heightInput >= '90' && heightInput <= '250'&& weightInput >= '30' && weightInput <= '250'){
+        if(heightInput != '' && weightInput != ''){
             setProfileHeight(heightInput);
             setProfileWeight(weightInput);
             BodyMassCalculate(weightInput, heightInput);
@@ -89,7 +89,7 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
     return (
         <>
             {isDoctor && (
-                <div className='profile'>
+                <div>
                     <div id='profile-component'>
                         <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
                         <div className='header'>{profileTitle} {profileName}</div>
@@ -151,7 +151,7 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
                 </div>
             )}
             {isPatient && (
-                <div className='profile'>
+                <div>
                     <div id='profile-component'>
                         <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
                         <div className='header'>{profileName}</div>
