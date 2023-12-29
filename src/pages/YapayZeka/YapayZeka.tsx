@@ -1,7 +1,5 @@
-// DoctorView.tsx
-
 import React, { useState } from 'react';
-import './DoctorView.scss';
+import './YapayZeka.scss';
 import Navbar from "../../components/menu/NavbarComponent.tsx";
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 
@@ -46,27 +44,12 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
       <Navbar isDoctor={true} isPatient={false} />
       
       <div className="content-wrapper">
+      
         <div className="content">
-          <table>
-            <thead>
-              <tr>
-                <th>Tarih</th>
-                <th>Rapor No</th>
-                <th>Doktor İsmi</th>
-                <th>Hasta TC No</th>
-                <th>Hasta İsmi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>01.01.2021</td>
-                <td>1</td>
-                <td>Dr. Ali</td>
-                <td>12345678910</td>
-                <td>Ahmet</td>
-              </tr>
-            </tbody>
-          </table>
+            
+                <button className="goruntu_button" onClick={toggleAvatar}>Görüntü Yükle</button>
+            
+        
           <div id="vue-slider">
             <div className="picture">
               <img src={activePicture} alt="Active Picture" />
@@ -84,10 +67,14 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
               ))}
             </div>
           </div>
-          <div className="content-right">
-            <p>BULGULAR:</p>
-            {/* Add your content here */}
-          </div>
+          <h2 className='title'>Yapay Zeka</h2>
+            
+                <div className="content-text">
+                
+               
+                </div>
+            
+          
           <div className="back-button" id="navbar-return" onClick={toggleMenu}>
             Geri Dön
             </div>

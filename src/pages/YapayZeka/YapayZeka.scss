@@ -19,13 +19,14 @@
     opacity: 1;
     z-index: 0;
     box-shadow: 0px 3px 6px #00000029;
+   
   }
   
   th,
   td {
     text-align: center;
     padding: 8px;
-    height: 40px;
+    height: 25px;
   
   }
   th {
@@ -54,7 +55,7 @@
     height: 100%;
     display: flex;
     margin-left: 30px;
-    margin-top: 20px;
+    margin-top: 100px;
     
   }
   
@@ -80,20 +81,6 @@
     border: 2px solid #4834a0;
   }
   
-  .content-right {
-    width: 60vh;
-    height: 50vh;
-    background: #f2f5f7;
-    opacity: 1;
-    z-index: 0;
-    margin-left: 46%;
-    position: fixed;
-    position: absolute;
-    top: 145px;
-   
-    box-shadow: 0px 6px 12px #00000029;
-    
-  }
   
   .back-button {
     width: 15%;
@@ -117,3 +104,59 @@
     box-shadow: inset 0px 3px 6px #00000029; /* :hover durumunda outer (dış) gölge efekti */
 }
 
+.content::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 50px;
+    background: rgb(240, 138, 138); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+    box-shadow: 0px 6px 12px #00000029; 
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .goruntu_button{
+    width: 20%;
+    height: 40px;
+    background: #255ec9;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 39px;
+    opacity: 1;
+    cursor: pointer;
+    position: absolute;
+    top: 60px;
+    left: 120px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    line-height: 40px;
+    font-size: 15px;
+    color: white; 
+
+
+  }
+  .content-text{
+    width: 60vh;
+    height: 50vh;
+    background: #f2f5f7;
+    opacity: 1;
+    z-index: 0;
+    margin-left: 46%;
+    position: fixed;
+    position: absolute;
+    top: 145px;
+   
+    box-shadow: 0px 6px 12px #00000029;
+ 
+  
+  }
+  .title{
+    font-size: 20px;
+    font-weight: bold;
+    
+
+
+  
+  }

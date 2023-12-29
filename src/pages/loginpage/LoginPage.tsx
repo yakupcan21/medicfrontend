@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-import './LoginPage.scss'; // Make sure to adjust the path accordingly
+import "./LoginPage.scss" // Make sure to adjust the path accordingly
 import img from "../../assets/resim.png";
 import videoSource from "../../assets/plug.mp4";
 
@@ -56,7 +56,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
       <form className="sign-up" action="#" style={{ display: signUp ? 'block' : 'none' }}>
         <img src={img} alt="logo" className="logo" />
         <h2>Hasta Girişi</h2>
-        <h3>
+        <h3 className='info'>
           Acil Sağlık Yardımı ve Acil İhbarlarınız için
           <br /> Lütfen 112'yi arayınız.
         </h3>
@@ -84,7 +84,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
       <form className="sign-in" action="#" style={{ display: signUp ? 'none' : 'block' }}>
         <img src={img} alt="logo" className="logo" />
         <h2>Doktor Girişi</h2>
-        <h3>
+        <h3 className='info'>
           Acil Sağlık Yardımı ve Acil İhbarlarınız için
           <br /> Lütfen 112'yi arayınız.
         </h3>
