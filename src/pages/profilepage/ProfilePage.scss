@@ -41,20 +41,28 @@ body {
     display: flex;
     flex-direction: column;
   }
+
+  .card-content{
+    width: 75%;
+    background-color: whitesmoke;
+    margin-bottom: 5%;
+    border-radius: 10px;
+  }
   
   .content-box {
     margin-bottom: 20px;
     background-color: whitesmoke;
   }
-  
+
   .profilePic{
     margin-top: 50px;
     height: 200px;
     width: 200px;
   }
   
-  h1{
-    text-align: left;
+  .genelBilgilerInfoBaslik{
+    font-size: 40px;
+    margin-left: 3%;
   }
 
   h3{
@@ -70,6 +78,7 @@ body {
   
   .genelBilgilerInfo{
     font-size: 20px;
+    margin-left: 3%;
   }
   
   .container{
@@ -87,3 +96,32 @@ body {
   #guncelleButtonu{
     color: red;
   }
+
+  /* Styles for the bubble appearance */
+.MDBBtn {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 20px; /* Adjust the border-radius as needed */
+  background-color: #ffffff; /* Background color of the bubble */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+  margin: 5px; /* Adjust margin as needed */
+}
+
+/* Additional styles for the buttons */
+.MDBBtn.outline {
+  border: 2px solid #343a40; /* Border color for outline buttons */
+  background-color: transparent; /* Make background transparent for outline buttons */
+}
+
+.MDBBtn.color-dark {
+  color: #343a40; /* Text color for dark-colored buttons */
+}
+
+.MDBBtn.rounded {
+  border-radius: 20px; /* Border-radius for rounded buttons */
+}
+
+.MDBBtn.size-sm {
+  font-size: 12px; /* Font size for small-sized buttons */
+}
+

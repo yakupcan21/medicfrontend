@@ -13,7 +13,11 @@
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "bootstrap": "^5.2.3",
+<<<<<<< Updated upstream
+=======
     "framer-motion": "^10.16.16",
+    "mdbootstrap": "^4.20.0",
+>>>>>>> Stashed changes
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.21.1",
