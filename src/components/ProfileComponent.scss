@@ -28,9 +28,13 @@ table {
     border: none !important;
   }
 
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #profile-component {
     padding: 20px;
-    margin-top: 95px;
     height: auto;
     cursor: default;
     width: 400px;

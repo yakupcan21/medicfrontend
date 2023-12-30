@@ -3,7 +3,6 @@ import {motion, useInView, useAnimation} from "framer-motion";
 
 interface Props {
     children: JSX.Element;
-    width?: "fit-content" | "100%";
 }
 
 export const Reveal = ({ children, width = "fit-content" }: Props) => {
@@ -20,7 +19,7 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
     }, [isInView]);
 
     return (
-        <div ref={ref} style={{width}}>
+        <div ref={ref}>
             <motion.div
                 initial={{ scale: 0 }}
                 animate= {mainControls}

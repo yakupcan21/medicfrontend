@@ -64,7 +64,7 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
     };
 
     const updateBodyMassConsts = () => {
-        if(heightInput != '' && weightInput != ''){
+        if(heightInput != '' && weightInput != '' && heightInput >= '90' && heightInput <= '250'&& weightInput >= '30' && weightInput <= '250'){
             setProfileHeight(heightInput);
             setProfileWeight(weightInput);
             BodyMassCalculate(weightInput, heightInput);
@@ -89,7 +89,7 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
     return (
         <>
             {isDoctor && (
-                <div>
+                <div className='profile'>
                     <div id='profile-component'>
                         <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
                         <div className='header'>{profileTitle} {profileName}</div>
@@ -151,7 +151,7 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
                 </div>
             )}
             {isPatient && (
-                <div>
+                <div className='profile'>
                     <div id='profile-component'>
                         <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
                         <div className='header'>{profileName}</div>
@@ -179,9 +179,9 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
                                         <div className='pop-up' id='update'>
                                             <h1 className='bold'>Güncel Boy ve Kilonuzu Giriniz</h1>
                                             <input type="text" placeholder="Boyunuz:" value={heightInput} onChange={(e) => {if (!isNaN(parseFloat(e.target.value))) {setHeightInput(e.target.value);}}}/>
-                                            <div className='soft' id='kg' style={{ position: 'absolute', marginLeft: '250px', marginTop: '126px'}}>kg</div>
+                                            <div className='soft' id='kg' style={{ position: 'absolute', marginLeft: '250px', marginTop: '125px'}}>kg</div>
                                             <input type="text" placeholder="Kilonuz:" value={weightInput} onChange={(e) => {if (!isNaN(parseFloat(e.target.value))) {setWeightInput(e.target.value);}}}/>
-                                            <div className='soft' id='cm' style={{ position: 'absolute', marginLeft: '250px', marginTop: '71px'}}>cm</div>
+                                            <div className='soft' id='cm' style={{ position: 'absolute', marginLeft: '250px', marginTop: '69px'}}>cm</div>
                                             <div id="multiple-buttons">
                                             <div className='navbar-button' id='pop-up-return' onClick={updatePopUpToggle}>Geri Dön</div>
                                             <div className='navbar-button' id='pop-up-save' onClick={updateBodyMassConsts}>Kaydet</div>

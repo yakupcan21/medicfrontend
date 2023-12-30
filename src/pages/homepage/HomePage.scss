@@ -5,28 +5,6 @@ body {
     font: normal normal normal 16px/23px Segoe UI;
 }
 
-.bounce-enter-active {
-    animation: bounce-in 0.5s;
-}
-
-.bounce-leave-active {
-    animation: bounce-in 0.5s reverse;
-}
-
-@keyframes bounce-in {
-    0% {
-        transform: scale(0);
-    }
-
-    50% {
-        transform: scale(1.25);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
 .article-content {
     align-items: center;
     width: auto;
@@ -49,4 +27,10 @@ body {
     left: 0;
     margin-top: 2000px;
     width: 100%;
+}
+.profile-component-home-page-position{
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

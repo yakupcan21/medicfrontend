@@ -9,9 +9,6 @@ import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 function AboutPage() {
     return (
     <>  
-    <div className="profile">
-            <Profile isDoctor={false} isPatient={true}/>
-    </div>
 
     <BackgroundMotion/>
     <Navbar isDoctor={false} isPatient={true}/>

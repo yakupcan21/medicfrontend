@@ -9,7 +9,9 @@ import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 function AboutPage() {
     return (
     <>  
-    <Profile isDoctor={false} isPatient={true}/>
+    <div className="profile-component-home-page-position">
+            <Profile isDoctor={false} isPatient={true}/>
+    </div>
     <BackgroundMotion/>
     <Navbar isDoctor={false} isPatient={true}/>
         <div className="invisible-frame">
