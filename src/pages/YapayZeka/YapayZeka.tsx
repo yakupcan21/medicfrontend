@@ -3,6 +3,8 @@ import './YapayZeka.scss';
 import Navbar from "../../components/menu/NavbarComponent.tsx";
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 
+
+
 interface DoctorViewProps {}
 
 import resimImg from '../../assets/resim.png'
@@ -20,6 +22,7 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
   const questionImg = resimImg;
   const peopleFill = personImg;
   const pictures = [plug1Img, plug2Img, plug3Img, plug4Img];
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -41,7 +44,7 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
   return (
     <article>
       <BackgroundMotion />
-      <Navbar isDoctor={true} isPatient={false} />
+      <Navbar isDoctor={false} isPatient={true} />
       
       <div className="content-wrapper">
       
@@ -67,12 +70,23 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
               ))}
             </div>
           </div>
-          <h2 className='title'>Yapay Zeka</h2>
+          <h2 className='title'>Hasta Bilgileri</h2>
             
-                <div className="content-text">
-                
-               
-                </div>
+  <div className="content-text-doctor" >
+        
+       
+            <input type="text" placeholder="TC Kimlik Numarası:" />
+          <div className="name-container2">
+            <input type="text" placeholder="Ad:" />
+            <input type="text" placeholder="Soyad:" />
+        </div>
+            <input className='date-style' type="date" placeholder="Doğum Tarihi:" />
+            
+            <input type="text" placeholder="Cinsiyet:" />
+            <button className="rapor-button">Raporlamaya Geç</button>
+         
+ </div>
+
             
           
           <div className="back-button" id="navbar-return" onClick={toggleMenu}>

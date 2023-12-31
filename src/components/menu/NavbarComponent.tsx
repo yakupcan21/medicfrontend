@@ -11,6 +11,7 @@ interface NavbarComponentProps {
 const Navbar: React.FC<NavbarComponentProps> = (props) => {
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [isAvatarOpen, setAvatarOpen] = useState(false);
+    
 
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);

@@ -3,7 +3,7 @@
   .content {
     width: 60%;
     height: 80vh;
-    background: #ebdcda;
+    background: #f5edeb;
     opacity: 1;
     z-index: 0;
     margin: auto;
@@ -56,25 +56,30 @@
     display: flex;
     margin-left: 30px;
     margin-top: 100px;
+  
     
   }
   
   .picture img {
     width: 100%;
     box-shadow: 0px 6px 12px #00000029;
+    border-radius: 5px;
+    
   }
   
   .pictures {
     width: 38%;
     display: flex;
     position: absolute;
-    bottom: 5px;
+    bottom: 20px;
     margin-left: 30px;
   }
   
   .pictures img {
     width: 100%;
     height: 100px;
+    box-shadow: 0px 6px 12px #00000029;
+    border-radius: 5px;
   }
   
   .active {
@@ -109,7 +114,7 @@
     display: block;
     width: 100%;
     height: 50px;
-    background: rgb(240, 138, 138); 
+    background: rgb(252, 90, 90); 
     position: absolute;
     top: 0;
     left: 0;
@@ -132,31 +137,96 @@
     border: 1px solid #e1e1e1;
     text-align: center;
     line-height: 40px;
-    font-size: 15px;
-    color: white; 
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
 
 
   }
-  .content-text{
-    width: 60vh;
-    height: 50vh;
-    background: #f2f5f7;
-    opacity: 1;
-    z-index: 0;
-    margin-left: 46%;
+  // Your SCSS code
+.content-text-doctor {
+  width: 60vh;
+  height: 54vh;
+  margin-left: 46%;
+  position: absolute;
+  top: 120px;
+  transition: all 0.5s ease-in-out;
+  
+
+  > div {
+    font-size: 1rem;
+    display: flex;  // Display children in a row
+    justify-content: space-between;  // Add space between children
+    
+  }
+
+  input {
+    background-color: #ffffff;
+    border: none;
+    padding: 15px 0px;
+    margin-left: 20px;
+    width: calc(100% - 30px);
+    border-radius: 15px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4),
+      0 -1px 1px #fff,
+      0 1px 0 #fff;
+    overflow: hidden;
+    text-indent: 10px;
+
+    &:focus {
+      outline: none;
+      background-color: #fff;
+      box-shadow: 0px 0px 4px rgb(226, 42, 42);
+    }
+    margin-bottom: 15px;
+
+ 
+
+  }
+  
+}
+
+.date-style {
+  font-size: 15px;
+  color: #b9b7b7;
+  
+}
+.name-container2 :last-child{
+ margin-right: 11px;
+}
+
+
+  .title{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left:580px;
     position: fixed;
     position: absolute;
-    top: 145px;
-   
-    box-shadow: 0px 6px 12px #00000029;
- 
-  
+    top: 70px;
+    color: #f01d1d;
+    font-family:'Times New Roman', Times, serif; 
   }
-  .title{
-    font-size: 20px;
+
+  .rapor-button{
+    width: 40%;
+    height: 50px;
+    background: #f01d1d;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 39px;
+    opacity: 1;
+    cursor: pointer;
+    position: absolute;
+    bottom: 100px;
+    left: 120px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    color: white;
     font-weight: bold;
-    
-
-
-  
+    font-family:'Times New Roman', Times, serif;
+    margin-left: 20px;
   }
+  

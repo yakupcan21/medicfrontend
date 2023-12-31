@@ -46,7 +46,7 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
       <Navbar isDoctor={true} isPatient={false} />
       
       <div className="content-wrapper">
-        <div className="content">
+        <div className="content-doctor">
           <table>
             <thead>
               <tr>
@@ -68,10 +68,10 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
             </tbody>
           </table>
           <div id="vue-slider">
-            <div className="picture">
+            <div className="picture-doctor">
               <img src={activePicture} alt="Active Picture" />
             </div>
-            <div className="pictures">
+            <div className="pictures-doctor">
               {pictures.map((picture, index) => (
                 <div key={index}>
                   <img
