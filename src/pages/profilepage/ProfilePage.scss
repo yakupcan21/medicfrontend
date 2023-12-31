@@ -1,3 +1,7 @@
+body {
+  background-color: #00000029;
+}
+
 .content-container {
   height: auto !important;
   display: flex;
@@ -5,26 +9,28 @@
   justify-content: flex-start !important;
 }
 
-h1 {
+
+.informations {
+  font: normal normal normal 20px/23px 'Segoe UI';
+}
+
+.information-type {
   text-align: left;
+  font: normal normal bold 20px/20px 'Segoe UI';
+  margin-block-start: 20px;
+  margin-block-end: 25px;
 }
 
-h3 {
-  font-size: 25px;
-  color: white;
-}
-
-h5 {
+.informations-header {
   text-align: left;
-  font-weight: bold;
-  font-size: 20px;
+  font: normal normal bold 28px/30px 'Segoe UI';
+  margin-block-start: 20px;
+  margin-block-end: 25px;
 }
 
-.genelBilgilerInfo {
-  font-size: 20px;
-}
 
 .upper {
+
   margin-left: 50px;
   margin-right: 50px;
   align-items: center;
@@ -33,8 +39,48 @@ h5 {
   box-shadow: 0px 3px 6px #00000029;
   padding: 40px;
   z-index: 0 !important;
+  cursor: default;
 }
 
+
+.information-input {
+  
+  background-color: #fff;
+  border: none;
+  padding: 15px 15px;
+  margin: 3px;
+  width: calc(99% - 30px);
+  border-radius: 0;
+  border-bottom: 0;
+  box-shadow: none;
+  cursor: text;
+  font: normal normal normal 20px/20px 'Segoe UI';
+  padding-block: 0px;
+  padding-inline: 0px;
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: #8c8c8c;
+  }
+}
+
+#disabled {
+
+
+  &::placeholder {
+    color: #afafaf;
+  }
+}
+
+.information-statement{
+  text-align: left;
+  font: normal normal normal 17px/18px 'Segoe UI';
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+}
 .bottom {
   margin-top: 50px;
   margin-left: 50px;
@@ -45,6 +91,19 @@ h5 {
   box-shadow: 0px 3px 6px #00000029;
   padding: 40px;
   z-index: 0 !important;
+}
+
+.pen-icon{
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  margin-left: 10px;
+  margin-top: 9px;
+  margin-right: 20px;
+  opacity: 0.4;
+  z-index: 15;
+  cursor: pointer;
 }
 
 .container {
@@ -62,7 +121,7 @@ h5 {
   box-sizing: border-box;
 }
 
-.profile-component-profile-page-position{
+.profile-component-profile-page-position {
   position: relative;
 }
 
