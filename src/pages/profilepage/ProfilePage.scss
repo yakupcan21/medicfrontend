@@ -11,23 +11,22 @@ body {
 
 
 .informations {
-  font: normal normal normal 20px/23px 'Segoe UI';
+  font: normal normal normal 18px/21px 'Segoe UI';
 }
 
 .information-type {
   text-align: left;
-  font: normal normal bold 20px/20px 'Segoe UI';
+  font: normal normal bold 18px/18px 'Segoe UI';
   margin-block-start: 20px;
-  margin-block-end: 25px;
+  margin-block-end: 10px;
 }
 
 .informations-header {
   text-align: left;
-  font: normal normal bold 28px/30px 'Segoe UI';
-  margin-block-start: 20px;
+  font: normal normal bold 26px/28px 'Segoe UI';
+  margin-block-start: 0px;
   margin-block-end: 25px;
 }
-
 
 .upper {
 
@@ -54,7 +53,7 @@ body {
   border-bottom: 0;
   box-shadow: none;
   cursor: text;
-  font: normal normal normal 20px/20px 'Segoe UI';
+  font: normal normal normal 18px/18px 'Segoe UI';
   padding-block: 0px;
   padding-inline: 0px;
 
@@ -63,13 +62,11 @@ body {
   }
 
   &::placeholder {
-    color: #8c8c8c;
+    color: #525252;
   }
 }
 
 #disabled {
-
-
   &::placeholder {
     color: #afafaf;
   }
@@ -98,13 +95,36 @@ body {
   width: 18px;
   height: 18px;
   background-size: cover;
-  margin-left: 10px;
-  margin-top: 9px;
-  margin-right: 20px;
   opacity: 0.4;
   z-index: 15;
   cursor: pointer;
 }
+
+
+.information-update-button {
+  position: absolute;
+  text-align: left;
+  font: normal normal normal 17px/18px 'Segoe UI';
+  color: #DC5353;
+
+  &:hover{
+    color: #3292ff;
+    transition: color 0.3s ease;
+  }
+}
+
+.information-password {
+  margin-top: 5px;
+  right: 110px;
+  position: absolute;
+  text-align: right;
+  font: normal normal normal 17px/18px 'Segoe UI';
+  color: #DC5353;
+  #text{
+
+  }
+}
+
 
 .container {
   display: flex;
