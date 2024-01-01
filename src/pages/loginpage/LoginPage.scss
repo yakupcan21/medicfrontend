@@ -65,7 +65,7 @@ h2 {
   color: rgb(226, 42, 42);
   margin-bottom: 5px;
 }
-h3{
+h3.info{
  
   color: rgb(226, 42, 42);
   font-size: 13px;
@@ -86,12 +86,12 @@ a {
 
 button.giris {
   border-radius: 20px;
-  border: 2px solid #e74646;
+  border: 2px solid rgb(23, 25, 155);
   background-color: rgb(23, 25, 155);
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
-  padding: 10px 40px;
+  padding: 10px 30px;
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
@@ -195,9 +195,9 @@ form {
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  padding: 90px 60px;
+  padding: 50px 60px;
   width: calc(50% - 120px);
-  height: calc(100% - 180px);
+  height: calc(100% - 100px);
   text-align: center;
   background-color: #fff; 
   transition: all .5s ease-in-out;
@@ -220,6 +220,7 @@ form {
                       0 -1px 1px #fff, 
                       0 1px 0 #fff;
     overflow: hidden;
+   
     
 
     &:focus {
@@ -301,25 +302,25 @@ margin-right: 10px;
 .register_2 {
 display: flex;
 align-items: center;
-width: 400px;
 
+&.register_2 input:first-child {
+  margin-right: 70px;
+
+}
 }
 
 .register_2 input[type="checkbox"] {
-position: relative;
+
 height: 25px;
 width: 25px;
 border-radius: 50%;
 cursor: pointer;
-margin-left: 10px;
+margin-left: 12px;
 
 }
-.register_2 label {
-font-size: 14px;
-cursor: pointer;
-font-weight: bold;
-color: rgb(226, 42, 42);
-}
+
+
+
 
 .logo {
 height: 150px;
@@ -399,7 +400,102 @@ border-right: 15px solid rgb(226, 42, 42);
   width: 400px;
   margin-left: 120px;
  
- 
- 
 }
 
+.yeni-hesap {
+  margin-top: 20px;
+  background-color: #e74646;
+  border: 2px solid #e74646;
+  border-radius: 25px;
+  padding: 15px 20px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.yeni-hesap:hover {
+  background-color: #ff5656;
+}
+
+.yeni-hesap:active {
+  transform: scale(0.95);
+  background-color: #d63030;
+}
+
+
+
+.register-container-doctor {
+  width: 400px;
+  margin-left: 120px;
+   
+}
+
+.register-doctor{
+  margin-top: 30px;
+  
+}
+.register{
+  margin-top: 30px;
+}
+
+.yeni-kayıt {
+  margin-top: 20px;
+  background-color: #e74646; /* Use the same color for consistency */
+  border: none;
+  border-radius: 25px;
+  padding: 15px 30px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.yeni-kayıt:hover {
+  background-color: #ff5656; /* Lighter shade on hover */
+}
+
+.yeni-kayıt:active {
+  transform: scale(0.95);
+  background-color: #d63030; /* Darker shade when active */
+}
+
+.new-account {
+  
+  color: #f02323; 
+  font-size: 16px;
+}
+
+.floating-label {
+  position: relative;
+}
+
+.floating-label label {
+  position: absolute;
+  pointer-events: none;
+  left: 15px;
+  top: 20px;
+  transition: 0.2s ease-out;
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown)  {
+  top: -1px;
+  font-size: 15px;
+  color: #050505; /* Change the color to your preference */
+}
+
+.user_icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 30px;
+  height: 4vh;
+  transform: translateY(-50%);
+  color: #050505; /* Change the color to your preference */
+  
+}

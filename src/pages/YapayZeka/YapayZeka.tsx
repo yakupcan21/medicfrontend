@@ -1,9 +1,9 @@
-// DoctorView.tsx
-
 import React, { useState } from 'react';
-import './DoctorView.scss';
+import './YapayZeka.scss';
 import Navbar from "../../components/menu/NavbarComponent.tsx";
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
+
+
 
 interface DoctorViewProps {}
 
@@ -22,6 +22,7 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
   const questionImg = resimImg;
   const peopleFill = personImg;
   const pictures = [plug1Img, plug2Img, plug3Img, plug4Img];
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -43,35 +44,20 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
   return (
     <article>
       <BackgroundMotion />
-      <Navbar isDoctor={true} isPatient={false} />
+      <Navbar isDoctor={false} isPatient={true} />
       
       <div className="content-wrapper">
-        <div className="content-doctor">
-          <table>
-            <thead>
-              <tr>
-                <th>Tarih</th>
-                <th>Rapor No</th>
-                <th>Doktor İsmi</th>
-                <th>Hasta TC No</th>
-                <th>Hasta İsmi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>01.01.2021</td>
-                <td>1</td>
-                <td>Dr. Ali</td>
-                <td>12345678910</td>
-                <td>Ahmet</td>
-              </tr>
-            </tbody>
-          </table>
+      
+        <div className="content">
+            
+                <button className="goruntu_button" onClick={toggleAvatar}>Görüntü Yükle</button>
+            
+        
           <div id="vue-slider">
-            <div className="picture-doctor">
+            <div className="picture">
               <img src={activePicture} alt="Active Picture" />
             </div>
-            <div className="pictures-doctor">
+            <div className="pictures">
               {pictures.map((picture, index) => (
                 <div key={index}>
                   <img
@@ -84,10 +70,25 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
               ))}
             </div>
           </div>
-          <div className="content-right">
-            <p>BULGULAR:</p>
-            {/* Add your content here */}
-          </div>
+          <h2 className='title'>Hasta Bilgileri</h2>
+            
+  <div className="content-text-doctor" >
+        
+       
+            <input type="text" placeholder="TC Kimlik Numarası:" />
+          <div className="name-container2">
+            <input type="text" placeholder="Ad:" />
+            <input type="text" placeholder="Soyad:" />
+        </div>
+            <input className='date-style' type="date" placeholder="Doğum Tarihi:" />
+            
+            <input type="text" placeholder="Cinsiyet:" />
+            <button className="rapor-button">Raporlamaya Geç</button>
+         
+ </div>
+
+            
+          
           <div className="back-button" id="navbar-return" onClick={toggleMenu}>
             Geri Dön
             </div>

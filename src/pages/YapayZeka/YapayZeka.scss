@@ -1,0 +1,232 @@
+
+
+  .content {
+    width: 60%;
+    height: 80vh;
+    background: #f5edeb;
+    opacity: 1;
+    z-index: 0;
+    margin: auto;
+    margin-top: 6%;
+    position: relative;
+    box-shadow: 0px 6px 12px #00000029;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #f2f5f7;
+    opacity: 1;
+    z-index: 0;
+    box-shadow: 0px 3px 6px #00000029;
+   
+  }
+  
+  th,
+  td {
+    text-align: center;
+    padding: 8px;
+    height: 25px;
+  
+  }
+  th {
+    font-size: 20px;
+  }
+  
+  tr:nth-child(2) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(2) td:nth-child(even) {
+    background-color: #f1ecec;
+  }
+  
+  tr:nth-child(2) td:nth-child(odd) {
+    background-color: #e4e0e0;
+  }
+  
+  th {
+    background-color: #f01d1d;
+    color: white;
+  }
+  
+  .picture {
+    width: 38%;
+    height: 100%;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 100px;
+  
+    
+  }
+  
+  .picture img {
+    width: 100%;
+    box-shadow: 0px 6px 12px #00000029;
+    border-radius: 5px;
+    
+  }
+  
+  .pictures {
+    width: 38%;
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    margin-left: 30px;
+  }
+  
+  .pictures img {
+    width: 100%;
+    height: 100px;
+    box-shadow: 0px 6px 12px #00000029;
+    border-radius: 5px;
+  }
+  
+  .active {
+    border: 2px solid #4834a0;
+  }
+  
+  
+  .back-button {
+    width: 15%;
+    height: 40px;
+    background: #f01d1d;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 39px;
+    opacity: 1;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: white; 
+  }
+
+  .back-button:hover {
+    box-shadow: inset 0px 3px 6px #00000029; /* :hover durumunda outer (dış) gölge efekti */
+}
+
+.content::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 50px;
+    background: rgb(252, 90, 90); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+    box-shadow: 0px 6px 12px #00000029; 
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .goruntu_button{
+    width: 20%;
+    height: 40px;
+    background: #255ec9;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 39px;
+    opacity: 1;
+    cursor: pointer;
+    position: absolute;
+    top: 60px;
+    left: 120px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+
+
+  }
+  // Your SCSS code
+.content-text-doctor {
+  width: 60vh;
+  height: 54vh;
+  margin-left: 46%;
+  position: absolute;
+  top: 120px;
+  transition: all 0.5s ease-in-out;
+  
+
+  > div {
+    font-size: 1rem;
+    display: flex;  // Display children in a row
+    justify-content: space-between;  // Add space between children
+    
+  }
+
+  input {
+    background-color: #ffffff;
+    border: none;
+    padding: 15px 0px;
+    margin-left: 20px;
+    width: calc(100% - 30px);
+    border-radius: 15px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4),
+      0 -1px 1px #fff,
+      0 1px 0 #fff;
+    overflow: hidden;
+    text-indent: 10px;
+
+    &:focus {
+      outline: none;
+      background-color: #fff;
+      box-shadow: 0px 0px 4px rgb(226, 42, 42);
+    }
+    margin-bottom: 15px;
+
+ 
+
+  }
+  
+}
+
+.date-style {
+  font-size: 15px;
+  color: #b9b7b7;
+  
+}
+.name-container2 :last-child{
+ margin-right: 11px;
+}
+
+
+  .title{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left:580px;
+    position: fixed;
+    position: absolute;
+    top: 70px;
+    color: #f01d1d;
+    font-family:'Times New Roman', Times, serif; 
+  }
+
+  .rapor-button{
+    width: 40%;
+    height: 50px;
+    background: #f01d1d;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 39px;
+    opacity: 1;
+    cursor: pointer;
+    position: absolute;
+    bottom: 100px;
+    left: 120px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+    margin-left: 20px;
+  }
+  

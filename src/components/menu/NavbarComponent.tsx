@@ -14,6 +14,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
     const { isDoctor, isPatient } = props;
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [isAvatarOpen, setAvatarOpen] = useState(false);
+    
 
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);
