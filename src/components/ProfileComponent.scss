@@ -17,8 +17,14 @@ input {
       background-color: #fff;
       box-shadow: 0px 0px 4px rgb(226, 42, 42); 
     }
-  }
 
+    
+
+  }
+  
+  #warning {
+    box-shadow: 0px 0px 4px rgb(226, 42, 42); 
+  }
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -28,9 +34,13 @@ table {
     border: none !important;
   }
 
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #profile-component {
     padding: 20px;
-    margin-top: 95px;
     height: auto;
     cursor: default;
     width: 400px;
