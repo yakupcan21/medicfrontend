@@ -1,30 +1,23 @@
 body {
-    margin: 0;
     overflow: visible;
     align-items: center;
     font: normal normal normal 16px/23px Segoe UI;
 }
 
-.article-content {
-    align-items: center;
-    width: auto;
-    background-color: #fff;
-    box-shadow: 0px 3px 6px #00000029;
-    padding: 40px;
-    z-index: 0 !important;
-}
+.about-page-main-container {
+    .article-content {
+        align-items: center;
+        width: auto;
+        background-color: #fff;
+        box-shadow: 0px 3px 6px #00000029;
+        padding: 40px;
+    }
 
-.invisible-frame {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px;
-    margin-top: 100px;
-}
-
-#madeby {
-    bottom: 0;
-    left: 0;
-    margin-top: 2000px;
-    width: 100%;
+    .invisible-frame {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px;
+        margin-top: 100px;
+    }
 }

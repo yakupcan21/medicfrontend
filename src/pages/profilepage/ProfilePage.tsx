@@ -34,6 +34,7 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
   const updateeMail = () => {
     setDisabledeMailInput(!disabledeMailInput);
     setWarningeMail(false);
+    seteMailInput('');
   };
 
   const pusheMail = () => {
@@ -43,15 +44,22 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
       setProfileEMail(eMailInput);
       setWarningeMail(false);
       setDisabledPhoneInput(true);
+      seteMailInput('');
     } else if (eMailInput != '' && !emailRegex.test(phoneNumInput)) {
       setWarningeMail(true);
+    } else if (eMailInput == '') {
+      setWarningeMail(false);
+      setDisabledeMailInput(true);
     }
-    seteMailInput('');
+
+
+
   };
 
   const updatePhoneNum = () => {
     setDisabledPhoneInput(!disabledPhoneInput);
     setWarningPhone(false);
+    setPhoneNumInput('');
   };
 
   const pushPhoneNum = () => {
@@ -61,11 +69,15 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
       setProfilePhoneNum(phoneNumInput);
       setWarningPhone(false);
       setDisabledPhoneInput(true);
+      setPhoneNumInput('');
     } else if (phoneNumInput != '' && !phoneNumRegex.test(phoneNumInput)) {
       setWarningPhone(true);
+    } else if (phoneNumInput == '') {
+      setWarningPhone(false);
+      setDisabledPhoneInput(true);
     }
 
-    setPhoneNumInput('');
+
   };
 
   const updatePassWord = () => {
@@ -100,39 +112,40 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
           setPassWordInputNewFirst('');
           setPassWordInputNewSecond('');
         } else if (!PassWordRegex.test(passWordInputNewSecond)) {
-          if(PassWordRegex.test(passWordInputNewFirst)){
+          if (PassWordRegex.test(passWordInputNewFirst)) {
             setWarningNewPassWordFirst(false);
           }
           setWarningNewPassWordSecond(true);
 
         }
-      } else{
+      } else {
         setWarningNewPassWordFirst(true);
-        if(!(passWordInputNewFirst == passWordInputNewSecond)){
+        if (!(passWordInputNewFirst == passWordInputNewSecond)) {
           setWarningNewPassWordSecond(true);
         }
 
       }
-    } else{
+    } else {
       setWarningOldPassWord(true);
     }
   };
 
   return (
-    <>
+    <div className="profile-page-main-container">
       <BackgroundMotion />
-      <Navbar isDoctor={false} isPatient={true} />
-      <div className="container">
-        <div className="left-panel">
+      <Navbar isDoctor={true} isPatient={false} />
+      <div className="left-panel">
+        <Reveal>
           <div className="profile-component-profile-page-position">
-            <Profile isDoctor={false} isPatient={true} />
+            <Profile isDoctor={true} isPatient={false} />
           </div>
-        </div>
-        <div className="right-panel">
-          <div className="content-container">
+        </Reveal>
+      </div>
+      <div className="right-panel">
+        <div className="content-container">
+          <Reveal>
             <div className="upper" >
               <div className='informations-header'>Genel Bilgiler</div>
-
               <div>
                 <div className='information-type'>İsim Soyisim</div>
                 <input type="text" className="information-input" id='disabled' placeholder={profileName} disabled={true} />
@@ -169,39 +182,39 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
                 {!disabledPassWordInput && <div className='information-update-button' style={{ marginLeft: '98px' }} onClick={pushPassWord} >Düzenle</div>}
                 <div className='information-type' >Parola</div>
                 {disabledPassWordInput && <>
-                  <input type="text" className="information-input" id='disabled' placeholder="*************" disabled={true} />
+                  <input type="text" className="information-input" id='disabled' placeholder="••••••••••••" disabled={true} />
                   <hr />
                 </>
                 }
                 {!disabledPassWordInput && <>
-                  {warningOldPassWord && <div className='information-password' >Parola Yanlış</div>}
-                  <input type="text" className="information-input" placeholder="Eski Parola" value={passWordInputOld} onChange={(e) => setPassWordInputOld(e.target.value)} disabled={disabledPassWordInput} />
+                  {warningOldPassWord && <div className='information-input-info' >Parola Yanlış</div>}
+                  <input type="password" className="information-input" placeholder="Eski Parola" value={passWordInputOld} onChange={(e) => setPassWordInputOld(e.target.value)} disabled={disabledPassWordInput} />
                   {!warningOldPassWord && <hr />}
                   {warningOldPassWord && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
-                  {warningNewPassWordFirst && <div className='information-password' style={{ marginLeft: '98px' }} >Geçersiz Parola</div>}
-                  <input type="text" className="information-input" placeholder="Yeni Parola" value={passWordInputNewFirst} onChange={(e) => setPassWordInputNewFirst(e.target.value)} disabled={disabledPassWordInput} />
+                  {warningNewPassWordFirst && <div className='information-input-info' style={{ marginLeft: '98px' }} >Geçersiz Parola</div>}
+                  <input type="password" className="information-input" placeholder="Yeni Parola" value={passWordInputNewFirst} onChange={(e) => setPassWordInputNewFirst(e.target.value)} disabled={disabledPassWordInput} />
                   {!warningNewPassWordFirst && <hr />}
-                  {warningNewPassWordFirst&& <> <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} /></>}
-                  {warningNewPassWordSecond && <div className='information-password' style={{ marginLeft: '98px' }} >Parolalar Uyuşmuyor</div>}
-                  <input type="text" className="information-input" placeholder="Yeni Parolalınızı Tekrar Giriniz" value={passWordInputNewSecond} onChange={(e) => setPassWordInputNewSecond(e.target.value)} disabled={disabledPassWordInput} />
+                  {warningNewPassWordFirst && <> <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} /></>}
+                  {warningNewPassWordSecond && <div className='information-input-info' style={{ marginLeft: '98px' }} >Parolalar Uyuşmuyor</div>}
+                  <input type="password" className="information-input" placeholder="Yeni Parolalınızı Tekrar Giriniz" value={passWordInputNewSecond} onChange={(e) => setPassWordInputNewSecond(e.target.value)} disabled={disabledPassWordInput} />
                   {!warningNewPassWordSecond && <hr />}
                   {warningNewPassWordSecond && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
                 </>
                 }
-
               </div>
             </div>
-            <Reveal>
-              <div className="bottom">
-                <div className='informations-header'>Geçmiş Hastalıklar</div>
-                <div className='information-type'>Hastalık Çeşidi</div>
-                <div className='information-statement'>Hastalık açıklaması</div>
-              </div>
-            </Reveal>
-          </div>
+          </Reveal>
+          <Reveal>
+            <div className="bottom">
+              <div className='informations-header'>Geçmiş Hastalıklar</div>
+              <div className='information-type'>Hastalık Çeşidi</div>
+              <div className='information-statement'>Hastalık açıklaması</div>
+            </div>
+          </Reveal>
         </div>
       </div>
-    </>
+
+    </div >
   );
 };
 

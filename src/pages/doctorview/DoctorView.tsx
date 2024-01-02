@@ -5,7 +5,7 @@ import './DoctorView.scss';
 import Navbar from "../../components/menu/NavbarComponent.tsx";
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 
-interface DoctorViewProps {}
+interface DoctorViewProps { }
 
 import resimImg from '../../assets/resim.png'
 import personImg from '../../assets/person.png';
@@ -44,7 +44,7 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
     <article>
       <BackgroundMotion />
       <Navbar isDoctor={true} isPatient={false} />
-      
+
       <div className="content-wrapper">
         <div className="content-doctor">
           <table>
@@ -90,7 +90,7 @@ const DoctorView: React.FC<DoctorViewProps> = () => {
           </div>
           <div className="back-button" id="navbar-return" onClick={toggleMenu}>
             Geri Dön
-            </div>
+          </div>
         </div>
       </div>
     </article>

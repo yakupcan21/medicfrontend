@@ -1,0 +1,26 @@
+body {
+    background-color: #00000029;
+  }
+
+.patient-page-main-container{
+  .main-panel {
+    display: flex;
+  }
+
+  .content-panel {
+    margin-top: 100px;
+    flex: 1;
+    box-sizing: border-box;
+  }
+
+  .bottom {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    align-items: center;
+    width: auto;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 40px;
+  }
+}

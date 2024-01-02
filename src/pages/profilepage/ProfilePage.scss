@@ -2,13 +2,105 @@ body {
   background-color: #00000029;
 }
 
-.content-container {
-  height: auto !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start !important;
-}
 
+.profile-page-main-container {
+  display: flex;
+
+  .content-container {
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start !important;
+  }
+
+  .upper {
+
+    margin-left: 50px;
+    margin-right: 50px;
+    align-items: center;
+    width: auto;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 40px;
+    cursor: default;
+  }
+
+  .bottom {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    align-items: center;
+    width: auto;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 40px;
+  }
+
+  .information-input {
+
+    background-color: #fff;
+    border: none;
+    padding: 15px 15px;
+    margin: 3px;
+    width: calc(99% - 30px);
+    border-radius: 0;
+    border-bottom: 0;
+    box-shadow: none;
+    cursor: text;
+    font: normal normal normal 18px/18px 'Segoe UI';
+    padding-block: 0px;
+    padding-inline: 0px;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &::placeholder {
+      color: #525252;
+    }
+  }
+
+  #disabled {
+    &::placeholder {
+      color: #afafaf;
+    }
+  }
+
+
+  .pen-icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+    opacity: 0.4;
+    cursor: pointer;
+  }
+
+
+  .left-panel {
+    margin-left: 50px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start !important;
+    width: 440px;
+    box-sizing: border-box;
+  }
+
+  .profile-component-profile-page-position {
+    position: relative;
+  }
+
+
+  .right-panel {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    flex: 1;
+    box-sizing: border-box;
+  }
+}
 
 .informations {
   font: normal normal normal 18px/21px 'Segoe UI';
@@ -28,77 +120,14 @@ body {
   margin-block-end: 25px;
 }
 
-.upper {
 
-  margin-left: 50px;
-  margin-right: 50px;
-  align-items: center;
-  width: auto;
-  background-color: #fff;
-  box-shadow: 0px 3px 6px #00000029;
-  padding: 40px;
-  z-index: 0 !important;
-  cursor: default;
-}
-
-
-.information-input {
-  
-  background-color: #fff;
-  border: none;
-  padding: 15px 15px;
-  margin: 3px;
-  width: calc(99% - 30px);
-  border-radius: 0;
-  border-bottom: 0;
-  box-shadow: none;
-  cursor: text;
-  font: normal normal normal 18px/18px 'Segoe UI';
-  padding-block: 0px;
-  padding-inline: 0px;
-
-  &:focus {
-    box-shadow: none;
-  }
-
-  &::placeholder {
-    color: #525252;
-  }
-}
-
-#disabled {
-  &::placeholder {
-    color: #afafaf;
-  }
-}
-
-.information-statement{
+.information-statement {
   text-align: left;
   font: normal normal normal 17px/18px 'Segoe UI';
   margin-block-start: 10px;
   margin-block-end: 10px;
 }
-.bottom {
-  margin-top: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
-  align-items: center;
-  width: auto;
-  background-color: #fff;
-  box-shadow: 0px 3px 6px #00000029;
-  padding: 40px;
-  z-index: 0 !important;
-}
 
-.pen-icon{
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  background-size: cover;
-  opacity: 0.4;
-  z-index: 15;
-  cursor: pointer;
-}
 
 
 .information-update-button {
@@ -107,47 +136,17 @@ body {
   font: normal normal normal 17px/18px 'Segoe UI';
   color: #DC5353;
 
-  &:hover{
+  &:hover {
     color: #3292ff;
     transition: color 0.3s ease;
   }
 }
 
-.information-password {
+.information-input-info {
   margin-top: 5px;
   right: 110px;
   position: absolute;
   text-align: right;
   font: normal normal normal 17px/18px 'Segoe UI';
   color: #DC5353;
-  #text{
-
-  }
-}
-
-
-.container {
-  display: flex;
-}
-
-.left-panel {
-  margin-left: 50px;
-  margin-top: 100px;
-  z-index: 9;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start !important;
-  width: 440px;
-  box-sizing: border-box;
-}
-
-.profile-component-profile-page-position {
-  position: relative;
-}
-
-
-.right-panel {
-  margin-top: 100px;
-  flex: 1;
-  box-sizing: border-box;
 }
