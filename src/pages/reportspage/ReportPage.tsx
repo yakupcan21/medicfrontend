@@ -4,9 +4,10 @@ import Navbar from '../../components/menu/NavbarComponent';
 import BackgroundMotion from '../../components/BackgroundMotion';
 import { Reveal } from '../../components/Reveal';
 import sortImg from '../../assets/sortImg.png';
+import { Link } from 'react-router-dom';
 
 interface ListItem {
-    date: string;
+    date: Date;
     reportId: string;
     doctorName: string;
     patientId: string;
@@ -28,29 +29,39 @@ const ReportPage: React.FC<ReportPageProps> = () => {
 
 
     const data: ListItem[] = [
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '2023-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
-        { date: '1071-01-01', reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
+        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },       
 
         // Add more items as needed
     ];
+    const turkishDateOptions = {year: 'numeric', month: 'numeric', day: 'numeric', timeZone: 'Europe/Istanbul'};
 
 
     const loadMoreItems = () => {
@@ -71,27 +82,26 @@ const ReportPage: React.FC<ReportPageProps> = () => {
                             <div className='information-heading' style={{ flex: '1', minWidth: '50px', }}>Tarih <img src={sortImg} className="sort-icon"></img></div>
                             <div className='information-heading' style={{ flex: '1', minWidth: '50px' }}>Rapor No <img src={sortImg} className="sort-icon"></img></div>
                             <div className='information-heading' style={{ flex: '2', minWidth: '100px' }}>Doktor İsmi <img src={sortImg} className="sort-icon"></img></div>
-                            <div className='information-heading' style={{ flex: '1', minWidth: '50px' }}>Hasta TC'si <img src={sortImg} className="sort-icon"></img></div>
-                            <div className='information-heading' style={{ flex: '1', minWidth: '110px', boxShadow: 'none' }}></div>
+                            <div className='information-heading' style={{ flex: '1', minWidth: '50px' }}>Hasta TC No <img src={sortImg} className="sort-icon"></img></div>
+                            <div className='information-heading' style={{ flex: '1', minWidth: '100px', boxShadow: 'none' }}></div>
                         </div>
                         <div className='elements-container'>
                             {data.slice(0, visibleItems).map((item, index) => (
                                 <div key={index}>
                                     <div className='information-rows'>
-                                        <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.date}</div>
+                                        <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.date.toLocaleString('tr-TR', turkishDateOptions)}</div>
                                         <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.reportId}</div>
                                         <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.doctorName}</div>
                                         <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.patientId}</div>
                                         <div className='information-items' style={{ flex: '1', minWidth: '110px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>
-                                            <div className='information-button' style={{ width: '100%' }}>Görüntüle</div>
-                                        </div>
+                                            <Link to="/reportId" className='information-button' style={{ width: '100%' }}>Görüntüle</Link>                                        </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
                         <div className='elements-buttons'>
                             <div className='information-button' style={{ width: '200px', marginLeft: '37%', marginBlockStart: '20px' }} onClick={loadMoreItems}>Daha Fazla Sonuç Göster</div>
-                            {isDoctor && <div className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Rapor Oluştur</div>
+                            {isDoctor && <Link to="/doctorview" className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Rapor Oluştur</Link>  
                             }
                         </div>
                     </div>

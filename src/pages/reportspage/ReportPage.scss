@@ -89,7 +89,7 @@ body {
     height: 40px;
 }
 
-.elements-buttons{
+.elements-buttons {
     height: 80px;
     display: flex;
     align-items: center;
@@ -101,7 +101,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: center !important;
     width: 100px;
     min-width: 100px;
     min-height: 30px;
@@ -110,12 +110,13 @@ body {
     cursor: pointer;
     transition: color 0.2s ease;
     color: white;
-    text-align: center;
-    
+    margin: 0px;
+    text-decoration: none;
+    font-size: inherit;
     &:hover {
         transition: box-shadow 0.2s ease;
         box-shadow: inset 0px 3px 6px #00000029;
-        color:#002fb2 !important;
+        color: #002fb2 !important;
     }
 }
 
