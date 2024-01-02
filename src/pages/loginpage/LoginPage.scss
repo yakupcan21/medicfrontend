@@ -11,6 +11,7 @@
     overflow: hidden;
     transition: transform .5s ease-in-out;
     z-index: 100;
+    align-items: center;
     
   }
 
@@ -25,6 +26,7 @@
     transition: transform .5s ease-in-out;
     background-color: #fff;
     //VİDEONUN ALTINDAKİ ALAN
+    align-items: center;
   }
 
   @mixin overlays($property) {
@@ -40,6 +42,7 @@
     text-align: center;
     transform: translateX($property);
     transition: transform .5s ease-in-out;
+    align-items: center;
     
     
   }
@@ -48,13 +51,14 @@
     @include overlays(-20%);
     border-bottom-left-radius: 150px;
     padding-right: 26px;
-    
+    align-items: center;
   }
 
   .overlay-right {
     @include overlays(0);
     right: 0;
     z-index: 2;
+    align-items: center;
     
     
   }
@@ -64,24 +68,25 @@ h2 {
   margin: 0;
   color: rgb(226, 42, 42);
   margin-bottom: 5px;
+  align-items: center;
 }
 h3.info{
  
   color: rgb(226, 42, 42);
   font-size: 13px;
   letter-spacing: 1px;
+  align-items: center;
   
 }
 
-p {
-  margin: 20px 0 30px;
-}
+
 
 a {
   color: #222;
   text-decoration: none;
   margin: 15px 0;
   font-size: 1rem;
+  align-items: center;
 }
 
 button.giris {
@@ -97,6 +102,8 @@ button.giris {
   cursor: pointer;
   transition: transform .1s ease-in;
   margin-top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
 
   &:active {
     transform: scale(.9);
@@ -149,6 +156,7 @@ button.invert {
   text-transform: uppercase;
   cursor: pointer;
   transition: transform .1s ease-in;
+  align-items: center;
 
   &:active {
     transform: scale(.9);
@@ -212,7 +220,7 @@ form {
     background-color: #eee;
     border: none;
     padding: 15px 15px;
-    margin: 6px 0;
+   margin-bottom: 15px;
     width: calc(100% - 30px);
     border-radius: 15px;
     border-bottom: 1px solid #ddd;
@@ -221,12 +229,17 @@ form {
                       0 1px 0 #fff;
     overflow: hidden;
    
-    
+    align-items: center;
 
     &:focus {
       outline: none;
       background-color: #fff;
       box-shadow: 0px 0px 4px rgb(226, 42, 42); 
+      
+    }
+
+    &::placeholder{
+      padding-left: 10px;
     }
   }
 }
@@ -291,7 +304,7 @@ form.sign-in {
 }
 .name-container {
 display: flex;
-
+align-items: center;
 width: 400px;
 margin-right: auto;
 margin-left: auto;
@@ -326,6 +339,7 @@ margin-left: 12px;
 height: 150px;
 width: 150px;
 margin-bottom: 20px;
+align-items: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -363,6 +377,7 @@ overflow: hidden;
 transition: all .2s ease-in-out;
 border-bottom-left-radius:150px;
 border-left: 15px solid rgb(226, 42, 42);
+align-items: center;
 
 .video-bg {
   position: absolute;
@@ -371,7 +386,7 @@ border-left: 15px solid rgb(226, 42, 42);
   width: 100%;
   height: 100%;
   object-fit: cover;
-  
+  align-items: center;
 }
 }
 
@@ -385,6 +400,7 @@ overflow: hidden;
 transition: all .2s ease-in-out;
 border-bottom-right-radius: 150px;
 border-right: 15px solid rgb(226, 42, 42);
+align-items: center;
 
 .video-bg {
   position: absolute;
@@ -393,13 +409,14 @@ border-right: 15px solid rgb(226, 42, 42);
   width: 100%;
   height: 100%;
   object-fit: cover;
+  align-items: center;
 }
 }
 
 .register-container {
   width: 400px;
   margin-left: 120px;
- 
+  align-items: center;
 }
 
 .yeni-hesap {
@@ -414,6 +431,7 @@ border-right: 15px solid rgb(226, 42, 42);
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  align-items: center;
 }
 
 .yeni-hesap:hover {
@@ -430,15 +448,17 @@ border-right: 15px solid rgb(226, 42, 42);
 .register-container-doctor {
   width: 400px;
   margin-left: 120px;
+  align-items: center;
    
 }
 
 .register-doctor{
   margin-top: 30px;
-  
+  align-items: center;
 }
 .register{
   margin-top: 30px;
+  align-items: center;
 }
 
 .yeni-kayıt {
@@ -453,10 +473,12 @@ border-right: 15px solid rgb(226, 42, 42);
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  align-items: center;
 }
 
 .yeni-kayıt:hover {
   background-color: #ff5656; /* Lighter shade on hover */
+  align-items: center;
 }
 
 .yeni-kayıt:active {
@@ -468,10 +490,17 @@ border-right: 15px solid rgb(226, 42, 42);
   
   color: #f02323; 
   font-size: 16px;
+  margin-left: 190px;
+  align-items: center;
+  justify-content: center;
+  width: 260px;
+ 
+  
 }
 
 .floating-label {
   position: relative;
+  align-items: center;
 }
 
 .floating-label label {
@@ -484,18 +513,20 @@ border-right: 15px solid rgb(226, 42, 42);
 
 .floating-label input:focus + label,
 .floating-label input:not(:placeholder-shown)  {
-  top: -1px;
+  top: -15px;
   font-size: 15px;
   color: #050505; /* Change the color to your preference */
+  align-items: center;
 }
 
 .user_icon {
   position: absolute;
   top: 50%;
-  left: 15px;
+  left: -40px;
   width: 30px;
   height: 4vh;
   transform: translateY(-50%);
   color: #050505; /* Change the color to your preference */
+  align-items: center;
   
 }
