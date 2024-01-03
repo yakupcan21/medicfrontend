@@ -93,8 +93,8 @@ const ReportPage: React.FC<ReportPageProps> = () => {
                                         <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.reportId}</div>
                                         <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.doctorName}</div>
                                         <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.patientId}</div>
-                                        <div className='information-items' style={{ flex: '1', minWidth: '110px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>
-                                            <Link to="/reportId" className='information-button' style={{ width: '100%' }}>Görüntüle</Link>                                        </div>
+                                        <div className='information-items' style={{ flex: '1', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>
+                                            <Link to={`/reports/${item.reportId}`} className='information-button' style={{ width: '100%' }}>Görüntüle</Link>                                        </div>
                                     </div>
                                 </div>
                             ))}
