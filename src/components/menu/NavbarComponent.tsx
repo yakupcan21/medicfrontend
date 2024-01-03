@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
     };
 
     return (
-        <article>
+        <div className='navbar-parent-element'>
 
             <div className="navbar">
                 <div className="navbar-menu-icon" onClick={toggleMenu}>☰</div>
@@ -79,7 +79,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                     <div id='navbar-black-background' onClick={toggleAvatar}></div>
                 </>
             </SideSlide>
-        </article>
+        </div>
     );
 };
 
