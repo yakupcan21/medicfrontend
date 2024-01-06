@@ -98,6 +98,7 @@ body {
 }
 
 .information-button {
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,6 +114,7 @@ body {
     margin: 0px;
     text-decoration: none;
     font-size: inherit;
+    user-select: none;
     &:hover {
         transition: box-shadow 0.2s ease;
         box-shadow: inset 0px 3px 6px #00000029;

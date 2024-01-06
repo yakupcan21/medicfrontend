@@ -9,7 +9,7 @@ function AboutPage() {
     return (
         <div className="about-page-main-container">
             <BackgroundMotion />
-            <Navbar isDoctor={true} isPatient={false} />
+            <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
             <div className="invisible-frame">
                 <Reveal>
                     <div className="article-content">

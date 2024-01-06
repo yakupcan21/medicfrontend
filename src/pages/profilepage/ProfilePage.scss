@@ -36,31 +36,6 @@ body {
     padding: 40px;
   }
 
-  .information-input {
-
-    background-color: #fff;
-    border: none;
-    padding: 15px 15px;
-    margin: 3px;
-    width: calc(99% - 30px);
-    border-radius: 0;
-    border-bottom: 0;
-    box-shadow: none;
-    cursor: text;
-    font: normal normal normal 18px/18px 'Segoe UI';
-    padding-block: 0px;
-    padding-inline: 0px;
-
-    &:focus {
-      outline: none;
-      box-shadow: none;
-    }
-
-    &::placeholder {
-      color: #525252;
-    }
-  }
-
   #disabled {
     &::placeholder {
       color: #afafaf;
@@ -107,6 +82,7 @@ body {
 }
 
 .information-type {
+  cursor: default;
   text-align: left;
   font: normal normal bold 18px/18px 'Segoe UI';
   margin-block-start: 20px;
@@ -114,10 +90,9 @@ body {
 }
 
 .informations-header {
+  cursor: default;
   text-align: left;
   font: normal normal bold 26px/28px 'Segoe UI';
-  margin-block-start: 0px;
-  margin-block-end: 25px;
 }
 
 
@@ -128,7 +103,28 @@ body {
   margin-block-end: 10px;
 }
 
+.information-input {
+  border: none;
+  padding: 15px 15px;
+  margin: 3px;
+  width: calc(100% - 5px);
+  border-radius: 0;
+  border-bottom: 0;
+  box-shadow: none;
+  cursor: text;
+  font: normal normal normal 18px/18px 'Segoe UI';
+  padding-block: 0px;
+  padding-inline: 0px;
+  background-color: #ffffff;
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 
+  &::placeholder {
+    color: #525252;
+  }
+}
 
 .information-update-button {
   position: absolute;

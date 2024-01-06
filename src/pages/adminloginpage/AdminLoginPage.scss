@@ -1,0 +1,35 @@
+body {
+    overflow: visible;
+    align-items: center;
+    font: normal normal normal 16px/23px Segoe UI;
+}
+
+.admin-login-page-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .content-panel {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        flex: 1;
+        box-sizing: border-box;
+    }
+
+    .displayed-container {
+        min-width: 300px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-left: 38%;
+        margin-right: 38%;
+        width: auto;
+        height: auto;
+        background-color: #f4f6f9;
+        box-shadow: 0px 3px 6px #00000029;
+    }
+
+
+  
+}

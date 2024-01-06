@@ -140,7 +140,7 @@
     transition: color 0.2s ease;
     text-align: center;
     transition: box-shadow 0.2s ease;
-
+    user-select: none;
     &:hover {
         transition: box-shadow 0.2s ease;
         box-shadow: inset 0px 3px 6px #00000029;
@@ -249,6 +249,7 @@
 
 .navbar-menu-icon {
     margin-left: 20px !important;
+    user-select: none;
 }
 
 .navbar-menu-icon:hover {

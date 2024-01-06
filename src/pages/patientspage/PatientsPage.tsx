@@ -77,8 +77,8 @@ const PatientsPage: React.FC<PatientsPageProps> = () => {
 
 
   return (
-    <div className='report-page-main-container'>
-      <Navbar isDoctor={true} isPatient={false} />
+    <div className='patients-page-main-container'>
+      <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
       <BackgroundMotion />
       <div className="content-panel">
         <Reveal>

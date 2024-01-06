@@ -11,11 +11,11 @@ function AboutPage() {
         <div className="home-page-main-container">
             <Reveal>
                 <div className="profile-component-home-page-position">
-                    <Profile isDoctor={false} isPatient={true} />
+                    <Profile isDoctor={true} isPatient={false} />
                 </div>
             </Reveal>
             <BackgroundMotion />
-            <Navbar isDoctor={true} isPatient={false} />
+            <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
 
             <div className="invisible-frame">
                 <Reveal>

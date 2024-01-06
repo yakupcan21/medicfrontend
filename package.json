@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.6.4",
     "bootstrap": "^5.2.3",
     "framer-motion": "^10.16.16",
     "react": "^18.2.0",

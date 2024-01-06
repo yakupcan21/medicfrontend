@@ -58,7 +58,6 @@ const ReportPage: React.FC<ReportPageProps> = () => {
         { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
         { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },
         { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58' },       
-
         // Add more items as needed
     ];
     const turkishDateOptions = {year: 'numeric', month: 'numeric', day: 'numeric', timeZone: 'Europe/Istanbul'};
@@ -73,7 +72,7 @@ const ReportPage: React.FC<ReportPageProps> = () => {
 
     return (
         <div className='report-page-main-container'>
-            <Navbar isDoctor={true} isPatient={false} />
+            <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
             <BackgroundMotion />
             <div className="content-panel">
                 <Reveal>
@@ -101,7 +100,7 @@ const ReportPage: React.FC<ReportPageProps> = () => {
                         </div>
                         <div className='elements-buttons'>
                             <div className='information-button' style={{ width: '200px', marginLeft: '37%', marginBlockStart: '20px' }} onClick={loadMoreItems}>Daha Fazla Sonuç Göster</div>
-                            {isDoctor && <Link to="/doctorview" className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Rapor Oluştur</Link>  
+                            {isDoctor && <Link to="/reports/create" className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Rapor Oluştur</Link>  
                             }
                         </div>
                     </div>

@@ -133,7 +133,7 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
   return (
     <div className="profile-page-main-container">
       <BackgroundMotion />
-      <Navbar isDoctor={true} isPatient={false} />
+      <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
       <div className="left-panel">
         <Reveal>
           <div className="profile-component-profile-page-position">
@@ -173,7 +173,7 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
                 <img src={penImg} className="pen-icon" onClick={updateeMail} style={{ marginLeft: '135px' }} />
                 {!disabledeMailInput && <div className='information-update-button' style={{ marginLeft: '165px' }} onClick={pusheMail} >Düzenle</div>}
                 <div className='information-type'>E-posta Adresi</div>
-                <input type="text" className="information-input" id={`${disabledeMailInput ? 'disabled' : ''}`} placeholder={profileEMail} value={eMailInput} onChange={(e) => seteMailInput(e.target.value)} disabled={disabledeMailInput} />
+                <input type="email" className="information-input" id={`${disabledeMailInput ? 'disabled' : ''}`} placeholder={profileEMail} value={eMailInput} onChange={(e) => seteMailInput(e.target.value)} disabled={disabledeMailInput} />
                 {!warningeMail && <hr />}
                 {warningeMail && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
               </div>
