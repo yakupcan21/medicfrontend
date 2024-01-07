@@ -17,7 +17,9 @@ interface ListItem {
 
 
 interface ReportsViewPageProps {
-    data: ListItem[];
+    isDoctor: boolean;
+    isPatient: boolean;
+    isAdmin: boolean;
 }
 
 import resimImg from '../../assets/resim.png'
@@ -30,13 +32,11 @@ import sortImg from '../../assets/sortImg.png';
 import { Link } from 'react-router-dom';
 import { Reveal } from '../../components/Reveal.tsx';
 
-const ReportsViewPage: React.FC<ReportsViewPageProps> = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isAvatar, setIsAvatar] = useState(false);
+const ReportsViewPage: React.FC<ReportsViewPageProps> = (props) => {
+    const { isDoctor, isPatient, isAdmin } = props;
+
     const [indexOfActivePicture, setIndexOfActivePicture] = useState(0);
     const [activePicture, setActivePicture] = useState<string>(plug1Img);
-    const questionImg = resimImg;
-    const peopleFill = personImg;
     const pictures = [plug1Img, plug2Img, plug3Img, plug4Img];
 
     const data: ListItem[] = [
@@ -44,28 +44,13 @@ const ReportsViewPage: React.FC<ReportsViewPageProps> = () => {
     ];
     const turkishDateOptions = { year: 'numeric', month: 'numeric', day: 'numeric', timeZone: 'Europe/Istanbul' };
 
-
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
-    const toggleAvatar = () => {
-        setIsAvatar(!isAvatar);
-    };
-
-    const navigate = (page: string) => {
-        console.log(`Navigating to ${page}`);
-        // Add your navigation logic here
-    };
-
     const changeActivePicture = (index: number) => {
         setActivePicture(pictures[index]);
         setIndexOfActivePicture(index);
     };
     return (
         <div className='reports-view-page-main-container'>
-            <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
             <BackgroundMotion />
             <div className="content-panel">
                 <Reveal>
@@ -118,7 +103,7 @@ const ReportsViewPage: React.FC<ReportsViewPageProps> = () => {
                                 </div>
                             </div>
                             <div className='elements-buttons'>
-                                <Link to="/reports" className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Geri Dön</Link>
+                                <Link to={isDoctor === true ? "/doctor/reports" : "/patient/reports"} className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Geri Dön</Link>
                             </div>
                         </div>
                     </div>

@@ -19,10 +19,7 @@ interface ListItem {
 }
 
 interface AdminDoctorsPageProps {
-    map(arg0: (item: any, index: any) => import("react/jsx-runtime").JSX.Element): React.ReactNode;
-    data: ListItem[];
-    isDoctor: boolean;
-    isPatient: boolean;
+
 }
 
 const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
@@ -68,9 +65,6 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
         setWarningeMail(false);
         setDisabledeMailInput(true);
       }
-  
-  
-  
     };
   
     const updatePhoneNum = () => {

@@ -6,16 +6,23 @@ import Profile from "../../components/ProfileComponent.tsx";
 
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 
-function AboutPage() {
+interface AboutPageProps { 
+    isDoctor: boolean;
+    isPatient: boolean;
+    isAdmin: boolean;
+}
+
+const AboutPage: React.FC<AboutPageProps> = (props) => {
+    const { isDoctor, isPatient, isAdmin } = props;
     return (
         <div className="home-page-main-container">
             <Reveal>
                 <div className="profile-component-home-page-position">
-                    <Profile isDoctor={true} isPatient={false} />
+                    <Profile isDoctor={isDoctor} isPatient={isPatient} />
                 </div>
             </Reveal>
             <BackgroundMotion />
-            <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
 
             <div className="invisible-frame">
                 <Reveal>

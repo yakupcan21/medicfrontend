@@ -6,9 +6,17 @@ import BackgroundMotion from '../../components/BackgroundMotion';
 import { Reveal } from '../../components/Reveal';
 import penImg from '../../assets/penImg.png';
 
-interface ProfilePageProps { }
+interface ProfilePageProps {   
+  isDoctor: boolean;
+  isPatient: boolean;
+  isAdmin: boolean;
+}
 
-const ProfilePage: React.FC<ProfilePageProps> = () => {
+
+
+const ProfilePage: React.FC<ProfilePageProps> = (props) => {
+  const { isDoctor, isPatient, isAdmin } = props;
+
   const [eMailInput, seteMailInput] = useState<string>('');
   const [phoneNumInput, setPhoneNumInput] = useState<string>('');
   const [passWordInputOld, setPassWordInputOld] = useState<string>('');
@@ -133,11 +141,11 @@ const ProfilePage: React.FC<ProfilePageProps> = () => {
   return (
     <div className="profile-page-main-container">
       <BackgroundMotion />
-      <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
+      <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
       <div className="left-panel">
         <Reveal>
           <div className="profile-component-profile-page-position">
-            <Profile isDoctor={true} isPatient={false} />
+            <Profile isDoctor={isDoctor} isPatient={isPatient} />
           </div>
         </Reveal>
       </div>

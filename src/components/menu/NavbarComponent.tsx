@@ -25,9 +25,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
         setAvatarOpen(!isAvatarOpen);
     };
 
-    const navigate = (page: string) => {
-        return <Link to={page}></Link>
-    };
+
 
     return (
         <div className='navbar-parent-element'>
@@ -37,16 +35,16 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                     <Link to="/admin" className="navbar-bold-font"><div>Anasayfa</div></Link>
                 )}
                 {!isAdmin && (
-                    <div><Link to="/home" className="navbar-bold-font">Anasayfa</Link></div>
+                    <div><Link to={isDoctor === true ? "/doctor/home" : "/patient/home"} className="navbar-bold-font">Anasayfa</Link></div>
                 )}
                 {isDoctor && (
                     <>
-                        <Link to="/patients" className="navbar-soft"><div>Hastalar</div></Link>
-                        <Link to="/reports" className="navbar-soft"><div>Raporlar</div></Link>
+                        <Link to="/doctor/patients" className="navbar-soft"><div>Hastalar</div></Link>
+                        <Link to="/doctor/reports" className="navbar-soft"><div>Raporlar</div></Link>
                     </>
                 )}
                 {isPatient && (
-                    <Link to="/reports" className="navbar-soft"><div>Raporlarım</div></Link>
+                    <Link to="/patient/reports" className="navbar-soft"><div>Raporlarım</div></Link>
                 )}
                 {isAdmin && (
                     <Link to="/admin/doctors" className="navbar-soft"><div>Doktorlar</div></Link>
@@ -54,7 +52,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                 <div id="navbar-right-align">
                     {!isAdmin && (
                         <>
-                            <Link to="/about" className="navbar-soft"><div>Hakkında</div></Link>
+                            <Link to={isDoctor === true ? "/doctor/about" : "/patient/about"} className="navbar-soft"><div>Hakkında</div></Link>
 
                         </>
                     )}
@@ -94,7 +92,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                                     <div>Buğra Burak Başer</div>
                                     <Link to="/profile" className="navbar-soft"><div id="navbar-link">Profili Düzenle</div></Link>
                                     <div id="navbar-avatar-buttons">
-                                        <div className="navbar-button" id="navbar-logout" onClick={() => navigate('logout')}><Link to="/" className="navbar-soft">Çıkış Yap</Link></div>
+                                        <div className="navbar-button" id="navbar-logout"><Link to="/" className="navbar-soft">Çıkış Yap</Link></div>
                                         <div className="navbar-button" id="navbar-return" onClick={toggleAvatar}>Geri Dön</div>
                                     </div>
                                 </>
@@ -103,7 +101,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                                 <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
                                 <div>Admin</div>
                                 <div id="navbar-avatar-buttons">
-                                    <div className="navbar-button" id="navbar-logout" onClick={() => navigate('logout')}><Link to="/admin/login" className="navbar-soft">Çıkış Yap</Link></div>
+                                    <div className="navbar-button" id="navbar-logout"><Link to="/admin/login" className="navbar-soft">Çıkış Yap</Link></div>
                                     <div className="navbar-button" id="navbar-return" onClick={toggleAvatar}>Geri Dön</div>
                                 </div>
                             </>)}

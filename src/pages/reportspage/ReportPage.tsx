@@ -14,17 +14,13 @@ interface ListItem {
 }
 
 interface ReportPageProps {
-    map(arg0: (item: any, index: any) => import("react/jsx-runtime").JSX.Element): React.ReactNode;
-    data: ListItem[];
     isDoctor: boolean;
     isPatient: boolean;
+    isAdmin: boolean;
 }
 
-
-
-const ReportPage: React.FC<ReportPageProps> = () => {
-    const isDoctor = true;
-    const isPatient = false;
+const ReportPage: React.FC<ReportPageProps> = (props) => {
+    const { isDoctor, isPatient, isAdmin } = props;
     const [visibleItems, setVisibleItems] = useState(10);
 
 
@@ -72,7 +68,7 @@ const ReportPage: React.FC<ReportPageProps> = () => {
 
     return (
         <div className='report-page-main-container'>
-            <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
             <BackgroundMotion />
             <div className="content-panel">
                 <Reveal>
@@ -93,14 +89,20 @@ const ReportPage: React.FC<ReportPageProps> = () => {
                                         <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.doctorName}</div>
                                         <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.patientId}</div>
                                         <div className='information-items' style={{ flex: '1', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>
-                                            <Link to={`/reports/${item.reportId}`} className='information-button' style={{ width: '100%' }}>Görüntüle</Link>                                        </div>
+                                            <Link to={isDoctor === true ? `/doctor/reports/${item.reportId}` : `/patient/reports/${item.reportId}`} className='information-button' style={{ width: '100%' }}>Görüntüle</Link>                                        </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
                         <div className='elements-buttons'>
-                            <div className='information-button' style={{ width: '200px', marginLeft: '37%', marginBlockStart: '20px' }} onClick={loadMoreItems}>Daha Fazla Sonuç Göster</div>
-                            {isDoctor && <Link to="/reports/create" className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Rapor Oluştur</Link>  
+                            {!isDoctor && <>
+                                <div className='information-button' style={{ width: '200px', marginBlockStart: '20px' }} onClick={loadMoreItems}>Daha Fazla Sonuç Göster</div>
+                            </>
+                            }
+                            {isDoctor && <>
+                                <div className='information-button' style={{ width: '200px', marginLeft: '37%', marginBlockStart: '20px' }} onClick={loadMoreItems}>Daha Fazla Sonuç Göster</div>
+                                <Link to={isDoctor === true ? "/doctor/reports/create" : ""} className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Rapor Oluştur</Link>
+                            </>  
                             }
                         </div>
                     </div>

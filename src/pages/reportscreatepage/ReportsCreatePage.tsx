@@ -15,17 +15,20 @@ interface ListItem {
 }
 
 interface ReportsCreatePageProps {
-    data: ListItem[];
+    isDoctor: boolean;
+    isPatient: boolean;
+    isAdmin: boolean;
 }
-
-import uploadImg from '../../assets/uploadImg.png'
+    
 import plug1Img from '../../assets/plug1.png';
 import plug2Img from '../../assets/plug2.png';
 import plug3Img from '../../assets/plug3.png';
 import plug4Img from '../../assets/plug4.png';
 import { Reveal } from "../../components/Reveal.tsx";
 
-const ReportsCreatePage: React.FC<ReportsCreatePageProps> = () => {
+const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
+    const { isDoctor, isPatient, isAdmin } = props;
+
     const [isReportMenu, setIsReportMenu] = useState(false);
     const [indexOfActivePicture, setIndexOfActivePicture] = useState(0);
     const [activePicture, setActivePicture] = useState<string>(plug1Img);
@@ -71,7 +74,7 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = () => {
     };
     return (
         <div className='reports-create-page-main-container'>
-            <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
             <BackgroundMotion />
             <div className="content-panel">
                 <Reveal>
@@ -119,25 +122,26 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = () => {
                                         <div className='informations-header' style={{ marginTop: '30px' }}>Hasta Bilgileri</div>
                                         <div className='information-create-inputs'>
                                             <div className='information-type' style={{ marginTop: '0px' }}>Hasta TC Kimlik Numarası</div>
-                                            <input type="text" className='information-input' placeholder="TC Kimlik Numarası:" required />
+                                            <input type="text" className='information-input' value={inputPatientId} onChange={(e) => setInputPatientId(e.target.value)} placeholder="TC Kimlik Numarası:" required />
                                             <hr />
                                             <div className='information-type'>Hasta Adı Soyadı</div>
                                             <div className="dubbled-container">
-                                                <input type="text" className='information-input' placeholder="Ad:" required />
-                                                <input type="text" className='information-input' placeholder="Soyad:" required />
+                                                <input type="text" className='information-input' value={inputPatientName} onChange={(e) => setInputPatientName(e.target.value)}  placeholder="Ad:" required />
+                                                <input type="text" className='information-input' value={inputPatientSurName} onChange={(e) => setInputPatientSurName(e.target.value)}  placeholder="Soyad:" required />
                                             </div>
                                             <div className="dubbled-container">
                                                 <hr style={{ width: '100%', marginRight: '5px' }} />
                                                 <hr style={{ width: '100%', marginLeft: '5px' }} />
                                             </div>
                                             <div className='information-type'>Rapor Tarihi</div>
-                                            <input className='information-input' type="date" value={selectedDate} onChange={handleDateChange} max={today} required />                                    <hr />
+                                            <input className='information-input' type="date" value={selectedDate} onChange={handleDateChange} max={today} required />
+                                            <hr />
                                         </div>
                                         <div className="information-button" style={{ width: '150px', marginTop: '20px' }} onClick={toggleReportMenu}>Raporlamaya Geç</div>
                                     </div>
                                 </div>
                                 <div className='elements-buttons'>
-                                    <Link to="/reports" className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Geri Dön</Link>
+                                    <Link to={isDoctor === true ? '/doctor/reports' : '/patient/reports'}  className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Geri Dön</Link>
                                 </div>
                             </div>
                         }

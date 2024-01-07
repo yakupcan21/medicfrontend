@@ -5,11 +5,19 @@ import "../../components/BackgroundMotion.scss";
 
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 
-function AboutPage() {
+interface AboutPageProps { 
+    isDoctor: boolean;
+    isPatient: boolean;
+    isAdmin: boolean;
+}
+
+const AboutPage: React.FC<AboutPageProps> = (props) => {
+    const { isDoctor, isPatient, isAdmin } = props;
+
     return (
         <div className="about-page-main-container">
             <BackgroundMotion />
-            <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
             <div className="invisible-frame">
                 <Reveal>
                     <div className="article-content">

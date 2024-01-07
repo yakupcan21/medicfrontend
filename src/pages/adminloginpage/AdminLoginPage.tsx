@@ -5,7 +5,11 @@ import "../../components/BackgroundMotion.scss";
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 import { Link } from "react-router-dom";
 
-function AdminLoginPage() {
+interface AdminLoginPageProps{
+
+}
+
+const AdminLoginPage: React.FC<AdminLoginPageProps> = () =>{
     return (
         <div className="admin-login-page-main-container">
             <BackgroundMotion />

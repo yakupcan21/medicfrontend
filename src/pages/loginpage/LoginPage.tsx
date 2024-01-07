@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import "./LoginPage.scss"; // Make sure to adjust the path accordingly
 import img from "../../assets/resim.png";
 import videoSource from "../../assets/plug.mp4";
-interface LoginPageProps { }
+
+interface LoginPageProps { 
+    
+}
 
 const LoginPage: React.FC<LoginPageProps> = () => {
+
+
     const [signUp, setSignUp] = useState(true);
     const [isNewAccountPatient, setIsNewAccountPatient] = useState(false);
 
@@ -150,7 +155,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <Link to="/profile">
+                                <Link to="/patient/home">
                                     <button className="giris">Giriş Yap</button>
                                 </Link>
                                 <p className='new-account'>
@@ -197,7 +202,9 @@ const LoginPage: React.FC<LoginPageProps> = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <button className="giris">Giriş Yap</button>
+                                <Link to="/doctor/home">
+                                    <button className="giris">Giriş Yap</button>
+                                </Link>
                                 <br />
                             </form>
                         </>

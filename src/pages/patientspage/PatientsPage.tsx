@@ -14,17 +14,13 @@ interface ListItem {
 }
 
 interface PatientsPageProps {
-  map(arg0: (item: any, index: any) => import("react/jsx-runtime").JSX.Element): React.ReactNode;
-  data: ListItem[];
   isDoctor: boolean;
   isPatient: boolean;
+  isAdmin: boolean;
 }
 
-
-
-const PatientsPage: React.FC<PatientsPageProps> = () => {
-  const isDoctor = true;
-  const isPatient = false;
+const PatientsPage: React.FC<PatientsPageProps> = (props) => {
+  const { isDoctor, isPatient, isAdmin } = props;
   const [visibleItems, setVisibleItems] = useState(10);
 
 
@@ -59,10 +55,6 @@ const PatientsPage: React.FC<PatientsPageProps> = () => {
     { patientName: 'Buğra Burak Başer', patientId: '25*******58', lastVisit: new Date('2023-01-01'), reportNum: 5 },
     { patientName: 'Buğra Burak Başer', patientId: '25*******58', lastVisit: new Date('2023-01-01'), reportNum: 5 },
     { patientName: 'Buğra Burak Başer', patientId: '25*******58', lastVisit: new Date('2023-01-01'), reportNum: 5 },
-
-
-
-
     // Add more items as needed
   ];
 
@@ -70,15 +62,13 @@ const PatientsPage: React.FC<PatientsPageProps> = () => {
 
 
   const loadMoreItems = () => {
-    // Increase the number of visible items by 10
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 10);
   };
 
 
-
   return (
     <div className='patients-page-main-container'>
-      <Navbar isDoctor={true} isPatient={false} isAdmin={false} />
+      <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
       <BackgroundMotion />
       <div className="content-panel">
         <Reveal>
@@ -99,7 +89,7 @@ const PatientsPage: React.FC<PatientsPageProps> = () => {
                     <div className='information-items' style={{ flex: '2', minWidth: '50px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.lastVisit.toLocaleString('tr-TR', turkishDateOptions)}</div>
                     <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.patientId}</div>
                     <div className='information-items' style={{ flex: '1', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>
-                      <Link to="/reports" className='information-button' style={{ width: '100%' }}>Görüntüle</Link>
+                      <Link to={isDoctor === true ? '/doctor/reports' : ''}  className='information-button' style={{ width: '100%' }}>Görüntüle</Link>
                     </div>
                   </div>
                 </div>

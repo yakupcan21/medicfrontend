@@ -18,10 +18,6 @@ interface ListItem {
 }
 
 interface AdminPageProps {
-    map(arg0: (item: any, index: any) => import("react/jsx-runtime").JSX.Element): React.ReactNode;
-    data: ListItem[];
-    isDoctor: boolean;
-    isPatient: boolean;
 }
 
 const AdminPage: React.FC<AdminPageProps> = () => {
