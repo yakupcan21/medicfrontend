@@ -12,6 +12,7 @@ import AdminPage from "../pages/adminpage/AdminPage"
 import AdminLoginPage from "../pages/adminloginpage/AdminLoginPage"
 import AdminDoctorsPage from "../pages/admindoctorspage/AdminDoctorsPage"
 import DiseasePage from "../pages/diseasepage/DiseasePage"
+import AdminDoctorsCreatePage from "../pages/admindoctorcreatepage/AdminDoctorsCreatePage"
 
 export const router = createBrowserRouter([
     { path: "", element: <LoginPage /> },
@@ -32,5 +33,6 @@ export const router = createBrowserRouter([
     { path: "admin/login", element: <AdminLoginPage /> },
     { path: "admin/", element: <AdminPage /> },
     { path: "admin/doctors", element: <AdminPage /> },
+    { path: "admin/doctors/create", element: <AdminDoctorsCreatePage /> },
     { path: "admin/doctors/:id", element: <AdminDoctorsPage /> },
 ])

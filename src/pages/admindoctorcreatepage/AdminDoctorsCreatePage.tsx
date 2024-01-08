@@ -1,5 +1,5 @@
-import "./AdminDoctorsPage.scss";
-import { Reveal } from "../../components/Reveal";
+import "./AdminDoctorsCreatePage.scss";
+import { Reveal } from "../../components/Reveal.tsx";
 import "../../components/BackgroundMotion.scss";
 
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
@@ -21,11 +21,11 @@ interface ListItem {
   doctorPhoneNum: string;
 }
 
-interface AdminDoctorsPageProps {
+interface AdminDoctorsCreatePageProps {
 
 }
 
-const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
+const AdminDoctorsCreatePage: React.FC<AdminDoctorsCreatePageProps> = () => {
   const [idInput, setIdInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [surnameInput, setSurnameInput] = useState('');
@@ -57,18 +57,6 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
   const [disabledPhoneInput, setDisabledPhoneInput] = useState(true);
   const [disabledeMailInput, setDisabledeMailInput] = useState(true);
 
-
-  const data: ListItem[] = [{
-    doctorId: "15*******74",
-    doctorName: 'Buğra Burak',
-    doctorSurName: 'Başer',
-    doctorBirthDate: new Date('19/01/2001'),
-    doctorDepartment: 'Göğüs Hastalıkları',
-    doctorHospital: 'Ankara Gazi Üniversitesi Tıp Fakültesi Hastanesi',
-    doctorTitle: 'Prof. Dr.',
-    doctorEMail: 'bugraburakbaser@gmail.com',
-    doctorPhoneNum: '+90 537 271 35 91'
-  }]
   const turkishDateOptions = { year: 'numeric', month: 'numeric', day: 'numeric', timeZone: 'Europe/Istanbul' };
 
   //***********************************************************ID*********************************************************************
@@ -258,10 +246,42 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
     }
   };
 
-
+  const pushDoctor = () => {
+    if (idInput != '' || nameInput != '' || surnameInput != '' || birthDateInput != '' || departmentInput != '' || hostpitalInput != '' || titleInput != '' || phoneNumInput != '' || eMailInput != '') {
+      // push doctor
+    } else{
+      if (idInput === '') {
+        setWarningId(true);
+      }
+      if (nameInput === '') {
+        setWarningName(true);
+      }
+      if (surnameInput === '') {
+        setWarningSurname(true);
+      }
+      if (birthDateInput === '') {
+        setWarningBirthDate(true);
+      }
+      if (departmentInput === '') {
+        setWarningDepartment(true);
+      }
+      if (hostpitalInput === '') {
+        setWarningHospital(true);
+      }
+      if (titleInput === '') {
+        setWarningTitle(true);
+      }
+      if (phoneNumInput === '') {
+        setWarningPhone(true);
+      }
+      if (eMailInput === '') {
+        setWarningeMail(true);
+      }
+    }
+  }
 
   return (
-    <div className="admin-doctor-page-main-container">
+    <div className="admin-doctor-create-page-main-container">
       <BackgroundMotion />
       <Navbar isDoctor={false} isPatient={false} isAdmin={true}></Navbar>
       <div className="content-panel">
@@ -272,7 +292,7 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
               <img src={penImg} className="pen-icon" onClick={updateId} style={{ marginLeft: '120px' }} />
               {!disabledId! && <div className='information-update-button' style={{ marginLeft: '150px' }} onClick={pushId}>Düzenle</div>}
               <div className='information-type'>TC Kimlik No</div>
-              <input type="text" className="information-input" id={`${disabledId ? 'disabled' : ''}`} placeholder={data[0].doctorId} value={idInput} onChange={(e) => setIdInput(e.target.value)} disabled={disabledId} />
+              <input type="text" className="information-input" id={`${disabledId ? 'disabled' : ''}`} placeholder={'TC Kimlik No'} value={idInput} onChange={(e) => setIdInput(e.target.value)} disabled={disabledId} />
               {!warningId && <hr />}
               {warningId && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
@@ -280,7 +300,7 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
               <img src={penImg} className="pen-icon" onClick={updateName} style={{ marginLeft: '50px' }} />
               {!disabledName! && <div className='information-update-button' style={{ marginLeft: '80px' }} onClick={pushName}>Düzenle</div>}
               <div className='information-type'>İsim</div>
-              <input type="text" className="information-input" id={`${disabledName ? 'disabled' : ''}`} placeholder={data[0].doctorName} value={nameInput} onChange={(e) => setNameInput(e.target.value)} disabled={disabledName} />
+              <input type="text" className="information-input" id={`${disabledName ? 'disabled' : ''}`} placeholder={'İsim'} value={nameInput} onChange={(e) => setNameInput(e.target.value)} disabled={disabledName} />
               {!warningName && <hr />}
               {warningName && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
@@ -288,7 +308,7 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
               <img src={penImg} className="pen-icon" onClick={updateSurname} style={{ marginLeft: '80px' }} />
               {!disabledSurname! && <div className='information-update-button' style={{ marginLeft: '110px' }} onClick={pushSurname}>Düzenle</div>}
               <div className='information-type'>Soyisim</div>
-              <input type="text" className="information-input" id={`${disabledSurname ? 'disabled' : ''}`} placeholder={data[0].doctorSurName} value={surnameInput} onChange={(e) => setSurnameInput(e.target.value)} disabled={disabledSurname} />
+              <input type="text" className="information-input" id={`${disabledSurname ? 'disabled' : ''}`} placeholder={'Soyisim'} value={surnameInput} onChange={(e) => setSurnameInput(e.target.value)} disabled={disabledSurname} />
               {!warningSurname && <hr />}
               {warningSurname && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
@@ -296,7 +316,7 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
               <img src={penImg} className="pen-icon" onClick={updateBirthDate} style={{ marginLeft: '130px' }} />
               {!disabledBirthDate! && <div className='information-update-button' style={{ marginLeft: '160px' }} onClick={pushBirthDate}>Düzenle</div>}
               <div className='information-type'>Doğum Tarihi</div>
-              <input type="date" className="information-input" id={`${disabledBirthDate ? 'disabled' : ''}`} placeholder={data[0].doctorBirthDate.toLocaleString('tr-TR', turkishDateOptions)} onChange={(e) => setBirthDateInput(e.target.value)} value={birthDateInput} disabled={disabledBirthDate} />
+              <input type="date" className="information-input" id={`${disabledBirthDate ? 'disabled' : ''}`} placeholder={'Doğum Tarihi'} onChange={(e) => setBirthDateInput(e.target.value)} value={birthDateInput} disabled={disabledBirthDate} />
               {!warningBirthDate && <hr />}
               {warningBirthDate && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
@@ -304,7 +324,7 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
               <img src={penImg} className="pen-icon" onClick={updateDepartment} style={{ marginLeft: '110px' }} />
               {!disabledDepartment! && <div className='information-update-button' style={{ marginLeft: '140px' }} onClick={pushDepartment}>Düzenle</div>}
               <div className='information-type'>Departman</div>
-              <input type="text" className="information-input" id={`${disabledDepartment ? 'disabled' : ''}`} placeholder={data[0].doctorDepartment} value={departmentInput} onChange={(e) => setDepartmentInput(e.target.value)} disabled={disabledDepartment} />
+              <input type="text" className="information-input" id={`${disabledDepartment ? 'disabled' : ''}`} placeholder={'Bölüm'} value={departmentInput} onChange={(e) => setDepartmentInput(e.target.value)} disabled={disabledDepartment} />
               {!warningDepartment && <hr />}
               {warningDepartment && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
@@ -312,7 +332,7 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
               <img src={penImg} className="pen-icon" onClick={updateHospital} style={{ marginLeft: '80px' }} />
               {!disabledHospital && <div className='information-update-button' style={{ marginLeft: '110px' }} onClick={pushHospital}>Düzenle</div>}
               <div className='information-type'>Hastane</div>
-              <input type="text" className="information-input" id={`${disabledHospital ? 'disabled' : ''}`} placeholder={data[0].doctorHospital} value={hostpitalInput} onChange={(e) => setHostpitalInput(e.target.value)} disabled={disabledHospital} />
+              <input type="text" className="information-input" id={`${disabledHospital ? 'disabled' : ''}`} placeholder={'Hastane'} value={hostpitalInput} onChange={(e) => setHostpitalInput(e.target.value)} disabled={disabledHospital} />
               {!warningHospital && <hr />}
               {warningHospital && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
@@ -320,7 +340,7 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
               <img src={penImg} className="pen-icon" onClick={updateTitle} style={{ marginLeft: '70px' }} />
               {!disabledTitle && <div className='information-update-button' style={{ marginLeft: '100px' }} onClick={pusheTitle}>Düzenle</div>}
               <div className='information-type'>Ünvan</div>
-              <input type="text" className="information-input" id={`${disabledTitle ? 'disabled' : ''}`} placeholder={data[0].doctorTitle} value={titleInput} onChange={(e) => setTitleInput(e.target.value)} disabled={disabledTitle} />
+              <input type="text" className="information-input" id={`${disabledTitle ? 'disabled' : ''}`} placeholder={'Ünvan'} value={titleInput} onChange={(e) => setTitleInput(e.target.value)} disabled={disabledTitle} />
               {!warningTitle && <hr />}
               {warningTitle && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
@@ -328,7 +348,7 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
               <img src={penImg} className="pen-icon" onClick={updatePhoneNum} style={{ marginLeft: '160px' }} />
               {!disabledPhoneInput && <div className='information-update-button' style={{ marginLeft: '190px' }} onClick={pushPhoneNum}>Düzenle</div>}
               <div className='information-type'>Telefon Numarası</div>
-              <input type="text" className="information-input" id={`${disabledPhoneInput ? 'disabled' : ''}`} placeholder={data[0].doctorPhoneNum} value={phoneNumInput} onChange={(e) => setPhoneNumInput(e.target.value)} disabled={disabledPhoneInput} />
+              <input type="text" className="information-input" id={`${disabledPhoneInput ? 'disabled' : ''}`} placeholder={'Telefon Numarası'} value={phoneNumInput} onChange={(e) => setPhoneNumInput(e.target.value)} disabled={disabledPhoneInput} />
               {!warningPhone && <hr />}
               {warningPhone && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
@@ -336,12 +356,12 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
               <img src={penImg} className="pen-icon" onClick={updateeMail} style={{ marginLeft: '135px' }} />
               {!disabledeMailInput && <div className='information-update-button' style={{ marginLeft: '165px' }} onClick={pusheMail} >Düzenle</div>}
               <div className='information-type'>E-posta Adresi</div>
-              <input type="email" className="information-input" id={`${disabledeMailInput ? 'disabled' : ''}`} placeholder={data[0].doctorEMail} value={eMailInput} onChange={(e) => seteMailInput(e.target.value)} disabled={disabledeMailInput} />
+              <input type="email" className="information-input" id={`${disabledeMailInput ? 'disabled' : ''}`} placeholder={'E-posta Adresi'} value={eMailInput} onChange={(e) => seteMailInput(e.target.value)} disabled={disabledeMailInput} />
               {!warningeMail && <hr />}
               {warningeMail && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
             <div className='elements-buttons'>
-              <Link className='information-button' to="/admin/doctors" style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px', backgroundColor: '#fd9898'}}>Doktoru Sil</Link>
+              <div className='information-button' style={{ width: '160px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px', backgroundColor: '#B1E572'}} onClick={pushDoctor}>Doktoru Oluştur</div>
               <Link className='information-button' to="/admin/doctors" style={{ width: '130px', marginBlockStart: '20px', marginRight: '20px' }}>Geri Dön</Link>
             </div>
           </div>
@@ -351,4 +371,4 @@ const AdminDoctorsPage: React.FC<AdminDoctorsPageProps> = () => {
   );
 };
 
-export default AdminDoctorsPage;
+export default AdminDoctorsCreatePage;

@@ -93,7 +93,8 @@ const AdminPage: React.FC<AdminPageProps> = () => {
                         ))}
                     </div>
                     <div className='elements-buttons'>
-                        <div className='information-button' style={{ width: '200px', marginBlockStart: '20px' }} onClick={loadMoreItems}>Daha Fazla Sonuç Göster</div>
+                        <div className='information-button' style={{ width: '200px', marginLeft:'38%', marginBlockStart: '20px' }} onClick={loadMoreItems}>Daha Fazla Sonuç Göster</div>
+                        <Link className='information-button' to="/admin/doctors/create" style={{ width: '160px', marginLeft:'auto', marginBlockStart: '20px', marginRight: '20px' }}>Yeni Kayıt Oluştur</Link>
                     </div>
                 </div>
             </Reveal>
