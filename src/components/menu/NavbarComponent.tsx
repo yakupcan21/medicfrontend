@@ -66,10 +66,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                         <div id="navbar-white-bar" >
                             {!isAdmin && (
                                 <>
-                                    <Link to="/doctors" className="navbar-soft"><div>Doktorlar</div></Link>
-                                    <Link to="/depatments" className="navbar-soft"><div>Birimler</div></Link>
-                                    <Link to="/diseases" className="navbar-soft"><div>Hastalıklardan Nasıl Korunulur?</div></Link>
-                                    <Link to="/artificialintelligence" className="navbar-soft"><div>Yapay Zeka ve Akciğer Hastalıkları</div></Link>
+                                    <Link to={isDoctor === true ? "/doctor/diseases" : "/patient/diseases"} className="navbar-soft"><div>Hastalıklardan Nasıl Korunulur?</div></Link>
                                 </>
                             )}
                             {isAdmin && (
@@ -90,7 +87,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                                 <>
                                     <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
                                     <div>Buğra Burak Başer</div>
-                                    <Link to="/profile" className="navbar-soft"><div id="navbar-link">Profili Düzenle</div></Link>
+                                    <Link to={isDoctor === true ? "/doctor/profile" : "/patient/profile"} className="navbar-soft"><div id="navbar-link">Profili Düzenle</div></Link>
                                     <div id="navbar-avatar-buttons">
                                         <div className="navbar-button" id="navbar-logout"><Link to="/" className="navbar-soft">Çıkış Yap</Link></div>
                                         <div className="navbar-button" id="navbar-return" onClick={toggleAvatar}>Geri Dön</div>
@@ -101,7 +98,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                                 <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
                                 <div>Admin</div>
                                 <div id="navbar-avatar-buttons">
-                                    <div className="navbar-button" id="navbar-logout"><Link to="/admin/login" className="navbar-soft">Çıkış Yap</Link></div>
+                                    <div className="navbar-button" id="navbar-logout"> <Link to="/admin/login" className="navbar-soft">Çıkış Yap</Link></div>
                                     <div className="navbar-button" id="navbar-return" onClick={toggleAvatar}>Geri Dön</div>
                                 </div>
                             </>)}

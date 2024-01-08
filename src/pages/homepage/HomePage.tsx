@@ -6,7 +6,7 @@ import Profile from "../../components/ProfileComponent.tsx";
 
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 
-interface AboutPageProps { 
+interface AboutPageProps {
     isDoctor: boolean;
     isPatient: boolean;
     isAdmin: boolean;
@@ -28,29 +28,38 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
                 <Reveal>
                     <div className="article-content" v-if="shouldShowArticle">
                         <div>
-                            <h1>Akciğer Sağlığı ve Bakımı</h1>
+                            <h1>Akciğer Sağlığı ve Bakımı: Önemli Bilgiler ve İpuçları</h1>
                             <p>
-                                Akciğerler, solunum sistemimizin önemli bir parçasıdır. Bu hayati organlar, vücudumuza oksijen alımını sağlar
-                                ve karbon dioksit gibi atık maddelerin dışarı atılmasına yardımcı olur. Akciğer sağlığına dikkat etmek, genel
-                                sağlığımızı korumak için kritik bir öneme sahiptir.
+                                Akciğerler, solunum sistemimizin kilit parçalarından biridir ve sağlıklı bir yaşam için önemli bir rol oynarlar. Bu önemli
+                                organların doğru bakımı ve korunması, genel sağlığımızı etkileyen kritik bir unsurdur. İşte akciğer sağlığınızı korumanın ve
+                                bakımının anahtar noktaları:
                             </p>
                             <h2>Akciğer Sağlığınızı Korumanın Yolları</h2>
                             <p>
-                                <strong>1. Temiz Hava:</strong> Temiz hava solumak, akciğer sağlığı için önemlidir. Dışarıda zaman geçirmek ve
-                                kirli iç hava ortamlarından kaçınmak akciğerlerinizi korur.
+                                <strong>1. Temiz Hava:</strong> Akciğer sağlığı için temiz hava solumak çok önemlidir. Dışarıda zaman geçirmek, doğal ve
+                                temiz havayı soluyarak akciğerlerinizi temizler. İç mekanlarda da havanın kalitesine dikkat etmek, tütün dumanı ve diğer
+                                kirleticilerden kaçınmak akciğerlerinizi korur.
                             </p>
                             <p>
-                                <strong>2. Düzenli Egzersiz:</strong> Egzersiz yapmak, akciğer fonksiyonlarını artırabilir. Düzenli yürüyüş,
-                                koşu veya egzersiz programları, akciğer sağlığını destekler.
+                                <strong>2. Düzenli Egzersiz:</strong> Fiziksel aktivite, akciğer fonksiyonlarını artırabilir. Düzenli yürüyüş, koşu,
+                                yüzme veya egzersiz programları, akciğer sağlığını destekler. Solunum yollarını güçlendirerek akciğer kapasitesini
+                                artırmak için egzersiz yapmak önemlidir.
                             </p>
                             <p>
-                                <strong>3. Sigara İçmemek:</strong> Sigara içmek, akciğer hastalıklarına yol açabilir. Sigara içiyorsanız, bir
-                                an önce bırakmak sağlığınız için önemlidir.
+                                <strong>3. Sigara İçmemek:</strong> Sigara içmek, akciğer sağlığını ciddi şekilde tehdit eder. Sigara içenlerde
+                                akciğer kanseri, KOAH ve diğer solunum problemleri riski önemli ölçüde artar. Eğer sigara içiyorsanız, bir an önce
+                                bırakmak, akciğer sağlığınızı korumanın en etkili yollarından biridir.
                             </p>
                             <h2>Akciğer İle İlgili Hastalıklar</h2>
                             <p>
-                                Akciğerler, bir dizi hastalığa duyarlıdır. Astım, KOAH ve zatürre gibi durumlar akciğer sağlığını olumsuz
-                                etkileyebilir. Belirtileri fark ettiğinizde bir sağlık profesyoneli ile görüşmek önemlidir.
+                                Akciğerler, çeşitli hastalıklara karşı hassas olabilir. Bu hastalıklar arasında yer alan astım,
+                                KOAH (Kronik Obstrüktif Akciğer Hastalığı), zatürre gibi durumlar, akciğer sağlığını olumsuz etkileyebilir.
+                                Belirtileri fark ettiğinizde, bir sağlık profesyoneli ile görüşmek önemlidir. Erken teşhis ve tedavi, bu tür
+                                hastalıkların etkilerini azaltmada önemli bir rol oynar.
+                            </p>
+                            <p>
+                                Akciğer sağlığına verilen önem, genel sağlığımızın temelini oluşturur. Yukarıdaki önlemleri alarak ve düzenli
+                                sağlık kontrolleri yaptırarak, uzun vadeli akciğer sağlığınızı koruyabilir ve yaşam kalitenizi artırabilirsiniz.
                             </p>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ import ReportsCreatePage from "../pages/reportscreatepage/ReportsCreatePage"
 import AdminPage from "../pages/adminpage/AdminPage"
 import AdminLoginPage from "../pages/adminloginpage/AdminLoginPage"
 import AdminDoctorsPage from "../pages/admindoctorspage/AdminDoctorsPage"
+import DiseasePage from "../pages/diseasepage/DiseasePage"
 
 export const router = createBrowserRouter([
     { path: "", element: <LoginPage /> },
@@ -26,6 +27,8 @@ export const router = createBrowserRouter([
     { path: "patient/reports/:id", element: <ReportsViewPage isDoctor={false} isPatient={true} isAdmin={false} /> },
     { path: "doctor/reports/:id", element: <ReportsViewPage isDoctor={true} isPatient={false} isAdmin={false} /> },
     { path: "doctor/reports/create", element: <ReportsCreatePage isDoctor={true} isPatient={false} isAdmin={false} /> },
+    { path: "doctor/diseases", element: <DiseasePage isDoctor={true} isPatient={false} isAdmin={false} /> },
+    { path: "patient/diseases", element: <DiseasePage isDoctor={false} isPatient={true} isAdmin={false} /> },
     { path: "admin/login", element: <AdminLoginPage /> },
     { path: "admin/", element: <AdminPage /> },
     { path: "admin/doctors", element: <AdminPage /> },

@@ -19,7 +19,7 @@ interface ReportsCreatePageProps {
     isPatient: boolean;
     isAdmin: boolean;
 }
-    
+
 import plug1Img from '../../assets/plug1.png';
 import plug2Img from '../../assets/plug2.png';
 import plug3Img from '../../assets/plug3.png';
@@ -29,6 +29,7 @@ import { Reveal } from "../../components/Reveal.tsx";
 const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
     const { isDoctor, isPatient, isAdmin } = props;
 
+    const [content, setContent] = useState<string>(''); // Yazı içeriğini tutan state
     const [isReportMenu, setIsReportMenu] = useState(false);
     const [indexOfActivePicture, setIndexOfActivePicture] = useState(0);
     const [activePicture, setActivePicture] = useState<string>(plug1Img);
@@ -60,6 +61,10 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
         setSelectedDate(event.target.value);
     };
     const today = new Date().toISOString().split("T")[0];
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setContent(e.target.value);
+    };
 
     const options: Intl.DateTimeFormatOptions = {
         year: 'numeric',
@@ -126,8 +131,8 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
                                             <hr />
                                             <div className='information-type'>Hasta Adı Soyadı</div>
                                             <div className="dubbled-container">
-                                                <input type="text" className='information-input' value={inputPatientName} onChange={(e) => setInputPatientName(e.target.value)}  placeholder="Ad:" required />
-                                                <input type="text" className='information-input' value={inputPatientSurName} onChange={(e) => setInputPatientSurName(e.target.value)}  placeholder="Soyad:" required />
+                                                <input type="text" className='information-input' value={inputPatientName} onChange={(e) => setInputPatientName(e.target.value)} placeholder="Ad:" required />
+                                                <input type="text" className='information-input' value={inputPatientSurName} onChange={(e) => setInputPatientSurName(e.target.value)} placeholder="Soyad:" required />
                                             </div>
                                             <div className="dubbled-container">
                                                 <hr style={{ width: '100%', marginRight: '5px' }} />
@@ -141,7 +146,7 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
                                     </div>
                                 </div>
                                 <div className='elements-buttons'>
-                                    <Link to={isDoctor === true ? '/doctor/reports' : '/patient/reports'}  className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Geri Dön</Link>
+                                    <Link to={isDoctor === true ? '/doctor/reports' : '/patient/reports'} className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }}>Geri Dön</Link>
                                 </div>
                             </div>
                         }
@@ -178,7 +183,12 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
 
                                     </div>
                                     <div className='report-text-container'>
-                                        <input className="information-input" style={{ backgroundColor: "inherit!important", height: '100%' }}></input>
+                                        <textarea
+                                            className="blog-input-textarea"
+                                            value={content}
+                                            onChange={handleInputChange}
+                                            placeholder="Buraya yazmaya başlayın..."
+                                        />
                                     </div>
                                 </div>
                                 <div className='elements-buttons'>
