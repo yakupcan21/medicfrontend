@@ -51,9 +51,9 @@ const ProfilePage: React.FC<ProfilePageProps> = (props) => {
     if (eMailInput != '' && emailRegex.test(eMailInput)) {
       setProfileEMail(eMailInput);
       setWarningeMail(false);
-      setDisabledPhoneInput(true);
+      setDisabledeMailInput(true);
       seteMailInput('');
-    } else if (eMailInput != '' && !emailRegex.test(phoneNumInput)) {
+    } else if (eMailInput != '' && !emailRegex.test(eMailInput)) {
       setWarningeMail(true);
     } else if (eMailInput == '') {
       setWarningeMail(false);

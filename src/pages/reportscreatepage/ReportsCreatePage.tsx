@@ -29,7 +29,7 @@ import { Reveal } from "../../components/Reveal.tsx";
 const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
     const { isDoctor, isPatient, isAdmin } = props;
 
-    const [content, setContent] = useState<string>(''); // Yazı içeriğini tutan state
+    const [content, setContent] = useState<string>('');
     const [isReportMenu, setIsReportMenu] = useState(false);
     const [indexOfActivePicture, setIndexOfActivePicture] = useState(0);
     const [activePicture, setActivePicture] = useState<string>(plug1Img);
