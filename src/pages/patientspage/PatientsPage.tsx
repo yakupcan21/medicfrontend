@@ -19,7 +19,7 @@ interface PatientsPageProps {
   isAdmin: boolean;
 }
 
-const PatientsPage: React.FC<PatientsPageProps> = (props) => {
+ const PatientsPage: React.FC<PatientsPageProps> = (props) => {
   const { isDoctor, isPatient, isAdmin } = props;
   const [visibleItems, setVisibleItems] = useState(10);
 

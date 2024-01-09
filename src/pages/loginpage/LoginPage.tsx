@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import "./LoginPage.scss"; // Make sure to adjust the path accordingly
 import img from "../../assets/resim.png";
 import videoSource from "../../assets/plug.mp4";
-
+import axios, { AxiosResponse } from 'axios';
 interface LoginPageProps { 
     
 }
@@ -49,6 +49,36 @@ const LoginPage: React.FC<LoginPageProps> = () => {
         setIsFocused(false);
     };
 
+    const postData = async () => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:8081/patients/createPatient',
+            headers: {},
+            data: {
+                name: newNameInput,
+            }
+        }).then((res: AxiosResponse) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+
+const handleRegister = () => {
+    console.log("New Patient Data:", {
+        id: newIdInput,
+        name: newNameInput,
+        surname: newSurnameInput,
+        dateOfBirth: newDateInput,
+        phoneNumber: newPhoneNumInput,
+        password: newPassWordInput,
+    });
+    
+    
+    postData();
+    
+};
     return (
         <div className="login-page-main-container">
             <div className="displayed-container">
@@ -105,7 +135,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button className="yeni-kayıt" >
+                            <button className="yeni-kayıt" onClick={handleRegister}>
                                 Kayıt Ol
                             </button>
                             <br />
