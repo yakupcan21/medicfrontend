@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, {  useState } from "react";
 import './ReportsCreatePage.scss';
 import Navbar from "../../components/menu/NavbarComponent.tsx";
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
-import axios from "axios";
 import { Link } from 'react-router-dom';
+
+
+
 
 interface ListItem {
     date: Date;
@@ -20,10 +22,7 @@ interface ReportsCreatePageProps {
     isAdmin: boolean;
 }
 
-import plug1Img from '../../assets/plug1.png';
-import plug2Img from '../../assets/plug2.png';
-import plug3Img from '../../assets/plug3.png';
-import plug4Img from '../../assets/plug4.png';
+
 import { Reveal } from "../../components/Reveal.tsx";
 
 const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
@@ -31,9 +30,8 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
 
     const [content, setContent] = useState<string>('');
     const [isReportMenu, setIsReportMenu] = useState(false);
-    const [indexOfActivePicture, setIndexOfActivePicture] = useState(0);
-    const [activePicture, setActivePicture] = useState<string>(plug1Img);
-    const pictures = [plug1Img, plug2Img, plug3Img, plug4Img];
+
+
     const [selectedDate, setSelectedDate] = useState('');
     const [inputPatientId, setInputPatientId] = useState('');
     const [inputPatientName, setInputPatientName] = useState('');
@@ -43,19 +41,29 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
         { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58', patientName: 'Ahmer Ergül', reportText: 'Buraya Rapor Metni Gelecek' },
     ];
 
-    const changeActivePicture = (index: number) => {
-        setActivePicture(pictures[index]);
-        setIndexOfActivePicture(index);
-    };
 
-    const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+   
+    const [selectedImages, setSelectedImages] = useState<string[]>([]);
+    const [activePictureIndex, setActivePictureIndex] = useState<number>(0);
+
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
 
         if (files && files.length > 0) {
-            // Dosya yükleme işlemleri burada gerçekleştirilebilir.
-            // Örneğin, Axios kullanarak bir API'ye dosyaları gönderebilirsiniz.
+            const newSelectedImages = Array.from(files).map(file => URL.createObjectURL(file));
+            setSelectedImages(prevImages => [...prevImages, ...newSelectedImages]);
+
+            if (selectedImages.length === 0) {
+                setActivePictureIndex(0); // Set the active index only if it's the first selection
+            }
         }
     };
+
+    const changeActivePicture = (index: number) => {
+        setActivePictureIndex(index);
+    };
+
+ 
 
     const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedDate(event.target.value);
@@ -108,14 +116,14 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
                                             </div>
                                         </form>
                                         <div className="report-picture">
-                                            <img src={activePicture} alt="Active Picture" />
+                                            {selectedImages.length > 0 && <img src={selectedImages[activePictureIndex]} alt="Active Picture" />}
                                             <div className="report-pictures">
-                                                {pictures.map((picture, index) => (
+                                                {selectedImages.map((imageUrl, index) => (
                                                     <div key={index}>
                                                         <img
-                                                            src={picture}
+                                                            src={imageUrl}
                                                             onMouseOver={() => changeActivePicture(index)}
-                                                            className={index === indexOfActivePicture ? 'active' : ''}
+                                                            className={index === activePictureIndex ? 'active' : ''}
                                                             alt={`Picture ${index}`}
                                                         />
                                                     </div>
@@ -166,14 +174,14 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
                                 <div className='report-display'>
                                     <div className='report-picture-container'>
                                         <div className="report-picture">
-                                            <img src={activePicture} alt="Active Picture" />
+                                        {selectedImages.length > 0 && <img src={selectedImages[activePictureIndex]} alt="Active Picture" />}
                                             <div className="report-pictures">
-                                                {pictures.map((picture, index) => (
+                                                 {selectedImages.map((imageUrl, index) => (
                                                     <div key={index}>
                                                         <img
-                                                            src={picture}
+                                                            src={imageUrl}
                                                             onMouseOver={() => changeActivePicture(index)}
-                                                            className={index === indexOfActivePicture ? 'active' : ''}
+                                                            className={index === activePictureIndex ? 'active' : ''}
                                                             alt={`Picture ${index}`}
                                                         />
                                                     </div>
@@ -191,8 +199,10 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
                                         />
                                     </div>
                                 </div>
+                                
                                 <div className='elements-buttons'>
-                                    <div className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }} onClick={toggleReportMenu}>Geri Dön</div>
+                                    <div className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px', backgroundColor: '#B1E572' }} onClick={toggleReportMenu}>Oluştur</div>
+                                    <div className='information-button' style={{ width: '130px', marginBlockStart: '20px', marginRight: '20px' }} onClick={toggleReportMenu}>Geri Dön</div>
                                 </div>
                             </div>
                         }

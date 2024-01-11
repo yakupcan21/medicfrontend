@@ -8,7 +8,7 @@ import { RouterProvider } from "react-router-dom"
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
-)
+);
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
