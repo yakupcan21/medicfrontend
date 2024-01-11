@@ -9,7 +9,40 @@ import './menu/NavbarComponent.scss';
 import './ProfileComponent.scss';
 
 import { PopUp } from './PopUp';
+import axios from 'axios';
 
+interface Doctor {
+    docId: number;
+    docName: string;
+    docSurname: string;
+    docDateOfBirth: string;
+    docPhoneNo: string;
+    docEmail: string;
+    docPassword: string;
+    docAge: number;
+    docHeight: number;
+    docWeight: number;
+    docBmi: number;
+    docTitle: string;
+    docDepartment: string;
+    docHospital: string;
+  }
+  
+  interface Patient {
+    patientId: number;
+    patientName: string;
+    patientSurname: string;
+    patientDateOfBirth: string;
+    patientPhoneNo: string;
+    patientEmail: string;
+    patientAge: number;
+    patientHeight: number;
+    patientWeight: number;
+    patientBmi: number;
+    reportCount: number;
+    reportLastVisit: string;
+  }
+  
 
 interface NavbarComponentProps {
     isDoctor: boolean;
@@ -34,6 +67,25 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
     const [profileWeight, setProfileWeight] = useState<string>("92");
     const [profileHeight, setProfileHeight] = useState<string>("183");
     const [profileBodyMassIndex, setProfileBodyMassIndex] = useState<string>("27.47");
+
+    const [data, setData] = useState<Patient[] | null>();
+    const [data2, setData2] = useState<Doctor | null>();
+    const PatientIdInput = 258754948;
+    const DoctorIdInput = 258754948;
+  
+    useEffect(() => {
+      axios.get(`http://localhost:8081/patients/patient/${PatientIdInput}`).then((response) => {
+        setData(response.data)
+        console.log(response.data);
+      });
+    }, [])
+  
+    useEffect(() => {
+      axios.get(`http://localhost:8081/doctors/doctor/${DoctorIdInput}`).then((response) => {
+        setData2(response.data)
+        console.log(response.data);
+      });
+    }, [])
 
     const bmiPopUpToggle = () => {
         setBmiOpen(!bmiOpen);
@@ -107,22 +159,22 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
                 <div className='profile'>
                     <div id='profile-component'>
                         <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
-                        <div className='header'>{profileTitle} {profileName}</div>
-                        <div className='soft' id='department'>{profileDepartment}</div>
-                        <div className='soft' id='hospital'>{profileHospital}</div>
+                        <div className='header'>{data2?.docTitle} {data2?.docName} {data2?.docSurname}</div>
+                        <div className='soft' id='department'>{data2?.docDepartment}</div>
+                        <div className='soft' id='hospital'>{data2?.docHospital}</div>
                         <tr>
                             <td>
-                                <div className='bold'>{profileAge}</div>
+                                <div className='bold'>{data2?.docAge}</div>
                                 <div className='soft'>Yaş</div>
                             </td>
                         </tr>
                         <tr>
                             <td id='rows'>
-                                <div className='bold'>{profileWeight} kg</div>
+                                <div className='bold'>{data2?.docWeight} kg</div>
                                 <div className='soft'>Kilo</div>
                             </td>
                             <td id='rows'>
-                                <div className='bold'>{profileHeight} cm</div>
+                                <div className='bold'>{data2?.docHeight} cm</div>
                                 <div className='soft'>Boy</div>
                             </td>
                         </tr>
@@ -169,20 +221,20 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
                 <div className='profile'>
                     <div id='profile-component'>
                         <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
-                        <div className='header'>{profileName}</div>
+                        <div className='header'>{data?.[0].patientName} {data?.[0].patientSurname}</div>
                         <tr>
                             <td>
-                                <div className='bold'>{profileAge}</div>
+                                <div className='bold'>{data?.[0].patientAge}</div>
                                 <div className='soft'>Yaş</div>
                             </td>
                         </tr>
                         <tr>
                             <td id='rows'>
-                                <div className='bold'>{profileWeight} kg</div>
+                                <div className='bold'>{data?.[0].patientWeight} kg</div>
                                 <div className='soft'>Kilo</div>
                             </td>
                             <td id='rows'>
-                                <div className='bold'>{profileHeight} cm</div>
+                                <div className='bold'>{data?.[0].patientHeight} cm</div>
                                 <div className='soft'>Boy</div>
                             </td>
                         </tr>
