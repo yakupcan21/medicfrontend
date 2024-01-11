@@ -247,7 +247,7 @@ const AdminDoctorsCreatePage: React.FC<AdminDoctorsCreatePageProps> = () => {
   };
 
   const pushDoctor = () => {
-    if (idInput != '' || nameInput != '' || surnameInput != '' || birthDateInput != '' || departmentInput != '' || hostpitalInput != '' || titleInput != '' || phoneNumInput != '' || eMailInput != '') {
+    if (idInput != '' && nameInput != '' && surnameInput != '' && birthDateInput != '' && departmentInput != '' && hostpitalInput != '' && titleInput != '' && phoneNumInput != '' && eMailInput != '') {
       // push doctor
     } else{
       if (idInput === '') {

@@ -192,7 +192,8 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
                                     </div>
                                 </div>
                                 <div className='elements-buttons'>
-                                    <div className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px' }} onClick={toggleReportMenu}>Geri Dön</div>
+                                    <div className='information-button' style={{ width: '130px', marginLeft: 'auto', marginBlockStart: '20px', marginRight: '20px', backgroundColor: '#B1E572' }} onClick={toggleReportMenu}>Oluştur</div>
+                                    <div className='information-button' style={{ width: '130px', marginBlockStart: '20px', marginRight: '20px' }} onClick={toggleReportMenu}>Geri Dön</div>
                                 </div>
                             </div>
                         }

@@ -1,9 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './NavbarComponent.scss';  // Stil dosyasını ekleyin
 import questionImg from '../../assets/questionImg.png';
 import peopleFill from '../../assets/peopleFill.png';
 import { SideSlide } from "../SideSlide";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+interface Doctor {
+    docId: number;
+    docName: string;
+    docSurname: string;
+    docDateOfBirth: string;
+    docPhoneNo: string;
+    docEmail: string;
+    docPassword: string;
+    docAge: number;
+    docHeight: number;
+    docWeight: number;
+    docBmi: number;
+    docTitle: string;
+    docDepartment: string;
+    docHospital: string;
+  }
+  
+  interface Patient {
+    patientId: number;
+    patientName: string;
+    patientSurname: string;
+    patientDateOfBirth: string;
+    patientPhoneNo: string;
+    patientEmail: string;
+    patientAge: number;
+    patientHeight: number;
+    patientWeight: number;
+    patientBmi: number;
+    reportCount: number;
+    reportLastVisit: string;
+  }
+  
 
 interface NavbarComponentProps {
     isDoctor: boolean;
@@ -25,7 +59,24 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
         setAvatarOpen(!isAvatarOpen);
     };
 
-
+    const [data, setData] = useState<Patient[] | null>();
+    const [data2, setData2] = useState<Doctor | null>();
+    const PatientIdInput = 258754948;
+    const DoctorIdInput = 258754948;
+  
+    useEffect(() => {
+      axios.get(`http://localhost:8081/patients/patient/${PatientIdInput}`).then((response) => {
+        setData(response.data)
+        console.log(response.data);
+      });
+    }, [])
+  
+    useEffect(() => {
+      axios.get(`http://localhost:8081/doctors/doctor/${DoctorIdInput}`).then((response) => {
+        setData2(response.data)
+        console.log(response.data);
+      });
+    }, [])
 
     return (
         <div className='navbar-parent-element'>
@@ -86,7 +137,14 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                             {!isAdmin && (
                                 <>
                                     <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
-                                    <div>Buğra Burak Başer</div>
+                                    {isDoctor && <>
+                                        <div>{data2?.docTitle} {data2?.docName} {data2?.docSurname}</div>
+                                        <div>{data2?.docEmail}</div>
+                                    </>}
+                                    {isPatient && <>
+                                        <div>{data?.[0].patientName} {data?.[0].patientSurname} </div>
+                                        <div>{data?.[0].patientEmail}</div>
+                                    </>}
                                     <Link to={isDoctor === true ? "/doctor/profile" : "/patient/profile"} className="navbar-soft"><div id="navbar-link">Profili Düzenle</div></Link>
                                     <div id="navbar-avatar-buttons">
                                         <div className="navbar-button" id="navbar-logout"><Link to="/" className="navbar-soft">Çıkış Yap</Link></div>

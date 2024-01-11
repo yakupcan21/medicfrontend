@@ -1,18 +1,28 @@
 // DoctorView.tsx
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ReportsViewPage.scss';
 import Navbar from "../../components/menu/NavbarComponent.tsx";
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 
 
-interface ListItem {
-    date: Date;
-    reportId: string;
-    doctorName: string;
-    patientId: string;
+interface Patient {
+    patientId: number;
     patientName: string;
-    reportText: string;
+    patientSurname: string;
+    patientDateOfBirth: string;
+    patientPhoneNo: string;
+}
+
+interface Report {
+    findings: string;
+}
+
+interface ListItem {
+    rapDate: string;
+    rapNum: number;
+    doctorName: string;
+    patient: Patient;
 }
 
 
@@ -22,8 +32,7 @@ interface ReportsViewPageProps {
     isAdmin: boolean;
 }
 
-import resimImg from '../../assets/resim.png'
-import personImg from '../../assets/person.png';
+
 import plug1Img from '../../assets/plug1.png';
 import plug2Img from '../../assets/plug2.png';
 import plug3Img from '../../assets/plug3.png';
@@ -31,18 +40,33 @@ import plug4Img from '../../assets/plug4.png';
 import sortImg from '../../assets/sortImg.png';
 import { Link } from 'react-router-dom';
 import { Reveal } from '../../components/Reveal.tsx';
+import axios from 'axios';
 
 const ReportsViewPage: React.FC<ReportsViewPageProps> = (props) => {
     const { isDoctor, isPatient, isAdmin } = props;
-
+    const PatientIdInput = 258754948;
     const [indexOfActivePicture, setIndexOfActivePicture] = useState(0);
     const [activePicture, setActivePicture] = useState<string>(plug1Img);
     const pictures = [plug1Img, plug2Img, plug3Img, plug4Img];
+    const [data, setData] = useState<ListItem[] | null>();
+    const [report, setReport] = useState<Report[] | null>();
 
-    const data: ListItem[] = [
-        { date: new Date('2023-01-01'), reportId: '987654321', doctorName: 'Prof. Dr. Buğra Burak Başer', patientId: '25*******58', patientName: 'Ahmer Ergül', reportText: 'Buraya Rapor Metni Gelecek' },
-    ];
-    const turkishDateOptions = { year: 'numeric', month: 'numeric', day: 'numeric', timeZone: 'Europe/Istanbul' };
+    useEffect(() => {
+        axios.get(`http://localhost:8081/reports/reportsByPatient/${PatientIdInput}`).then((response) => {
+            setData(response.data)
+            console.log(response.data);
+        });
+
+    }, [])
+
+useEffect(() => {
+    if (data && data.length > 0) {
+        axios.get(`http://localhost:8081/createReport/createReportsByRapNum/${data[0].rapNum}`).then((response) => {
+            setReport(response.data)
+            console.log(response.data);
+        });
+    }
+}, [data])
 
     const changeActivePicture = (index: number) => {
         setActivePicture(pictures[index]);
@@ -63,14 +87,14 @@ const ReportsViewPage: React.FC<ReportsViewPageProps> = (props) => {
                             <div className='information-heading' style={{ flex: '2', minWidth: '100px' }}>Hasta İsmi <img src={sortImg} className="sort-icon"></img></div>
                         </div>
                         <div className='elements-container'>
-                            {data.slice(0, 1).map((item, index) => (
+                            {data && data.slice(0, 1).map((item, index) => (
                                 <div key={index}>
                                     <div className='information-rows'>
-                                        <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.date.toLocaleString('tr-TR', turkishDateOptions)}</div>
-                                        <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.reportId}</div>
+                                        <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.rapDate}</div>
+                                        <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.rapNum}</div>
                                         <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.doctorName}</div>
-                                        <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.patientId}</div>
-                                        <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.patientName}</div>
+                                        <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.patient.patientId}</div>
+                                        <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.patient.patientName} {item.patient.patientSurname}</div>
 
                                     </div>
                                 </div>
@@ -95,9 +119,9 @@ const ReportsViewPage: React.FC<ReportsViewPageProps> = (props) => {
 
                                 </div>
                                 <div className='report-text-container'>
-                                    {data.slice(0, 1).map((item, index) => (
+                                    {report && report.slice(0, 1).map((item, index) => (
                                         <div key={index}>
-                                            <div>{item.reportText}</div>
+                                            <div></div>
                                         </div>
                                     ))}
                                 </div>
