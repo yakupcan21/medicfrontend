@@ -4,18 +4,28 @@ import "../../components/BackgroundMotion.scss";
 
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 import Navbar from "../../components/menu/NavbarComponent.tsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sortImg from '../../assets/sortImg.png';
+import axios from "axios";
 
 interface ListItem {
-    doctorTitle: string;
-    doctorName: string;
-    doctorId: string;
-    doctorDepartment: string;
-    doctorHospital: string;
-    doctorUserId: string;
-}
+    docId: number;
+    docName: string;
+    docSurname: string;
+    docDateOfBirth: string;
+    docPhoneNo: string;
+    docEmail: string;
+    docPassword: string;
+    docAge: number;
+    docHeight: number;
+    docWeight: number;
+    docBmi: number;
+    docTitle: string;
+    docDepartment: string;
+    docHospital: string;
+  }
+  
 
 interface AdminPageProps {
 }
@@ -23,34 +33,14 @@ interface AdminPageProps {
 const AdminPage: React.FC<AdminPageProps> = () => {
     const [visibleItems, setVisibleItems] = useState(10);
 
-    const data: ListItem[] = [
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
-        {doctorTitle: 'Prof. Dr.', doctorName: 'Buğra Burak Başer', doctorId: '25*******58', doctorDepartment: 'Göğüs Hastalıkları', doctorHospital: 'Gazi Üniversitesi Tıp Fakültesi Hastanesi', doctorUserId: '987654321'},
+    const [data, setData] = useState<ListItem[] | null>();
 
-
-        // Add more items as needed
-    ];
+    useEffect(() => {
+      axios.get('http://localhost:8081/admin/seeAllDoctors').then((response) => {
+        setData(response.data)
+        console.log(response.data);
+      });
+    }, [])
 
 
 
@@ -73,20 +63,20 @@ const AdminPage: React.FC<AdminPageProps> = () => {
                     <div className='upper-bar-container'>
                         <div className='information-heading' style={{ flex: '2', minWidth: '100px', }}>Doktor İsmi <img src={sortImg} className="sort-icon"></img></div>
                         <div className='information-heading' style={{ flex: '1', minWidth: '50px' }}>Doktor TC No <img src={sortImg} className="sort-icon"></img></div>
-                        <div className='information-heading' style={{ flex: '1', minWidth: '50px' }}>Bölüm<img src={sortImg} className="sort-icon"></img></div>
+                        <div className='information-heading' style={{ flex: '2', minWidth: '100px' }}>Bölüm<img src={sortImg} className="sort-icon"></img></div>
                         <div className='information-heading' style={{ flex: '2', minWidth: '100px' }}>Hastane <img src={sortImg} className="sort-icon"></img></div>
                         <div className='information-heading' style={{ flex: '1', minWidth: '100px', boxShadow: 'none' }}></div>
                     </div>
                     <div className='elements-container'>
-                        {data.slice(0, visibleItems).map((item, index) => (
+                        {data && data.slice(0, visibleItems).map((item, index) => (
                             <div key={index}>
                                 <div className='information-rows'>
-                                    <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.doctorTitle} {item.doctorName}</div>
-                                    <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.doctorId}</div>
-                                    <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.doctorDepartment}</div>
-                                    <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.doctorHospital}</div>
+                                    <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.docTitle} {item.docName} {item.docSurname}</div>
+                                    <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.docId}</div>
+                                    <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.docDepartment}</div>
+                                    <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.docHospital}</div>
                                     <div className='information-items' style={{ flex: '1', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>
-                                        <Link to={`/admin/doctors/${item.doctorUserId}`} className='information-button' style={{ width: '100%' }}>Görüntüle</Link>
+                                        <Link to={`/admin/doctors/${item.docId}`} className='information-button' style={{ width: '100%' }}>Görüntüle</Link>
                                     </div>
                                 </div>
                             </div>

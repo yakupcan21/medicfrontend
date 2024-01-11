@@ -47,210 +47,19 @@ const AdminDoctorsCreatePage: React.FC<AdminDoctorsCreatePageProps> = () => {
   const [warningTitle, setWarningTitle] = useState(false);
   const [warningPhone, setWarningPhone] = useState(false);
   const [warningeMail, setWarningeMail] = useState(false);
-  const [disabledId, setDisabledId] = useState(true);
-  const [disabledName, setDisabledName] = useState(true);
-  const [disabledSurname, setDisabledSurname] = useState(true);
-  const [disabledBirthDate, setDisabledBirthDate] = useState(true);
-  const [disabledDepartment, setDisabledDepartment] = useState(true);
-  const [disabledHospital, setDisabledHospital] = useState(true);
-  const [disabledTitle, setDisabledTitle] = useState(true);
-  const [disabledPhoneInput, setDisabledPhoneInput] = useState(true);
-  const [disabledeMailInput, setDisabledeMailInput] = useState(true);
 
-  const turkishDateOptions = { year: 'numeric', month: 'numeric', day: 'numeric', timeZone: 'Europe/Istanbul' };
-
-  //***********************************************************ID*********************************************************************
-  const updateId = () => {
-    setDisabledId(!disabledId);
-    setWarningId(false);
-    setIdInput('');
-  };
-
-  const pushId = () => {
-    const idRegex = /^\d+$/;
-
-    if (idInput !== '' && idRegex.test(idInput)) {
-      // push id
-      setWarningId(false);
-      setDisabledId(true);
-      setIdInput('');
-    } else if (idInput !== '' && !idRegex.test(idInput)) {
-      setWarningId(true);
-    } else if (idInput === '') {
-      setWarningId(false);
-      setDisabledId(true);
-    }
-  };
-
-  //***********************************************************NAME*********************************************************************
-  const updateName = () => {
-    setDisabledName(!disabledName);
-    setWarningName(false);
-    setNameInput('');
-  };
-
-  const pushName = () => {
-    if (nameInput !== '') {
-      // push name
-      setWarningName(false);
-      setDisabledName(true);
-      setNameInput('');
-    } else {
-      setWarningName(true);
-    }
-  };
-
-  //***********************************************************SURNAME*********************************************************************
-  const updateSurname = () => {
-    setDisabledSurname(!disabledSurname);
-    setWarningSurname(false);
-    setSurnameInput('');
-  };
-
-  const pushSurname = () => {
-    if (surnameInput !== '') {
-      // push surname
-      setWarningSurname(false);
-      setDisabledSurname(true);
-      setSurnameInput('');
-    } else {
-      setWarningSurname(true);
-    }
-  };
-
-  //***********************************************************BIRTH DATE*********************************************************************
-  const updateBirthDate = () => {
-    setDisabledBirthDate(!disabledBirthDate);
-    setWarningBirthDate(false);
-    setBirthDateInput('');
-  };
-
-  const pushBirthDate = () => {
-    if (birthDateInput !== '') {
-      // push birth date
-      setWarningBirthDate(false);
-      setDisabledBirthDate(true);
-      setBirthDateInput('');
-    } else {
-      setWarningBirthDate(true);
-    }
-  };
-
-  //***********************************************************DEPARTMENT*********************************************************************
-  const updateDepartment = () => {
-    setDisabledDepartment(!disabledDepartment);
-    setWarningDepartment(false);
-    setDepartmentInput('');
-  };
-
-  const pushDepartment = () => {
-    // Burada gerekli kontrol ve işlemleri yapmalısınız
-    // Örneğin, departmentInput'in boş olup olmadığını kontrol edebilirsiniz.
-    if (departmentInput !== '') {
-      // push department
-      setWarningDepartment(false);
-      setDisabledDepartment(true);
-      setDepartmentInput('');
-    } else {
-      setWarningDepartment(true);
-    }
-  };
-
-  //***********************************************************HOSPITAL*********************************************************************
-  const updateHospital = () => {
-    setDisabledHospital(!disabledHospital);
-    setWarningHospital(false);
-    setHostpitalInput('');
-  };
-
-  const pushHospital = () => {
-    // Burada gerekli kontrol ve işlemleri yapmalısınız
-    // Örneğin, hostpitalInput'in boş olup olmadığını kontrol edebilirsiniz.
-    if (hostpitalInput !== '') {
-      // push hospital
-      setWarningHospital(false);
-      setDisabledHospital(true);
-      setHostpitalInput('');
-    } else {
-      setWarningHospital(true);
-    }
-  };
-
-
-  //***********************************************************TITLE*********************************************************************
-  const updateTitle = () => {
-    setDisabledTitle(!disabledTitle);
-    setWarningTitle(false);
-    setTitleInput('');
-  };
-
-  const pusheTitle = () => {
-    const titleRegex = /\bDr\.\b/g;
-
-    if (titleInput != '' && titleRegex.test(titleInput)) {
-      //push e mail
-      setWarningTitle(false);
-      setDisabledTitle(true);
-      setTitleInput('');
-    } else if (titleInput != '' && !titleRegex.test(titleInput)) {
-      setWarningTitle(true);
-    } else if (titleInput == '') {
-      setWarningTitle(false);
-      setDisabledTitle(true);
-    }
-  };
-
-  //***********************************************************EMAIL*********************************************************************
-  const updateeMail = () => {
-    setDisabledeMailInput(!disabledeMailInput);
-    setWarningeMail(false);
-    seteMailInput('');
-  };
-
-  const pusheMail = () => {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (eMailInput != '' && emailRegex.test(eMailInput)) {
-      //push e mail
-      setWarningeMail(false);
-      setDisabledeMailInput(true);
-      seteMailInput('');
-    } else if (eMailInput != '' && !emailRegex.test(eMailInput)) {
-      setWarningeMail(true);
-    } else if (eMailInput == '') {
-      setWarningeMail(false);
-      setDisabledeMailInput(true);
-    }
-  };
-
-  //***********************************************************PHONENUM*********************************************************************
-  const updatePhoneNum = () => {
-    setDisabledPhoneInput(!disabledPhoneInput);
-    setWarningPhone(false);
-    setPhoneNumInput('');
-  };
-
-  const pushPhoneNum = () => {
-    const phoneNumRegex = /^\+\d{2}\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$/;
-
-    if (phoneNumInput != '' && phoneNumRegex.test(phoneNumInput)) {
-      //push phone num
-      setWarningPhone(false);
-      setDisabledPhoneInput(true);
-      setPhoneNumInput('');
-    } else if (phoneNumInput != '' && !phoneNumRegex.test(phoneNumInput)) {
-      setWarningPhone(true);
-    } else if (phoneNumInput == '') {
-      setWarningPhone(false);
-      setDisabledPhoneInput(true);
-    }
-  };
 
   const pushDoctor = () => {
+    const phoneNumRegex = /^\+\d{2}\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const titleRegex = /\bDr\.\b/g;
+    const idRegex = /^\d+$/;
+
+
     if (idInput != '' && nameInput != '' && surnameInput != '' && birthDateInput != '' && departmentInput != '' && hostpitalInput != '' && titleInput != '' && phoneNumInput != '' && eMailInput != '') {
       // push doctor
     } else{
-      if (idInput === '') {
+      if (idInput == '' || !idRegex.test(idInput)) {
         setWarningId(true);
       }
       if (nameInput === '') {
@@ -268,13 +77,13 @@ const AdminDoctorsCreatePage: React.FC<AdminDoctorsCreatePageProps> = () => {
       if (hostpitalInput === '') {
         setWarningHospital(true);
       }
-      if (titleInput === '') {
+      if (titleInput == '' || !titleRegex.test(titleInput)) {
         setWarningTitle(true);
       }
-      if (phoneNumInput === '') {
+      if (phoneNumInput == '' || !phoneNumRegex.test(phoneNumInput)) {
         setWarningPhone(true);
       }
-      if (eMailInput === '') {
+      if (eMailInput == '' || !emailRegex.test(eMailInput)) {
         setWarningeMail(true);
       }
     }
@@ -289,74 +98,65 @@ const AdminDoctorsCreatePage: React.FC<AdminDoctorsCreatePageProps> = () => {
           <div className="upper" >
             <div className='informations-header'>Genel Bilgiler</div>
             <div>
-              <img src={penImg} className="pen-icon" onClick={updateId} style={{ marginLeft: '120px' }} />
-              {!disabledId! && <div className='information-update-button' style={{ marginLeft: '150px' }} onClick={pushId}>Düzenle</div>}
+            <img src={penImg} className="pen-icon" style={{ marginLeft: '125px' }} />
               <div className='information-type'>TC Kimlik No</div>
-              <input type="text" className="information-input" id={`${disabledId ? 'disabled' : ''}`} placeholder={'TC Kimlik No'} value={idInput} onChange={(e) => setIdInput(e.target.value)} disabled={disabledId} />
+              <input type="text" className="information-input" placeholder={'TC Kimlik No'} value={idInput} onChange={(e) => setIdInput(e.target.value)}  />
               {!warningId && <hr />}
               {warningId && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
             <div>
-              <img src={penImg} className="pen-icon" onClick={updateName} style={{ marginLeft: '50px' }} />
-              {!disabledName! && <div className='information-update-button' style={{ marginLeft: '80px' }} onClick={pushName}>Düzenle</div>}
+              <img src={penImg} className="pen-icon" style={{ marginLeft: '50px' }} />
               <div className='information-type'>İsim</div>
-              <input type="text" className="information-input" id={`${disabledName ? 'disabled' : ''}`} placeholder={'İsim'} value={nameInput} onChange={(e) => setNameInput(e.target.value)} disabled={disabledName} />
+              <input type="text" className="information-input" placeholder={'İsim'} value={nameInput} onChange={(e) => setNameInput(e.target.value)} />
               {!warningName && <hr />}
               {warningName && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
             <div>
-              <img src={penImg} className="pen-icon" onClick={updateSurname} style={{ marginLeft: '80px' }} />
-              {!disabledSurname! && <div className='information-update-button' style={{ marginLeft: '110px' }} onClick={pushSurname}>Düzenle</div>}
+              <img src={penImg} className="pen-icon" style={{ marginLeft: '80px' }} />
               <div className='information-type'>Soyisim</div>
-              <input type="text" className="information-input" id={`${disabledSurname ? 'disabled' : ''}`} placeholder={'Soyisim'} value={surnameInput} onChange={(e) => setSurnameInput(e.target.value)} disabled={disabledSurname} />
+              <input type="text" className="information-input" placeholder={'Soyisim'} value={surnameInput} onChange={(e) => setSurnameInput(e.target.value)} />
               {!warningSurname && <hr />}
               {warningSurname && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
             <div>
-              <img src={penImg} className="pen-icon" onClick={updateBirthDate} style={{ marginLeft: '130px' }} />
-              {!disabledBirthDate! && <div className='information-update-button' style={{ marginLeft: '160px' }} onClick={pushBirthDate}>Düzenle</div>}
+              <img src={penImg} className="pen-icon" style={{ marginLeft: '130px' }} />
               <div className='information-type'>Doğum Tarihi</div>
-              <input type="date" className="information-input" id={`${disabledBirthDate ? 'disabled' : ''}`} placeholder={'Doğum Tarihi'} onChange={(e) => setBirthDateInput(e.target.value)} value={birthDateInput} disabled={disabledBirthDate} />
+              <input type="date" className="information-input" placeholder={'Doğum Tarihi'} onChange={(e) => setBirthDateInput(e.target.value)} value={birthDateInput}/>
               {!warningBirthDate && <hr />}
               {warningBirthDate && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
             <div>
-              <img src={penImg} className="pen-icon" onClick={updateDepartment} style={{ marginLeft: '110px' }} />
-              {!disabledDepartment! && <div className='information-update-button' style={{ marginLeft: '140px' }} onClick={pushDepartment}>Düzenle</div>}
+              <img src={penImg} className="pen-icon" style={{ marginLeft: '110px' }} />
               <div className='information-type'>Departman</div>
-              <input type="text" className="information-input" id={`${disabledDepartment ? 'disabled' : ''}`} placeholder={'Bölüm'} value={departmentInput} onChange={(e) => setDepartmentInput(e.target.value)} disabled={disabledDepartment} />
+              <input type="text" className="information-input" placeholder={'Bölüm'} value={departmentInput} onChange={(e) => setDepartmentInput(e.target.value)}/>
               {!warningDepartment && <hr />}
               {warningDepartment && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
             <div>
-              <img src={penImg} className="pen-icon" onClick={updateHospital} style={{ marginLeft: '80px' }} />
-              {!disabledHospital && <div className='information-update-button' style={{ marginLeft: '110px' }} onClick={pushHospital}>Düzenle</div>}
+              <img src={penImg} className="pen-icon" style={{ marginLeft: '80px' }} />
               <div className='information-type'>Hastane</div>
-              <input type="text" className="information-input" id={`${disabledHospital ? 'disabled' : ''}`} placeholder={'Hastane'} value={hostpitalInput} onChange={(e) => setHostpitalInput(e.target.value)} disabled={disabledHospital} />
+              <input type="text" className="information-input" placeholder={'Hastane'} value={hostpitalInput} onChange={(e) => setHostpitalInput(e.target.value)}/>
               {!warningHospital && <hr />}
               {warningHospital && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
             <div>
-              <img src={penImg} className="pen-icon" onClick={updateTitle} style={{ marginLeft: '70px' }} />
-              {!disabledTitle && <div className='information-update-button' style={{ marginLeft: '100px' }} onClick={pusheTitle}>Düzenle</div>}
+              <img src={penImg} className="pen-icon" style={{ marginLeft: '70px' }} />
               <div className='information-type'>Ünvan</div>
-              <input type="text" className="information-input" id={`${disabledTitle ? 'disabled' : ''}`} placeholder={'Ünvan'} value={titleInput} onChange={(e) => setTitleInput(e.target.value)} disabled={disabledTitle} />
+              <input type="text" className="information-input"placeholder={'Ünvan'} value={titleInput} onChange={(e) => setTitleInput(e.target.value)} />
               {!warningTitle && <hr />}
               {warningTitle && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
             <div>
-              <img src={penImg} className="pen-icon" onClick={updatePhoneNum} style={{ marginLeft: '160px' }} />
-              {!disabledPhoneInput && <div className='information-update-button' style={{ marginLeft: '190px' }} onClick={pushPhoneNum}>Düzenle</div>}
+              <img src={penImg} className="pen-icon" style={{ marginLeft: '160px' }} />
               <div className='information-type'>Telefon Numarası</div>
-              <input type="text" className="information-input" id={`${disabledPhoneInput ? 'disabled' : ''}`} placeholder={'Telefon Numarası'} value={phoneNumInput} onChange={(e) => setPhoneNumInput(e.target.value)} disabled={disabledPhoneInput} />
+              <input type="text" className="information-input" placeholder={'Telefon Numarası'} value={phoneNumInput} onChange={(e) => setPhoneNumInput(e.target.value)}/>
               {!warningPhone && <hr />}
               {warningPhone && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
             <div>
-              <img src={penImg} className="pen-icon" onClick={updateeMail} style={{ marginLeft: '135px' }} />
-              {!disabledeMailInput && <div className='information-update-button' style={{ marginLeft: '165px' }} onClick={pusheMail} >Düzenle</div>}
+              <img src={penImg} className="pen-icon" style={{ marginLeft: '135px' }} />
               <div className='information-type'>E-posta Adresi</div>
-              <input type="email" className="information-input" id={`${disabledeMailInput ? 'disabled' : ''}`} placeholder={'E-posta Adresi'} value={eMailInput} onChange={(e) => seteMailInput(e.target.value)} disabled={disabledeMailInput} />
+              <input type="email" className="information-input" placeholder={'E-posta Adresi'} value={eMailInput} onChange={(e) => seteMailInput(e.target.value)} />
               {!warningeMail && <hr />}
               {warningeMail && <hr style={{ border: '1px solid #DC5353', boxShadow: '0px 3px 6px #DC5353' }} />}
             </div>
