@@ -185,7 +185,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
                             type="text"
                             onFocus={handleInputFocus}
                             onBlur={handleInputBlur}
-                            onChange={(e) => setPassWordInput(e.target.value)}
+                            onChange={(e) => setPassWordInput(e.target.value) }
                             value={passWordInput}
                             required  
                           />

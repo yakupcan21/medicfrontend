@@ -3,26 +3,37 @@ import "./HomePage.scss";
 import { Reveal } from "../../components/Reveal.tsx";
 import "../../components/BackgroundMotion.scss";
 import Profile from "../../components/ProfileComponent.tsx";
+import { useAuth } from '../../components/AuthContext';
 
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
-interface AboutPageProps {
-    isDoctor: boolean;
-    isPatient: boolean;
-    isAdmin: boolean;
+interface HomePageProps {
+
 }
 
-const AboutPage: React.FC<AboutPageProps> = (props) => {
-    const { isDoctor, isPatient, isAdmin } = props;
+const HomePage: React.FC<HomePageProps> = () => {
+    const { userId, isDoctor, isPatient, isAdmin} = useAuth();
+    const id= userId ?? '';
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (id == "") {
+          navigate("/");
+      }
+    }, [id]);
+
     return (
         <div className="home-page-main-container">
             <Reveal>
                 <div className="profile-component-home-page-position">
-                    <Profile isDoctor={isDoctor} isPatient={isPatient} />
+                    <Profile isDoctor={isDoctor} isPatient={isPatient} userId={id}/>
                 </div>
             </Reveal>
             <BackgroundMotion />
-            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} userId={id} />
 
             <div className="invisible-frame">
                 <Reveal>
@@ -69,4 +80,4 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
     );
 };
 
-export default AboutPage;
+export default HomePage;

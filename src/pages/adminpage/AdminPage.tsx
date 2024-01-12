@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sortImg from '../../assets/sortImg.png';
 import axios from "axios";
+import { useAuth } from '../../components/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 interface ListItem {
     docId: number;
@@ -32,6 +34,17 @@ interface AdminPageProps {
 
 const AdminPage: React.FC<AdminPageProps> = () => {
     const [visibleItems, setVisibleItems] = useState(10);
+    const navigate = useNavigate();
+
+    const { userId, isDoctor, isPatient, isAdmin} = useAuth();
+    const id = userId ?? '';
+    
+
+    useEffect(() => {
+        if (id == "") {
+            navigate("admin/login");
+        }
+      }, [id]);
 
     const [data, setData] = useState<ListItem[] | null>();
 
@@ -56,7 +69,7 @@ const AdminPage: React.FC<AdminPageProps> = () => {
     return (
         <div className="admin-page-main-container">
             <BackgroundMotion />
-            <Navbar isDoctor={false} isPatient={false} isAdmin={true}></Navbar>
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={true} userId={id}></Navbar>
             <div className="content-panel">
             <Reveal>
                 <div className="displayed-container">

@@ -5,6 +5,8 @@ import peopleFill from '../../assets/peopleFill.png';
 import { SideSlide } from "../SideSlide";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../AuthContext.tsx';
 
 interface Doctor {
     docId: number;
@@ -21,9 +23,9 @@ interface Doctor {
     docTitle: string;
     docDepartment: string;
     docHospital: string;
-  }
-  
-  interface Patient {
+}
+
+interface Patient {
     patientId: number;
     patientName: string;
     patientSurname: string;
@@ -36,19 +38,22 @@ interface Doctor {
     patientBmi: number;
     reportCount: number;
     reportLastVisit: string;
-  }
-  
+}
+
 
 interface NavbarComponentProps {
     isDoctor: boolean;
     isPatient: boolean;
     isAdmin: boolean;
+    userId: string;
 }
 
 const Navbar: React.FC<NavbarComponentProps> = (props) => {
-    const { isDoctor, isPatient, isAdmin } = props;
+    const { isDoctor, isPatient, isAdmin, userId } = props;
+    const { setUserId, setIsDoctor, setIsPatient, setIsAdmin } = useAuth();
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [isAvatarOpen, setAvatarOpen] = useState(false);
+    const navigate = useNavigate();
 
 
     const toggleMenu = () => {
@@ -61,22 +66,28 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
 
     const [data, setData] = useState<Patient[] | null>();
     const [data2, setData2] = useState<Doctor | null>();
-    const PatientIdInput = 258754948;
-    const DoctorIdInput = 258754948;
-  
+
+    
     useEffect(() => {
-      axios.get(`http://localhost:8081/patients/patient/${PatientIdInput}`).then((response) => {
-        setData(response.data)
-        console.log(response.data);
-      });
+        axios.get(`http://localhost:8081/patients/patient/${userId}`).then((response) => {
+            setData(response.data)
+            console.log(response.data);
+        });
     }, [])
-  
+
     useEffect(() => {
-      axios.get(`http://localhost:8081/doctors/doctor/${DoctorIdInput}`).then((response) => {
-        setData2(response.data)
-        console.log(response.data);
-      });
+        axios.get(`http://localhost:8081/doctors/doctor/${userId}`).then((response) => {
+            setData2(response.data)
+            console.log(response.data);
+        });
     }, [])
+
+    const handleLogout = () => {
+        setUserId(null); // Kullanıcı ID'sini sıfırla
+        setIsDoctor(false); // Doktor durumunu sıfırla
+        setIsPatient(false); // Hasta durumunu sıfırla
+        setIsAdmin(false); // Admin durumunu sıfırla
+    };
 
     return (
         <div className='navbar-parent-element'>
@@ -147,7 +158,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                                     </>}
                                     <Link to={isDoctor === true ? "/doctor/profile" : "/patient/profile"} className="navbar-soft"><div id="navbar-link">Profili Düzenle</div></Link>
                                     <div id="navbar-avatar-buttons">
-                                        <div className="navbar-button" id="navbar-logout"><Link to="/" className="navbar-soft">Çıkış Yap</Link></div>
+                                        <div className="navbar-button" id="navbar-logout"><Link to="/" className="navbar-soft" onClick={() => handleLogout()}>Çıkış Yap</Link></div>
                                         <div className="navbar-button" id="navbar-return" onClick={toggleAvatar}>Geri Dön</div>
                                     </div>
                                 </>
@@ -156,7 +167,7 @@ const Navbar: React.FC<NavbarComponentProps> = (props) => {
                                 <img src={peopleFill} className="navbar-avatar-icon" id="navbar-big-avatar" alt="Big Avatar" />
                                 <div>Admin</div>
                                 <div id="navbar-avatar-buttons">
-                                    <div className="navbar-button" id="navbar-logout"> <Link to="/admin/login" className="navbar-soft">Çıkış Yap</Link></div>
+                                    <div className="navbar-button" id="navbar-logout"> <Link to="/admin/login" className="navbar-soft" onClick={() => handleLogout()}>Çıkış Yap</Link></div>
                                     <div className="navbar-button" id="navbar-return" onClick={toggleAvatar}>Geri Dön</div>
                                 </div>
                             </>)}

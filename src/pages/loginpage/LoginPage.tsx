@@ -4,12 +4,16 @@ import "./LoginPage.scss"; // Make sure to adjust the path accordingly
 import img from "../../assets/resim.png";
 import videoSource from "../../assets/plug.mp4";
 import axios, { AxiosResponse } from 'axios';
-interface LoginPageProps { 
-    
+import { useAuth } from '../../components/AuthContext';
+import { useNavigate } from "react-router-dom";
+
+interface LoginPageProps {
+
 }
 
 const LoginPage: React.FC<LoginPageProps> = () => {
-
+    const { setUserId, setIsDoctor, setIsPatient, setIsAdmin } = useAuth();
+    const navigate = useNavigate();
 
     const [signUp, setSignUp] = useState(true);
     const [isNewAccountPatient, setIsNewAccountPatient] = useState(false);
@@ -49,7 +53,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
         setIsFocused(false);
     };
 
-    
+
     const postData = async () => {
         axios({
             method: 'post',
@@ -66,20 +70,92 @@ const LoginPage: React.FC<LoginPageProps> = () => {
     }
 
 
-const handleRegister = () => {
-    console.log("New Patient Data:", {
-        id: newIdInput,
-        name: newNameInput,
-        surname: newSurnameInput,
-        dateOfBirth: newDateInput,
-        phoneNumber: newPhoneNumInput,
-        password: newPassWordInput,
-    });
-    
-    
-    postData();
-    
-};
+    const handleRegister = () => {
+        console.log("New Patient Data:", {
+            id: newIdInput,
+            name: newNameInput,
+            surname: newSurnameInput,
+            dateOfBirth: newDateInput,
+            phoneNumber: newPhoneNumInput,
+            password: newPassWordInput,
+        });
+
+
+        postData();
+
+    };
+
+    /*const handleLogin = (userId: string, password: string, isDoctor: boolean, isPatient: boolean): void => {
+        setUserId(userId);
+        setIsDoctor(isDoctor);
+        setIsPatient(isPatient);
+        setIsAdmin(false);
+    };*/
+
+    const handleLogin = async (userId: string, password: string, isDoctor: boolean, isPatient: boolean): Promise<void> => {
+        try {
+            if (isPatient) {
+                axios.post('http://localhost:8081/patients/login', {
+                    patientId: userId,
+                    patientPassword: password,
+                }).then((response) => {
+                    const newId = response.data;
+                    console.log("giris yapti hasta")
+                    setUserId(newId);
+                    setIsDoctor(isDoctor);
+                    setIsPatient(isPatient);
+                    setIsAdmin(false);
+
+                    if (newId != "Invalid credentials!") {
+                        navigate("/patient/home");
+                    }
+
+                });
+            } else if (isDoctor) {
+                axios.post('http://localhost:8081/doctors/login', {
+                    docId: userId,
+                    docPassword: password,
+                }).then((response) => {
+                    const newId = response.data;
+                    console.log("giris yapti doktor")
+                    console.log(newId)
+                    console.log(userId)
+                    console.log(password)
+
+                    setUserId(newId);
+                    setIsDoctor(isDoctor);
+                    setIsPatient(isPatient);
+                    setIsAdmin(false);
+
+                    if (newId != "Invalid credentials!") {
+                        navigate("/doctor/home");
+                    }
+
+                });
+
+            } else {
+                axios.post('http://localhost:8081/admin/login', {
+                    adminName: userId,
+                    adminPassword: password,
+                }).then((response) => {
+                    const newId = response.data;
+                    console.log("giris yapti admin")
+                    setUserId(newId);
+                    setIsDoctor(false);
+                    setIsPatient(false);
+                    setIsAdmin(true);
+
+                    if (newId != "Invalid credentials!") {
+                        navigate("/admin/doctors");
+                    }
+                });
+
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+        }
+    };
+
     return (
         <div className="login-page-main-container">
             <div className="displayed-container">
@@ -112,7 +188,7 @@ const handleRegister = () => {
                             </div>
                         </div>
                     </div>
-                    {   isNewAccountPatient ? (
+                    {isNewAccountPatient ? (
                         <form className="sign-up" >
                             <img src={img} alt="logo" className="logo" />
                             <h2>Hasta Yeni Kayıt </h2>
@@ -122,15 +198,15 @@ const handleRegister = () => {
                             </h3>
                             <div className="register-container">
                                 <div className="register">
-                                    <input type="text" placeholder="TC Kimlik Numarası:" value={newIdInput} onChange={(e) => setNewIdInput(e.target.value)} required/>
+                                    <input type="text" placeholder="TC Kimlik Numarası:" value={newIdInput} onChange={(e) => setNewIdInput(e.target.value)} required />
                                     <div className="name-container">
-                                        <input type="text" placeholder="Ad:" value={newNameInput} onChange={(e) => setNewNameInput(e.target.value)} required/>
-                                        <input type="text" placeholder="Soyad:" value={newSurnameInput} onChange={(e) => setNewSurnameInput(e.target.value)} required/>
+                                        <input type="text" placeholder="Ad:" value={newNameInput} onChange={(e) => setNewNameInput(e.target.value)} required />
+                                        <input type="text" placeholder="Soyad:" value={newSurnameInput} onChange={(e) => setNewSurnameInput(e.target.value)} required />
                                     </div>
-                                    <input type="date" placeholder="Doğum Tarihi:" value={newDateInput} onChange={(e) => setNewDateInput(e.target.value)} max={today} required/>
-                                    <input type="text" placeholder="Telefon No:" value={newPhoneNumInput} onChange={(e) => setNewPhoneNumInput(e.target.value)} required/>
+                                    <input type="date" placeholder="Doğum Tarihi:" value={newDateInput} onChange={(e) => setNewDateInput(e.target.value)} max={today} required />
+                                    <input type="text" placeholder="Telefon No:" value={newPhoneNumInput} onChange={(e) => setNewPhoneNumInput(e.target.value)} required />
                                     <div className="register_2">
-                                        <input type="text" placeholder="Şifre:" value={newPassWordInput} onChange={(e) => setNewPassWordInput(e.target.value)} required/>
+                                        <input type="text" placeholder="Şifre:" value={newPassWordInput} onChange={(e) => setNewPassWordInput(e.target.value)} required />
                                         <input type="checkbox" id="KVKK" name="KVKK" />
                                         <label htmlFor="KVKK">KVKK Metni</label>
                                     </div>
@@ -141,11 +217,11 @@ const handleRegister = () => {
                             </button>
                             <br />
                             <p className='new-account'>
-                                    Mevcut hesap ile giriş için{" "}
-                                    <span style={{ cursor: 'pointer', textDecoration: 'underline', fontWeight: 'bold' }} onClick={handleToggleNewAccountPatient}>
-                                        tıklayınız
-                                    </span>.
-                                </p>
+                                Mevcut hesap ile giriş için{" "}
+                                <span style={{ cursor: 'pointer', textDecoration: 'underline', fontWeight: 'bold' }} onClick={handleToggleNewAccountPatient}>
+                                    tıklayınız
+                                </span>.
+                            </p>
                         </form>
                     ) : (
                         <>
@@ -158,7 +234,7 @@ const handleRegister = () => {
                                 </h3>
                                 <div className="register-container">
                                     <div className="register">
-                                    <div className={`floating-label ${isFocused ? 'focused' : ''}`}>
+                                        <div className={`floating-label ${isFocused ? 'focused' : ''}`}>
                                             <input
                                                 type="text"
                                                 onFocus={handleInputFocus}
@@ -186,9 +262,7 @@ const handleRegister = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <Link to="/patient/home">
-                                    <button className="giris">Giriş Yap</button>
-                                </Link>
+                                <div className='information-button' onClick={() => handleLogin(idPatientInput, passWordPatientInput, false, true)}>Giriş Yap</div>
                                 <p className='new-account'>
                                     Yeni kayıt oluşturmak için{" "}
                                     <span style={{ cursor: 'pointer', textDecoration: 'underline', fontWeight: 'bold' }} onClick={handleToggleNewAccountPatient}>
@@ -233,9 +307,7 @@ const handleRegister = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <Link to="/doctor/home">
-                                    <button className="giris">Giriş Yap</button>
-                                </Link>
+                                <div className="information-button" style={{ marginLeft: "250px" }} onClick={() => handleLogin(idDoctorInput, passWordDoctorInput, true, false)}>Giriş Yap</div>
                                 <br />
                             </form>
                         </>

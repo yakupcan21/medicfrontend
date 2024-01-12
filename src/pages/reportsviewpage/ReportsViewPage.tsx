@@ -27,9 +27,7 @@ interface ListItem {
 
 
 interface ReportsViewPageProps {
-    isDoctor: boolean;
-    isPatient: boolean;
-    isAdmin: boolean;
+
 }
 
 
@@ -38,35 +36,50 @@ import plug2Img from '../../assets/plug2.png';
 import plug3Img from '../../assets/plug3.png';
 import plug4Img from '../../assets/plug4.png';
 import sortImg from '../../assets/sortImg.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Reveal } from '../../components/Reveal.tsx';
 import axios from 'axios';
+import { useAuth } from '../../components/AuthContext';
 
-const ReportsViewPage: React.FC<ReportsViewPageProps> = (props) => {
-    const { isDoctor, isPatient, isAdmin } = props;
-    const PatientIdInput = 258754948;
+
+const ReportsViewPage: React.FC<ReportsViewPageProps> = () => {
+    const { userId, isDoctor, isPatient, isAdmin} = useAuth();
+    const id= userId ?? '';
+    
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (id == "") {
+          navigate("/");
+      }
+    }, [id]);
+
     const [indexOfActivePicture, setIndexOfActivePicture] = useState(0);
     const [activePicture, setActivePicture] = useState<string>(plug1Img);
     const pictures = [plug1Img, plug2Img, plug3Img, plug4Img];
     const [data, setData] = useState<ListItem[] | null>();
     const [report, setReport] = useState<Report[] | null>();
 
+
+    const location = useLocation();
+    const rapNumParam = location.pathname.split('/').pop();
+
     useEffect(() => {
-        axios.get(`http://localhost:8081/reports/reportsByPatient/${PatientIdInput}`).then((response) => {
+        axios.get(`http://localhost:8081/reports/report/${rapNumParam}`).then((response) => {
             setData(response.data)
             console.log(response.data);
         });
 
-    }, [])
+    }, [rapNumParam])
 
 useEffect(() => {
     if (data && data.length > 0) {
-        axios.get(`http://localhost:8081/createReport/createReportsByRapNum/${data[0].rapNum}`).then((response) => {
+        axios.get(`http://localhost:8081/createReport/createReportsByRapNum/${rapNumParam}`).then((response) => {
             setReport(response.data)
             console.log(response.data);
         });
     }
-}, [data])
+}, [rapNumParam])
 
     const changeActivePicture = (index: number) => {
         setActivePicture(pictures[index]);
@@ -74,7 +87,7 @@ useEffect(() => {
     };
     return (
         <div className='reports-view-page-main-container'>
-            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} userId={id} />
             <BackgroundMotion />
             <div className="content-panel">
                 <Reveal>
@@ -121,7 +134,7 @@ useEffect(() => {
                                 <div className='report-text-container'>
                                     {report && report.slice(0, 1).map((item, index) => (
                                         <div key={index}>
-                                            <div></div>
+                                            <div>{item.findings}</div>
                                         </div>
                                     ))}
                                 </div>

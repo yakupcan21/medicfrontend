@@ -2,22 +2,31 @@ import Navbar from "../../components/menu/NavbarComponent.tsx";
 import "./DiseasePage.scss";
 import { Reveal } from "../../components/Reveal";
 import "../../components/BackgroundMotion.scss";
+import { useAuth } from '../../components/AuthContext';
 
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 interface DiseasePageProps {
-    isDoctor: boolean;
-    isPatient: boolean;
-    isAdmin: boolean;
+
 }
 
-const DiseasePage: React.FC<DiseasePageProps> = (props) => {
-    const { isDoctor, isPatient, isAdmin } = props;
+const DiseasePage: React.FC<DiseasePageProps> = () => {
+    const { userId, isDoctor, isPatient, isAdmin } = useAuth();
+    const id = userId ?? '';
+    
+    const navigate = useNavigate();
 
+    useEffect(() => {
+      if (id == "") {
+          navigate("/");
+      }
+    }, [id]);
     return (
         <div className="disease-page-main-container">
             <BackgroundMotion />
-            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} userId={id} />
             <div className="invisible-frame">
                 <Reveal>
                     <div className="article-content">

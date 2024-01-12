@@ -4,8 +4,14 @@ import Navbar from '../../components/menu/NavbarComponent';
 import BackgroundMotion from '../../components/BackgroundMotion';
 import { Reveal } from '../../components/Reveal';
 import sortImg from '../../assets/sortImg.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../components/AuthContext';
+import { useReport } from '../../components/reportContext';
+
+
+
+
 
 interface ListItem {
   patientName: string;
@@ -16,15 +22,24 @@ interface ListItem {
 }
 
 interface PatientsPageProps {
-  isDoctor: boolean;
-  isPatient: boolean;
-  isAdmin: boolean;
+
 }
 
- const PatientsPage: React.FC<PatientsPageProps> = (props) => {
-  const { isDoctor, isPatient, isAdmin } = props;
+const PatientsPage: React.FC<PatientsPageProps> = () => {
+
   const [visibleItems, setVisibleItems] = useState(10);
   const [data, setData] = useState<ListItem[] | null>();
+  const { userId, isDoctor, isPatient, isAdmin} = useAuth();
+  const id= userId ?? '';
+  
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id == "") {
+        navigate("/");
+    }
+  }, [id]);
+
 
   useEffect(() => {
     axios.get('http://localhost:8081/patients/seeAllPatients').then((response) => {
@@ -34,8 +49,9 @@ interface PatientsPageProps {
     updatePatientReports();
   }, [])
 
-  const turkishDateOptions = { year: 'numeric', month: 'numeric', day: 'numeric', timeZone: 'Europe/Istanbul' };
 
+
+  const { setsendId } = useReport();
 
   const loadMoreItems = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 10);
@@ -55,7 +71,7 @@ interface PatientsPageProps {
   
   return (
     <div className='patients-page-main-container'>
-      <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
+      <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} userId={id} />
       <BackgroundMotion />
       <div className="content-panel">
         <Reveal>
@@ -76,7 +92,7 @@ interface PatientsPageProps {
                     <div className='information-items' style={{ flex: '2', minWidth: '50px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.reportLastVisit}</div>
                     <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.reportCount}</div>
                     <div className='information-items' style={{ flex: '1', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>
-                      <Link to={isDoctor === true ? '/doctor/reports' : ''} className='information-button' style={{ width: '100%' }}>Görüntüle</Link>
+                      <Link to={isDoctor === true ? '/doctor/reports' : ''} className='information-button' style={{ width: '100%' }} onClick={() => setsendId(item.patientId)} >Görüntüle</Link>
                     </div>
                   </div>
                 </div>

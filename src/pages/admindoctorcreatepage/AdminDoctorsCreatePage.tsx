@@ -4,10 +4,12 @@ import "../../components/BackgroundMotion.scss";
 
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
 import Navbar from "../../components/menu/NavbarComponent.tsx";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import sortImg from '../../assets/sortImg.png';
 import penImg from '../../assets/penImg.png';
+import { useAuth } from '../../components/AuthContext';
+
 
 interface ListItem {
   doctorId: string;
@@ -36,7 +38,17 @@ const AdminDoctorsCreatePage: React.FC<AdminDoctorsCreatePageProps> = () => {
   const [eMailInput, seteMailInput] = useState('');
   const [phoneNumInput, setPhoneNumInput] = useState('');
 
+  
+  const { userId, isDoctor, isPatient, isAdmin} = useAuth();
+  const id= userId ?? '';
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id == "") {
+        navigate("admin/login");
+    }
+  }, [id]);
 
   const [warningId, setWarningId] = useState(false);
   const [warningName, setWarningName] = useState(false);
@@ -92,7 +104,7 @@ const AdminDoctorsCreatePage: React.FC<AdminDoctorsCreatePageProps> = () => {
   return (
     <div className="admin-doctor-create-page-main-container">
       <BackgroundMotion />
-      <Navbar isDoctor={false} isPatient={false} isAdmin={true}></Navbar>
+      <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={true} userId={id}></Navbar>
       <div className="content-panel">
         <Reveal>
           <div className="upper" >

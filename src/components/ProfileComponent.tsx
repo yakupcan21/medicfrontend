@@ -47,10 +47,11 @@ interface Doctor {
 interface NavbarComponentProps {
     isDoctor: boolean;
     isPatient: boolean;
+    userId: string;
 }
 
 const Profile: React.FC<NavbarComponentProps> = (props) => {
-    const { isDoctor, isPatient } = props;
+    const { isDoctor, isPatient, userId } = props;
     const [bmiOpen, setBmiOpen] = useState(false);
     const [cardioOpen, setCardioOpen] = useState(false);
     const [updateOpen, setUpdateOpen] = useState(false);
@@ -70,18 +71,16 @@ const Profile: React.FC<NavbarComponentProps> = (props) => {
 
     const [data, setData] = useState<Patient[] | null>();
     const [data2, setData2] = useState<Doctor | null>();
-    const PatientIdInput = 258754948;
-    const DoctorIdInput = 258754948;
   
     useEffect(() => {
-      axios.get(`http://localhost:8081/patients/patient/${PatientIdInput}`).then((response) => {
+      axios.get(`http://localhost:8081/patients/patient/${userId}`).then((response) => {
         setData(response.data)
         console.log(response.data);
       });
     }, [])
   
     useEffect(() => {
-      axios.get(`http://localhost:8081/doctors/doctor/${DoctorIdInput}`).then((response) => {
+      axios.get(`http://localhost:8081/doctors/doctor/${userId}`).then((response) => {
         setData2(response.data)
         console.log(response.data);
       });

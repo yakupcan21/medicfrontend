@@ -6,6 +6,8 @@ import BackgroundMotion from '../../components/BackgroundMotion';
 import { Reveal } from '../../components/Reveal';
 import penImg from '../../assets/penImg.png';
 import axios from 'axios';
+import { useAuth } from '../../components/AuthContext';
+import { useNavigate } from 'react-router';
 
 
 interface Doctor {
@@ -41,13 +43,20 @@ interface Patient {
 }
 
 interface ProfilePageProps {
-  isDoctor: boolean;
-  isPatient: boolean;
-  isAdmin: boolean;
+
 }
 
-const ProfilePage: React.FC<ProfilePageProps> = (props) => {
-  const { isDoctor, isPatient, isAdmin } = props;
+const ProfilePage: React.FC<ProfilePageProps> = () => {
+  const { userId, isDoctor, isPatient, isAdmin} = useAuth();
+  const id= userId ?? '';
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id == "") {
+        navigate("/");
+    }
+  }, [id]);
 
   const [eMailInput, seteMailInput] = useState<string>('');
   const [phoneNumInput, setPhoneNumInput] = useState<string>('');
@@ -65,18 +74,17 @@ const ProfilePage: React.FC<ProfilePageProps> = (props) => {
 
   const [data, setData] = useState<Patient[] | null>();
   const [data2, setData2] = useState<Doctor | null>();
-  const PatientIdInput = 258754948;
-  const DoctorIdInput = 258754948;
+
 
   useEffect(() => {
-    axios.get(`http://localhost:8081/patients/patient/${PatientIdInput}`).then((response) => {
+    axios.get(`http://localhost:8081/patients/patient/${id}`).then((response) => {
       setData(response.data)
       console.log(response.data);
     });
   }, [])
 
   useEffect(() => {
-    axios.get(`http://localhost:8081/doctors/doctor/${DoctorIdInput}`).then((response) => {
+    axios.get(`http://localhost:8081/doctors/doctor/${id}`).then((response) => {
       setData2(response.data)
       console.log(response.data);
     });
@@ -109,9 +117,6 @@ const ProfilePage: React.FC<ProfilePageProps> = (props) => {
       setWarningeMail(false);
       setDisabledeMailInput(true);
     }
-
-
-
   };
 
   const updatePhoneNum = () => {
@@ -191,11 +196,11 @@ const ProfilePage: React.FC<ProfilePageProps> = (props) => {
   return (
     <div className="profile-page-main-container">
       <BackgroundMotion />
-      <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
+      <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} userId={id} />
       <div className="left-panel">
         <Reveal>
           <div className="profile-component-profile-page-position">
-            <Profile isDoctor={isDoctor} isPatient={isPatient} />
+            <Profile isDoctor={isDoctor} isPatient={isPatient} userId={id} />
           </div>
         </Reveal>
       </div>

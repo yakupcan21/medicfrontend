@@ -1,11 +1,28 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 import './ReportsCreatePage.scss';
 import Navbar from "../../components/menu/NavbarComponent.tsx";
 import BackgroundMotion from "../../components/BackgroundMotion.tsx";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../components/AuthContext';
 
 
 
+interface Doctor {
+    docId: number;
+    docName: string;
+    docSurname: string;
+    docDateOfBirth: string;
+    docPhoneNo: string;
+    docEmail: string;
+    docPassword: string;
+    docAge: number;
+    docHeight: number;
+    docWeight: number;
+    docBmi: number;
+    docTitle: string;
+    docDepartment: string;
+    docHospital: string;
+}
 
 interface ListItem {
     date: Date;
@@ -17,16 +34,34 @@ interface ListItem {
 }
 
 interface ReportsCreatePageProps {
-    isDoctor: boolean;
-    isPatient: boolean;
-    isAdmin: boolean;
+
 }
 
 
 import { Reveal } from "../../components/Reveal.tsx";
+import axios from "axios";
 
-const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
-    const { isDoctor, isPatient, isAdmin } = props;
+const ReportsCreatePage: React.FC<ReportsCreatePageProps> = () => {
+    const { userId, isDoctor, isPatient, isAdmin} = useAuth();
+    const id= userId ?? '';
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (id == "") {
+          navigate("/");
+      }
+    }, [id]);
+    
+    const [data2, setData2] = useState<Doctor | null>();
+
+    useEffect(() => {
+        axios.get(`http://localhost:8081/doctors/doctor/${userId}`).then((response) => {
+            setData2(response.data)
+            console.log(response.data);
+        });
+    }, [])
+
 
     const [content, setContent] = useState<string>('');
     const [isReportMenu, setIsReportMenu] = useState(false);
@@ -87,7 +122,7 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
     };
     return (
         <div className='reports-create-page-main-container'>
-            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} userId={id} />
             <BackgroundMotion />
             <div className="content-panel">
                 <Reveal>
@@ -163,11 +198,11 @@ const ReportsCreatePage: React.FC<ReportsCreatePageProps> = (props) => {
                                 {data.slice(0, 1).map((item, index) => (
                                     <div key={index}>
                                         <div className='information-rows'>
-                                            <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.date.toLocaleString('tr-TR', turkishDateOptions)}</div>
-                                            <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.reportId}</div>
-                                            <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.doctorName}</div>
-                                            <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{item.patientId}</div>
-                                            <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{item.patientName}</div>
+                                            <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{selectedDate}</div>
+                                            <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>********</div>
+                                            <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{data2?.docTitle} {data2?.docName} {data2?.docSurname}</div>
+                                            <div className='information-items' style={{ flex: '1', minWidth: '50px', backgroundColor: index % 2 === 0 ? '' : '#dfe5ec' }}>{inputPatientId}</div>
+                                            <div className='information-items' style={{ flex: '2', minWidth: '100px', backgroundColor: index % 2 === 0 ? '#dfe5ec' : '' }}>{inputPatientName}</div>
                                         </div>
                                     </div>
                                 ))}

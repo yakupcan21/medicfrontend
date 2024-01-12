@@ -4,9 +4,10 @@ import Navbar from '../../components/menu/NavbarComponent';
 import BackgroundMotion from '../../components/BackgroundMotion';
 import { Reveal } from '../../components/Reveal';
 import sortImg from '../../assets/sortImg.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useAuth } from '../../components/AuthContext';
+import { useReport } from '../../components/reportContext';
 
 interface Patient {
     patientId: number;
@@ -24,25 +25,34 @@ interface ListItem {
 }
 
 interface ReportPageProps {
-    isDoctor: boolean;
-    isPatient: boolean;
-    isAdmin: boolean;
+
 }
 
-const ReportPage: React.FC<ReportPageProps> = (props) => {
-    const { isDoctor, isPatient, isAdmin } = props;
-    const [visibleItems, setVisibleItems] = useState(10);
-    const [data, setData] = useState<ListItem[] | null>();
-    const location = useLocation(); // Use react-router-dom's useLocation hook
+const ReportPage: React.FC<ReportPageProps> = () => {
+    const { userId, isDoctor, isPatient, isAdmin} = useAuth();
+    const id= userId ?? '';
+
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const patientIdInput = location.state?.patientIdInput;
-        console.log("selam")
+      if (id == "") {
+          navigate("/");
+      }
+    }, [id]);
 
+    const [visibleItems, setVisibleItems] = useState(10);
+    const [data, setData] = useState<ListItem[] | null>();
+
+    const { sendId } = useReport();
+    const patientIdInput= sendId  ?? '';
+    useEffect(() => {
+        console.log("selam")
         console.log(patientIdInput)
         let apiUrl = 'http://localhost:8081/reports/seeAllReports';
-
-        if (patientIdInput != null) {
+        if(isPatient){
+            apiUrl = `http://localhost:8081/reports/reportsByPatient/${id}`;
+        }
+        if (patientIdInput != '') {
             apiUrl = `http://localhost:8081/reports/reportsByPatient/${patientIdInput}`;
         }
 
@@ -51,7 +61,7 @@ const ReportPage: React.FC<ReportPageProps> = (props) => {
             console.log(response.data);
         });
 
-    }, [location.state]);
+    }, [patientIdInput]);
 
 
 
@@ -64,7 +74,7 @@ const ReportPage: React.FC<ReportPageProps> = (props) => {
 
     return (
         <div className='report-page-main-container'>
-            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} />
+            <Navbar isDoctor={isDoctor} isPatient={isPatient} isAdmin={isAdmin} userId={id} />
             <BackgroundMotion />
             <div className="content-panel">
                 <Reveal>
@@ -106,6 +116,7 @@ const ReportPage: React.FC<ReportPageProps> = (props) => {
                 </Reveal>
             </div>
         </div>
+
     );
 };
 
